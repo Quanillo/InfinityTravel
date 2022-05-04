@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
@@ -17,7 +18,7 @@
          <children>
             <HBox layoutX="164.0" prefHeight="100.0" prefWidth="986.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#packsLoad" prefHeight="99.0" prefWidth="114.0" style="-fx-background-color: #1d334a;" text="Packs" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="packs" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#packsLoad" prefHeight="99.0" prefWidth="114.0" style="-fx-background-color: #1d334a;" text="Packs" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -25,7 +26,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="136.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Billetes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#billetesLoad" prefHeight="99.0" prefWidth="136.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -33,7 +34,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="176.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Alojamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#alojamientoLoad" prefHeight="99.0" prefWidth="176.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -41,7 +42,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="257.0" style="-fx-background-color: #1d334a;" text="Vehiculos de alquiler" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Vehiculos" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#vehiculosLoad" prefHeight="99.0" prefWidth="257.0" style="-fx-background-color: #1d334a;" text="Vehiculos de alquiler" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -49,7 +50,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="178.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Experiencias" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#experienciasLoad" prefHeight="99.0" prefWidth="178.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -57,7 +58,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="131.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Seguros" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#segurosLoad" prefHeight="99.0" prefWidth="131.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -86,6 +87,10 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="1159.0" layoutY="18.0" stroke="#f6f6f6" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" width="64.0" />
          </children>
       </AnchorPane>
-      <Pane layoutY="120.0" prefHeight="600.0" prefWidth="1280.0" />
+      <BorderPane fx:id="bp" layoutY="120.0" prefHeight="600.0" prefWidth="1280.0">
+         <center>
+            <AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
    </children>
 </Pane>
