@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainInfinityClass">
    <children>
       <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="105.0" prefWidth="1250.0" style="-fx-background-color: #1D334A; -fx-background-radius: 12;">
          <children>
             <HBox layoutX="164.0" prefHeight="100.0" prefWidth="986.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="99.0" prefWidth="114.0" style="-fx-background-color: #1d334a;" text="Packs" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#packsLoad" prefHeight="99.0" prefWidth="114.0" style="-fx-background-color: #1d334a;" text="Packs" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -86,5 +86,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="64.0" layoutX="1159.0" layoutY="18.0" stroke="#f6f6f6" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="3.0" width="64.0" />
          </children>
       </AnchorPane>
+      <Pane layoutY="120.0" prefHeight="600.0" prefWidth="1280.0" />
    </children>
 </Pane>
