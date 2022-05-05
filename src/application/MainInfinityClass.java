@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 public class MainInfinityClass {
 
@@ -22,6 +24,7 @@ public class MainInfinityClass {
 	@FXML private Button Vehiculos;
 	@FXML private Button Experiencias;
 	@FXML private Button Seguros;
+	@FXML private Button exit;
 	
 	@FXML 
 	private void packsLoad(MouseEvent event) {
@@ -53,6 +56,11 @@ public class MainInfinityClass {
 		loadPage("SegurosPage");
 	}
 	
+	@FXML
+	private void close(MouseEvent event) {
+		Platform.exit();
+	}
+	
 	private void loadPage(String page) {
 		Parent root=null;
 	
@@ -64,5 +72,4 @@ public class MainInfinityClass {
 		bp.setCenter(root);;
 	}
 
-	
 }
