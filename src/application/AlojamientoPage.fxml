@@ -4,10 +4,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="application.AlojamientoClass">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlojamientoClass">
    <children>
-      <Text fx:id="hola" layoutX="610.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alojamiento">
+      <Text fx:id="hola" layoutX="571.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alojamiento">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="hola1" layoutX="533.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work in progress...">
          <font>
             <Font size="26.0" />
          </font>

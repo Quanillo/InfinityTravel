@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginClass">
+   <center>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="429.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" wrappingWidth="92.68359375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="429.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtUser" layoutX="631.0" layoutY="239.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="219.0" />
+            <PasswordField fx:id="txtPass" layoutX="631.0" layoutY="288.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="220.0" />
+            <Button fx:id="btnLogin" layoutX="631.0" layoutY="386.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="60.0" prefWidth="219.0" text="LOG IN">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Text fx:id="txt" layoutX="629.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="221.13671875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnReg" layoutX="629.0" layoutY="511.0" mnemonicParsing="false" onAction="#registro" prefHeight="76.0" prefWidth="226.0" />
+            <Text layoutX="443.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro" wrappingWidth="90.13671875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

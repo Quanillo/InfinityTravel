@@ -4,10 +4,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fx:id="hola" layoutX="608.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packs">
+      <Text fx:id="hola" layoutX="598.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Packs">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="hola1" layoutX="533.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work in progress...">
          <font>
             <Font size="26.0" />
          </font>
