@@ -67,19 +67,19 @@ public class RegistroClass {
 						}
 						else {
 							state=0;
-							txt.setText("La contraseña debe contener al menos 6 caracteres");
+							txt.setText("Contraseña inválida: debe tener al menos 6 caracteres");
 							clear();
 						}
 					}
 					else {
 						state=0;
-						txt.setText("La contraseña no coincide, porfavor confirma contraseña");
+						txt.setText("Contraseña inválida: la confirmación no coincide");
 						clear();
 					}
 				}
 				else {
 					state=0;
-					txt.setText("El nombre de Usuario debe contener al menos 4 caracteres");
+					txt.setText("El nombre de usuario debe tener al menos 4 caracteres");
 					clear();
 				}
 				//comprobamos el valor del state para saber si accedemos a la app o no
@@ -91,7 +91,7 @@ public class RegistroClass {
 				}
 				
 			}else {
-				txt.setText("Alguno de los campos esta vacio. Porfavor introduzca los datos de registro");
+				txt.setText("Registro inválido: Alguno de los campos esta vacio.");
 				clear();
 			}
 		}

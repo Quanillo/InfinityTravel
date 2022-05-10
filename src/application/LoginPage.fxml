@@ -1,62 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginClass">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginClass">
    <center>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="812.0" style="-fx-background-color: #1d334a;" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="812.0" style="-fx-background-color: #f6f6f6;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#f6f6f6" layoutX="169.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" wrappingWidth="92.68359375">
-               <font>
-                  <Font name="Malgun Gothic" size="24.0" />
-               </font>
-            </Text>
-            <Text fill="#f6f6f6" layoutX="172.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
-               <font>
-                  <Font name="Malgun Gothic" size="24.0" />
-               </font>
-            </Text>
-            <TextField fx:id="txtUser" layoutX="397.0" layoutY="139.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="219.0" />
-            <PasswordField fx:id="txtPass" layoutX="396.0" layoutY="210.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="220.0" />
-            <Button fx:id="btnLogin" layoutX="397.0" layoutY="286.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="60.0" prefWidth="219.0" text="LOG IN">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <Text fx:id="txt" layoutX="629.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="221.13671875">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Button fx:id="btnReg" layoutX="396.0" layoutY="401.0" mnemonicParsing="false" onAction="#registro" prefHeight="76.0" prefWidth="226.0" text="registro">
-               <font>
-                  <Font size="38.0" />
-               </font></Button>
-            <Text fill="#f6f6f6" layoutX="186.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro" wrappingWidth="90.13671875">
-               <font>
-                  <Font name="Malgun Gothic" size="24.0" />
-               </font>
-            </Text>
+            <Pane layoutX="640.0" layoutY="83.0" prefHeight="567.0" prefWidth="320.0" style="-fx-background-color: #1d334a;">
+               <children>
+                  <Text fill="#f6f6f6" layoutX="40.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" wrappingWidth="92.68359375">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f6f6f6" layoutX="40.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtUser" layoutX="40.0" layoutY="186.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="240.0">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font></TextField>
+                  <PasswordField fx:id="txtPass" layoutX="40.0" layoutY="303.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="240.0">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font></PasswordField>
+                  <Button fx:id="btnLogin" layoutX="40.0" layoutY="467.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #e55137;" text="Iniciar sesión" textFill="#f6f6f6">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                  </Button>
+                  <Text fx:id="txt" fill="#e55137" layoutX="39.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="241.13671875">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f6f6f6" layoutX="52.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a Infinity Travel" textAlignment="CENTER" wrappingWidth="215.5234375">
+                     <font>
+                        <Font name="Malgun Gothic" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="180.0" layoutY="150.0" prefHeight="420.0" prefWidth="460.0" style="-fx-background-color: #5dc1b9;">
+               <children>
+                  <Button fx:id="btnReg" layoutX="311.0" layoutY="336.0" mnemonicParsing="false" onAction="#registro" prefHeight="48.0" prefWidth="123.0" style="-fx-background-color: #5dc1b9;" text="Registrate." textFill="#f6f6f6">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fill="#1d334a" layoutX="33.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Todavía no tienes una cuenta?" wrappingWidth="298.13671875">
+                     <font>
+                        <Font name="Malgun Gothic" size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="320.0" fitWidth="320.0" layoutX="70.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/logo_color.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="960.0" layoutY="150.0" prefHeight="420.0" prefWidth="100.0" style="-fx-background-color: #5dc1b9;" />
          </children>
       </AnchorPane>
    </center>
-   <top>
-      <Pane prefHeight="150.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </top>
-   <bottom>
-      <Pane prefHeight="150.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </bottom>
-   <right>
-      <Pane prefHeight="486.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </right>
-   <left>
-      <Pane prefHeight="486.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>
