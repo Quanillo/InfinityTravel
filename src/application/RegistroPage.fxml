@@ -5,60 +5,39 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistroClass">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistroClass">
    <center>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1d334a;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#f6f6f6" layoutX="104.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario">
+            <Text fill="#f6f6f6" layoutX="328.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario">
                <font>
                   <Font name="Malgun Gothic" size="24.0" />
                </font>
             </Text>
-            <Text fill="#f6f6f6" layoutX="104.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+            <Text fill="#f6f6f6" layoutX="328.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
                <font>
                   <Font name="Malgun Gothic" size="24.0" />
                </font>
             </Text>
-            <TextField fx:id="txtUser" layoutX="436.0" layoutY="245.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="238.0" />
-            <PasswordField fx:id="txtPass" layoutX="435.0" layoutY="303.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="240.0" />
-            <Text fill="#f6f6f6" layoutX="104.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirma contraseña">
+            <TextField fx:id="txtUser" layoutX="660.0" layoutY="221.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="238.0" />
+            <PasswordField fx:id="txtPass" layoutX="659.0" layoutY="279.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="25.0" prefWidth="240.0" />
+            <Text fill="#f6f6f6" layoutX="328.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirma contraseña">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <PasswordField fx:id="txtPass2" layoutX="435.0" layoutY="379.0" prefHeight="25.0" prefWidth="241.0" />
-            <Button fx:id="btnreg" layoutX="791.0" layoutY="547.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="83.0" prefWidth="115.0" text="Registrar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="cancelar" layoutX="659.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="83.0" prefWidth="115.0" text="Cancelar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <PasswordField fx:id="txtPass2" layoutX="659.0" layoutY="355.0" prefHeight="25.0" prefWidth="241.0" />
             <Text fx:id="txt" layoutX="665.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
+            <Button fx:id="btnLog" layoutX="667.0" layoutY="446.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="57.0" prefWidth="90.0" text="Loggin" />
+            <Button fx:id="btnreg" layoutX="795.0" layoutY="446.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="57.0" prefWidth="97.0" text="Registrar" />
          </children>
       </AnchorPane>
    </center>
-   <top>
-      <Pane prefHeight="150.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </top>
-   <left>
-      <Pane prefHeight="320.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <Pane prefHeight="320.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Pane prefHeight="150.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

@@ -22,7 +22,7 @@ public class RegistroClass {
 	@FXML private PasswordField txtPass;
 	@FXML private PasswordField txtPass2;
 	@FXML private Button btnreg;
-	@FXML private Button cancelar;
+	@FXML private Button btnLog;
 	@FXML private Text txt;
 	
 	@FXML
@@ -94,6 +94,9 @@ public class RegistroClass {
 				txt.setText("Alguno de los campos esta vacio. Porfavor introduzca los datos de registro");
 				clear();
 			}
+		}
+		if(evt.equals(btnLog)) {
+			loadPage("LoginPage");
 		}
 	}
 	
