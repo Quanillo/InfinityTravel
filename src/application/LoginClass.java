@@ -62,12 +62,12 @@ public class LoginClass {
 					loadPage("MainInfinity");
 				}
 				else {
-					txt.setText("Datos de acceso incorrectos");
+					txt.setText("Datos de acceso incorrectos.");
 					clear();
 				}
 				
 			}else {
-				txt.setText("Introduzca Usuario y Contraseña por favor");
+				txt.setText("Introduzca Usuario y Contraseña por favor.");
 				clear();
 			}
 		}

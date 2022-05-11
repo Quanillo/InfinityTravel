@@ -19,7 +19,6 @@ public class Cliente {
 	
 
 	public Cliente(String username, String pass, String correo) {
-		super();
 		this.username = username;
 		this.pass = pass;
 		this.correo = correo;
@@ -28,7 +27,6 @@ public class Cliente {
 
 	public Cliente(String username, String pass, String correo, String nombre, String apellidos, String dni,
 			LocalDate fNacimiento, int telefono) {
-		super();
 		this.username = username;
 		this.pass = pass;
 		this.correo = correo;

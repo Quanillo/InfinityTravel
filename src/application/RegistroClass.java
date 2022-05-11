@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 
+import BBDD.Db;
+import Code.Cliente;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,67 +21,81 @@ public class RegistroClass {
 
 	@FXML private BorderPane bp;
 	@FXML private TextField txtUser;
+	@FXML private TextField txtCorreo;
 	@FXML private PasswordField txtPass;
 	@FXML private PasswordField txtPass2;
 	@FXML private Button btnreg;
 	@FXML private Button btnLog;
 	@FXML private Text txt;
-	
+	private static Db db = new Db();
+
 	@FXML
 	private void eventKey(KeyEvent event) {
 		Object evt=event.getSource();
-		
+
 		if(evt.equals(txtUser)) {
-			 txtUser.addEventFilter(KeyEvent.ANY, evento -> {
-			        if (evento.getCharacter().matches(" "))
-			            evento.consume();
-			 });
+			txtUser.addEventFilter(KeyEvent.ANY, evento -> {
+				if (evento.getCharacter().matches(" "))
+					evento.consume();
+			});
 		}
 		else if(evt.equals(txtPass)) {
-			 txtPass.addEventFilter(KeyEvent.ANY, evento -> {
-			        if (evento.getCharacter().matches(" "))
-			            evento.consume();
-			 });
+			txtPass.addEventFilter(KeyEvent.ANY, evento -> {
+				if (evento.getCharacter().matches(" "))
+					evento.consume();
+			});
 		}
 	}
-	
+
 	@FXML
 	private void eventAction(ActionEvent event) {
 		Object evt=event.getSource();
-		
+
 		if(evt.equals(btnreg)) {
 			if(!txtUser.getText().isEmpty() && !txtPass.getText().isEmpty() && !txtPass2.getText().isEmpty()) {
 				String user=txtUser.getText();
+				String correo=txtCorreo.getText();
 				String pass=txtPass.getText();
 				String pass2=txtPass2.getText();
 				int state=1;
-				
-				if(user.length()>=4) {//comprobamos que el usuario tiene minimo 4 caracteres
-					if(pass.equals(pass2)) {//comprobamos que las contraseñas coinciden
-						if(pass.length()>=6) {//comprobamos que la contraseña tiene minimo 6 caracteres.
-							//if(user----no esta en la base de datos)//aqui llamarimos a un metodo que devuelve boolean y comprobando que el usuario no este registrado en la bbdd
-								//aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd
-								state=1;
-							//else
-								//state=0;
-								//txt.setText("Usuario registrado. Elija otro nombre de usuario porfavor.");
-								//clear();
+
+				if(user.length()>=4) {
+					if(correo.contains("@mail.")){//comprobamos que el usuario tiene minimo 4 caracteres
+						if(pass.equals(pass2)) {//comprobamos que las contraseñas coinciden
+							if(pass.length()>=6) {//comprobamos que la contraseña tiene minimo 6 caracteres.
+								//if(user----no esta en la base de datos)//aqui llamarimos a un metodo que devuelve boolean y comprobando que el usuario no este registrado en la bbdd
+								db.connect();
+								if(!db.username_already_exists(user)){
+									db.insertClientes(user, pass, correo);//aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd
+									state=1;
+								}
+								else {
+									state=0;
+									txt.setText("Usuario registrado. Elija otro nombre de usuario porfavor.");
+									clear();
+								}
+							}
+							else {
+								state=0;
+								txt.setText("Contraseña inválida: debe tener al menos 6 caracteres.");
+								clear();
+							}
 						}
 						else {
 							state=0;
-							txt.setText("Contraseña inválida: debe tener al menos 6 caracteres");
+							txt.setText("Contraseña inválida: la confirmación no coincide.");
 							clear();
 						}
 					}
 					else {
 						state=0;
-						txt.setText("Contraseña inválida: la confirmación no coincide");
+						txt.setText("Formato del correo electrónico inválido.");
 						clear();
 					}
 				}
 				else {
 					state=0;
-					txt.setText("El nombre de usuario debe tener al menos 4 caracteres");
+					txt.setText("El nombre de usuario debe tener al menos 4 caracteres.");
 					clear();
 				}
 				//comprobamos el valor del state para saber si accedemos a la app o no
@@ -89,7 +105,7 @@ public class RegistroClass {
 				else {
 					clear();
 				}
-				
+
 			}else {
 				txt.setText("Registro inválido: Alguno de los campos esta vacio.");
 				clear();
@@ -99,10 +115,10 @@ public class RegistroClass {
 			loadPage("LoginPage");
 		}
 	}
-	
+
 	private void loadPage(String page) {
 		Parent root=null;
-	
+
 		try {
 			root=FXMLLoader.load(getClass().getResource(page+".fxml"));
 		} catch (IOException e) {
@@ -110,13 +126,13 @@ public class RegistroClass {
 		}
 		bp.setCenter(root);;
 	}
-	
+
 	public void clear () {
 		txtUser.clear();
 		txtPass.clear();
 		txtPass2.clear();
 	}
-	
+
 	@FXML
 	private void close(MouseEvent event) {
 		Platform.exit();

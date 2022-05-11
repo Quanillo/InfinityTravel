@@ -5,17 +5,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import Code.Cliente;
 
 public class Db {
 	
 	private static String bd = "XE";
-	private static String login = "infinitytravel";
+	private static String login = "IT";
 	private static String password = "Passw0rd";
 	private static String url="jdbc:oracle:thin:@localhost:1521:"+bd;
-	static Connection connection = null;
-	PreparedStatement pst=null;
+	private static Connection connection = null;
+	private static Statement st;
+	private static PreparedStatement pst;
+	private static ResultSet rs;
 	
 	
 	public static void connect() {
@@ -32,25 +35,90 @@ public class Db {
 		
 	}
 	
-	public boolean insertClientes (Cliente c) {
-		boolean insertado=false;
-
+	public boolean insertClientes (String username, String pass, String correo) {
+		
+		boolean insertado = false;
+		
 		try {
-			String sql= "insert into cliente (username, pass) values(?,?)";
+			st = connection.createStatement();
+			rs = st.executeQuery("insert into cliente (user_id, username, pass, mail) values('USU"+generate_user_id()+"' , '"+username+"' , '"+pass+"' , '"+correo+"')");
+			/*
+			String sql= "insert into cliente (user_id, username, pass, mail) values(? , ? , ? , ?)";
 			pst = connection.prepareStatement(sql);
-			pst.setString(1,c.getUsername());
-			pst.setString(2, c.getPass());
-
-			insertado=pst.executeUpdate()>0;        
+			pst.setString(1, "USU"+generate_user_id());
+			pst.setString(2, username);
+			pst.setString(3, pass);
+			pst.setString(4, correo);
+			 */
+			insertado = pst.executeUpdate()>0; 
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return insertado;
 	}
 
+	public int generate_user_id() {
+		
+		Integer id = null;
+		
+		try {
+			String sql = "select count(*) from cliente";
+			pst=connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next())
+				id = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
+	public boolean username_already_exists(String username) {
+		try {
+			String sql = "select user_id from cliente where username = ?";
+			String s = "";
+			pst=connection.prepareStatement(sql);
+			pst.setString(1, username);
+			rs=pst.executeQuery();
+			while(rs.next())
+				s = rs.getString("user_id");
+				
+			if(s == "")
+				return false;
+			else
+				return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean valid_user(String username, String pass) {
+		
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery("select pass from cliente where username = '"+username+"'");
+			String s = rs.getString("pass");
+			
+			if(s.equals(pass))
+				return true;
+			else
+				return false;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
 	public Cliente selectCliente (String user) {
 		Cliente cliente=null;
-		ResultSet rs;
 		String username, pass, mail;
 
 		try {

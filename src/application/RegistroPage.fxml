@@ -67,7 +67,7 @@
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtUser1" layoutX="54.0" layoutY="172.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="40.0" prefWidth="240.0" promptText="ejemplo@mail.com" style="-fx-background-color: #f6f6f6;">
+                  <TextField fx:id="txtCorreo" layoutX="54.0" layoutY="172.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="40.0" prefWidth="240.0" promptText="ejemplo@mail.com" style="-fx-background-color: #f6f6f6;">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
