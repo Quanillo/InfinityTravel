@@ -3,8 +3,6 @@ package Code;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import BBDD.Db;
-
 public class Cliente {
 
 	private String username;
@@ -17,9 +15,6 @@ public class Cliente {
 	private int telefono;
 	
 	ArrayList<Reserva> listaReservas;
-	
-	private static Db db = new Db();
-	
 
 	public Cliente(String username, String pass, String correo) {
 		this.username = username;
@@ -153,9 +148,9 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [username=" + username + ", pass=" + pass + ", correo=" + correo + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos + ", dni=" + dni + ", fNacimiento=" + fNacimiento + ", telefono="
-				+ telefono + ", listaReservas=" + listaReservas + "]";
+		return "Username: " + username + ", Pass: " + pass + ", Correo: " + correo + ", Nombre: " + nombre
+				+ ", Apellidos: " + apellidos + ", Dni: " + dni + ", Fecha de nacimiento: " + fNacimiento + ", Telefono: "
+				+ telefono + ", Reservas: " + listaReservas + "]";
 	}
 	
 	

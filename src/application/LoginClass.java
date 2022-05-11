@@ -50,17 +50,16 @@ public class LoginClass {
 			if(!txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
 				String user=txtUser.getText();
 				String pass=txtPass.getText();
-				int state;//Aqui habría que buscar en la bbdd si el usuario y la contraseña estan guardados y que el metodo devuelva 1 si estan, 0 si no esta y -1 si se produjo algun error
-				
-				
-				if(db.valid_user(user, pass)) {
-					state=1;
+				boolean state;
+				// buscamosen el usuario y la contraseña estan guardados y devuelve un boolean si el usuario es valido o no se encuentra en la bbdd
+				if(db.valid_user(user, pass)) {  
+					state=true;
 				}
 				else {
-					state=0;
+					state=false;
 				}
 				
-				if(state==1) {
+				if(state==true) {
 					loadPage("MainInfinity");
 				}
 				else {
