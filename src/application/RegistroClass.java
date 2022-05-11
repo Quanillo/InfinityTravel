@@ -57,14 +57,14 @@ public class RegistroClass {
 				String correo=txtCorreo.getText();
 				String pass=txtPass.getText();
 				String pass2=txtPass2.getText();
-				int state=1;
+				int state;
 
 				if(user.length()>=4) {
 					if(correo.contains("@mail.")){//comprobamos que el usuario tiene minimo 4 caracteres
 						if(pass.equals(pass2)) {//comprobamos que las contraseñas coinciden
 							if(pass.length()>=6) {//comprobamos que la contraseña tiene minimo 6 caracteres.
 								//if(user----no esta en la base de datos)//aqui llamarimos a un metodo que devuelve boolean y comprobando que el usuario no este registrado en la bbdd
-								db.connect();
+								
 								if(!db.username_already_exists(user)){
 									db.insertClientes(user, pass, correo);//aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd
 									state=1;

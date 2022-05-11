@@ -2,7 +2,7 @@ package application;
 
 import java.io.IOException;
 
-
+import BBDD.Db;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +22,7 @@ public class LoginClass {
 	@FXML private Button btnLogin;
 	@FXML private Button btnReg;
 	@FXML private Text txt;
+	private static Db db = new Db();
 	
 	@FXML
 	private void eventKey(KeyEvent event) {
@@ -49,9 +50,10 @@ public class LoginClass {
 			if(!txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
 				String user=txtUser.getText();
 				String pass=txtPass.getText();
-				int state=1;//Aqui habría que buscar en la bbdd si el usuario y la contraseña estan guardados y que el metodo devuelva 1 si estan, 0 si no esta y -1 si se produjo algun error
-				//este if es para probar la interface, el valor del state se debe conseguir con el metodo indicado en el comentario de la linea de arriba.
-				if(user.equalsIgnoreCase("Admin") && pass.equals("pass")) {
+				int state;//Aqui habría que buscar en la bbdd si el usuario y la contraseña estan guardados y que el metodo devuelva 1 si estan, 0 si no esta y -1 si se produjo algun error
+				
+				
+				if(db.valid_user(user, pass)) {
 					state=1;
 				}
 				else {

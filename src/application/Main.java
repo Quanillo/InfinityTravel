@@ -2,6 +2,7 @@ package application;
 	
 import java.io.IOException;
 
+import BBDD.Db;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -44,8 +45,10 @@ public class Main extends Application {
 		primaryStage.show(); 
 
 	}
-	
+	private static Db db = new Db();
+
 	public static void main(String[] args) {
+		db.connect();
 		launch(args);
 	}
 }

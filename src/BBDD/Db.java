@@ -101,9 +101,11 @@ public class Db {
 	public boolean valid_user(String username, String pass) {
 		
 		try {
+			String s = "";
 			st = connection.createStatement();
 			rs = st.executeQuery("select pass from cliente where username = '"+username+"'");
-			String s = rs.getString("pass");
+			while(rs.next())
+				s = rs.getString("pass");
 			
 			if(s.equals(pass))
 				return true;
