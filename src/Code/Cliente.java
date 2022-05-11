@@ -3,6 +3,8 @@ package Code;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import BBDD.Db;
+
 public class Cliente {
 
 	private String username;
@@ -16,6 +18,7 @@ public class Cliente {
 	
 	ArrayList<Reserva> listaReservas;
 	
+	private static Db db = new Db();
 	
 
 	public Cliente(String username, String pass, String correo) {
@@ -146,7 +149,7 @@ public class Cliente {
 		this.listaReservas = listaReservas;
 	}
 
-
+	
 
 	@Override
 	public String toString() {

@@ -34,22 +34,20 @@ public class Db {
 		}
 		
 	}
-	
-	public boolean insertClientes (String username, String pass, String correo) {
+
+	public boolean insertClientes (Cliente c) {
 		
 		boolean insertado = false;
-		
+		String id= "USU"+generate_user_id();
 		try {
-			st = connection.createStatement();
-			rs = st.executeQuery("insert into cliente (user_id, username, pass, mail) values('USU"+generate_user_id()+"' , '"+username+"' , '"+pass+"' , '"+correo+"')");
-			/*
+
 			String sql= "insert into cliente (user_id, username, pass, mail) values(? , ? , ? , ?)";
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, "USU"+generate_user_id());
-			pst.setString(2, username);
-			pst.setString(3, pass);
-			pst.setString(4, correo);
-			 */
+			pst.setString(1, id);
+			pst.setString(2, c.getUsername());
+			pst.setString(3, c.getPass());
+			pst.setString(4, c.getCorreo());
+			 
 			insertado = pst.executeUpdate()>0; 
 			
 		} catch (SQLException e) {
@@ -72,8 +70,13 @@ public class Db {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}finally {
+			try {
+				pst.close();
+				} catch (SQLException e){
+					e.printStackTrace();
+				}
+			}
 		return id;
 	}
 	

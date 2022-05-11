@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistroClass">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistroClass">
    <center>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6;" BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +47,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <PasswordField fx:id="txtPass2" layoutX="54.0" layoutY="355.0" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #f6f6f6;">
+                  <PasswordField fx:id="txtPass2" layoutX="54.0" layoutY="355.0" onInputMethodTextChanged="#eventKey" onKeyPressed="#eventKey" onKeyReleased="#eventKey" onKeyTyped="#eventKey" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #f6f6f6;">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
