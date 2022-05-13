@@ -8,9 +8,8 @@ public class Alojamiento extends Producto{
 	private String info;
 	Ciudad ciudadAlojamiento;
 	
-	public Alojamiento(int idProducto, double importeProducto, String direccion, tipoAlojamiento tipo, String nombre,
-			String info, Ciudad ciudadAlojamiento) {
-		super(idProducto, importeProducto);
+	public Alojamiento(int idProducto, double importeProducto, String direccion, tipoAlojamiento tipo, String nombre, String info, Ciudad ciudadAlojamiento) {
+		super(idProducto);
 		this.direccion = direccion;
 		this.tipo = tipo;
 		this.nombre = nombre;

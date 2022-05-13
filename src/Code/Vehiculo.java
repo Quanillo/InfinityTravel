@@ -13,7 +13,7 @@ public class Vehiculo extends Producto{
 	
 	
 	public Vehiculo(int idProducto, double importeProducto, String tipoVehiculo, String matricula) {
-		super(idProducto, importeProducto);
+		super(idProducto);
 		this.tipoVehiculo = tipoVehiculo;
 		this.matricula = matricula;
 	}

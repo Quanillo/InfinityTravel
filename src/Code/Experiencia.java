@@ -4,13 +4,13 @@ public class Experiencia extends Producto{
 	
 	private String lugar;
 	private String nombre;
-	private Ciudad ciudadExp;
+	private String ciudad;
 	
-	public Experiencia(int idProducto, double importeProducto, String lugar, String nombre, Ciudad ciudadExp) {
-		super(idProducto, importeProducto);
+	public Experiencia(int idProducto, String nombre, String lugar, String ciudad) {
+		super(idProducto);
 		this.lugar = lugar;
 		this.nombre = nombre;
-		this.ciudadExp = ciudadExp;
+		this.ciudad = ciudad;
 	}
 
 	String getLugar() {
@@ -29,17 +29,17 @@ public class Experiencia extends Producto{
 		this.nombre = nombre;
 	}
 
-	Ciudad getCiudadExp() {
-		return ciudadExp;
+	String getCiudadExp() {
+		return ciudad;
 	}
 
-	void setCiudadExp(Ciudad ciudadExp) {
-		this.ciudadExp = ciudadExp;
+	void setCiudadExp(String ciudadExp) {
+		this.ciudad = ciudadExp;
 	}
 
 	@Override
 	public String toString() {
-		return "Experiencia [lugar=" + lugar + ", nombre=" + nombre + ", ciudadExp=" + ciudadExp + "]";
+		return "Experiencia [lugar=" + lugar + ", nombre=" + nombre + ", ciudad=" + ciudad + "]";
 	}
 	
 	

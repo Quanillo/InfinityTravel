@@ -40,6 +40,9 @@
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Text fx:id="txt" fill="#e55137" layoutX="39.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="241.13671875">
                      <font>

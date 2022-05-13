@@ -67,7 +67,7 @@ public class RegistroClass {
 				boolean state=false;
 				if(checkCamposValidos(user, pass, pass2, correo)) { //si checkCamposValidos nos devuelve true los campos son validos
 					Cliente c = new Cliente (user, pass, correo);
-					if(db.insertClientes(c)) { //aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd, si devuelve true es que se ha insertado con exito
+					if(db.register_InsertClientes(c)) { //aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd, si devuelve true es que se ha insertado con exito
 						state=true;
 					}
 				}
@@ -99,7 +99,7 @@ public class RegistroClass {
 	public boolean checkCamposValidos (String user, String pass, String pass2, String correo) {  //metodo que valida los campos de registro y si son validos inserta un cliente en la bbdd. devuelve 1 si es insertado
 		boolean state=false;
 		//comprobamos que el usuario tiene minimo 4 caracteres, el correo en el formato correcto, las 2 contraseñas iguales y mas de 6 caracteres y que el usuario no existe.
-		if(user.length()>=4 && validaCorreo(correo) && pass.equals(pass2) && pass.length()>=6 && !db.username_already_exists(user)){ 
+		if(user.length()>=4 && validaCorreo(correo) && pass.equals(pass2) && pass.length()>=6 && !db.register_usernameAlreadyExists(user)){ 
 			state=true;
 		}
 		else {
@@ -112,7 +112,7 @@ public class RegistroClass {
 				txt.setText("Contraseña inválida: la confirmación no coincide.");
 			else if(pass.length()<6)
 				txt.setText("Contraseña inválida: debe tener al menos 6 caracteres.");
-			else if (db.username_already_exists(user))   
+			else if (db.register_usernameAlreadyExists(user))   
 				txt.setText("Usuario registrado. Elija otro nombre de usuario porfavor.");
 			
 			clear();

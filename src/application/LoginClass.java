@@ -52,7 +52,7 @@ public class LoginClass {
 				String pass=txtPass.getText();
 				boolean state;
 				// buscamosen el usuario y la contraseña estan guardados y devuelve un boolean si el usuario es valido o no se encuentra en la bbdd
-				if(db.valid_user(user, pass)) {  
+				if(db.login_validUser(user, pass)) {  
 					state=true;
 				}
 				else {

@@ -12,7 +12,7 @@ public class Billete extends Producto{
 	
 	public Billete(int idProducto, double importeProducto, int codigo, String medio, String asiento,
 			String terminalSalida, String terminalDestino, Ciudad ciudadOrigen, Ciudad ciudadDestino) {
-		super(idProducto, importeProducto);
+		super(idProducto);
 		this.codigo = codigo;//autogenerado
 		this.medio = medio;
 		this.asiento = asiento;//autogenerado
