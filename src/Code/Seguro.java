@@ -4,10 +4,7 @@ public class Seguro extends Producto{
 	
 	private String categoria;
 
-	public Seguro(int idProducto, double importeProducto, String categoria) {
-		super(idProducto);
-		this.categoria=categoria;
-	}
+	public Seguro() { super(); }
 
 	String getCategoria() {
 		return categoria;

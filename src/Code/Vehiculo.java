@@ -1,22 +1,12 @@
 package Code;
 
-import java.util.Date;
-
 public class Vehiculo extends Producto{
 	
 	private String tipoVehiculo;
 	private String matricula;
-	private String ciudadDeRecogida;
-	private String ciudadDeVuelta;
-	private Date fechaInicio;
-	private Date fechaFin;
 	
 	
-	public Vehiculo(int idProducto, double importeProducto, String tipoVehiculo, String matricula) {
-		super(idProducto);
-		this.tipoVehiculo = tipoVehiculo;
-		this.matricula = matricula;
-	}
+	public Vehiculo() { super(); }
 
 	String getTipoVehiculo() {
 		return tipoVehiculo;
@@ -35,7 +25,4 @@ public class Vehiculo extends Producto{
 	public String toString() {
 		return "Vehiculo [tipoVehiculo=" + tipoVehiculo + ", matricula=" + matricula + "]";
 	}
-	
-	
-
 }

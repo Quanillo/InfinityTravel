@@ -1,90 +1,68 @@
 package Code;
 
+import java.sql.Date;
+import java.util.Random;
+
+import BBDD.Db;
+
 public class Billete extends Producto{
+
+	private String origen;
+	private String destino;
 	
-	private int codigo;
-	private String medio;
-	private String asiento;
-	private String terminalSalida;
-	private String terminalDestino;
-	private Ciudad ciudadOrigen;
-	private Ciudad ciudadDestino;
-	
-	public Billete(int idProducto, double importeProducto, int codigo, String medio, String asiento,
-			String terminalSalida, String terminalDestino, Ciudad ciudadOrigen, Ciudad ciudadDestino) {
-		super(idProducto);
-		this.codigo = codigo;//autogenerado
-		this.medio = medio;
-		this.asiento = asiento;//autogenerado
-		this.terminalSalida = terminalSalida;
-		this.terminalDestino = terminalDestino;
-		this.ciudadOrigen = ciudadOrigen;
-		this.ciudadDestino = ciudadDestino;
-	}
+	final static double precioCombustible = 1;
 
-	int getCodigo() {
-		return codigo;
-	}
-
-	void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-
-	String getMedio() {
-		return medio;
-	}
-
-	void setMedio(String medio) {
-		this.medio = medio;
-	}
-
-	String getAsiento() {
-		return asiento;
-	}
-
-	void setAsiento(String asiento) {
-		this.asiento = asiento;
-	}
-
-	String getTerminalSalida() {
-		return terminalSalida;
-	}
-
-	void setTerminalSalida(String terminalSalida) {
-		this.terminalSalida = terminalSalida;
-	}
-
-	String getTerminalDestino() {
-		return terminalDestino;
-	}
-
-	void setTerminalDestino(String terminalDestino) {
-		this.terminalDestino = terminalDestino;
-	}
-
-	Ciudad getCiudadOrigen() {
-		return ciudadOrigen;
-	}
-
-	void setCiudadOrigen(Ciudad ciudadOrigen) {
-		this.ciudadOrigen = ciudadOrigen;
-	}
-
-	Ciudad getCiudadDestino() {
-		return ciudadDestino;
-	}
-
-	void setCiudadDestino(Ciudad ciudadDestino) {
-		this.ciudadDestino = ciudadDestino;
-	}
-
-	@Override
-	public String toString() {
-		return "Billete [codigo=" + codigo + ", medio=" + medio + ", asiento=" + asiento + ", terminalSalida="
-				+ terminalSalida + ", terminalDestino=" + terminalDestino + ", ciudadOrigen=" + ciudadOrigen
-				+ ", ciudadDestino=" + ciudadDestino + "]";
-	}
+	static Db db;
 	
 	
 
+	public Billete(String origen, String destino, Date incio, Date fin, int cantidad) {
+
+		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), incio, fin);
+
+		this.origen = origen;
+		this.destino = destino;
+	}
+
+	public static double billete_getPrecio(String origen, String destino) {
+		
+		double lat1 = db.ciudad_getLatitud(origen);
+		double lon1 = db.ciudad_getLongitud(origen);
+		double lat2 = db.ciudad_getLatitud(origen);;
+		double lon2 = db.ciudad_getLongitud(origen);;
+		
+		//FORMULA DE HAVERSINE
+		double dLat = Math.toRadians(lat2 - lat1);
+		double dLon = Math.toRadians(lon2 - lon1);
+		lat1 = Math.toRadians(lat1);
+		lat2 = Math.toRadians(lat2);
+		double a = Math.pow(Math.sin(dLat/2),2) + Math.pow(Math.sin(dLon/2),2) * Math.cos(lat1) * Math.cos(lat2);
+		double rad = 6371;
+		double c = 2 * Math.asin(Math.sqrt(a));
+		return rad * c * precioCombustible; // km
+	}
+	
+	public static String billete_generateId(String origen, String destino) {
+		
+		Random rdm = new Random();
+		int n = rdm.nextInt(1000);
+		
+		return origen.substring(0, 4).toUpperCase() + destino.substring(0, 4).toUpperCase() + String.format("%03d", n);
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
 }

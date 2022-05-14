@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExperienciasClass">
+   <children>
+      <Text fx:id="hola" layoutX="584.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seguros">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="hola1" layoutX="533.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work in progress...">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

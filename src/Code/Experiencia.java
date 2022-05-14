@@ -6,12 +6,7 @@ public class Experiencia extends Producto{
 	private String nombre;
 	private String ciudad;
 	
-	public Experiencia(int idProducto, String nombre, String lugar, String ciudad) {
-		super(idProducto);
-		this.lugar = lugar;
-		this.nombre = nombre;
-		this.ciudad = ciudad;
-	}
+	public Experiencia() { super(); }
 
 	String getLugar() {
 		return lugar;

@@ -1,46 +1,60 @@
 package Code;
 
+import java.sql.Date;
+
 public abstract class Producto {
 	
-	private int idProducto;
+	private String idProducto;
 	private double importeProducto;
-	private String incio;
-	private String fin;
+	private Date incio;
+	private Date fin;
 	
-	public Producto(int idProducto, double importeProducto, String incio, String fin) {
+	public Producto(String idProducto, double importeProducto, Date incio, Date fin) {
+		
 		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;
-	}
-	
-	public Producto(int idProducto) {
-		// TODO Auto-generated constructor stub
+		this.incio = incio;
+		this.fin = fin;
 	}
 
-	public void anularProducto(Producto p) {
+	public Producto(String idProducto, double importeProducto, Date incio) {
 		
+		this.idProducto = idProducto;
+		this.importeProducto = importeProducto;
+		this.incio = incio;
 	}
 	
-	int getIdProducto() {
+	public Producto() {}
+
+	public String getIdProducto() {
 		return idProducto;
 	}
 
-	void setIdProducto(int idProducto) {
+	public void setIdProducto(String idProducto) {
 		this.idProducto = idProducto;
 	}
 
-	double getImporteProducto() {
+	public double getImporteProducto() {
 		return importeProducto;
 	}
 
-	void setImporteProducto(double importeProducto) {
+	public void setImporteProducto(double importeProducto) {
 		this.importeProducto = importeProducto;
 	}
 
-	@Override
-	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", importeProducto=" + importeProducto + "]";
+	public Date getIncio() {
+		return incio;
 	}
-	
-	
 
+	public void setIncio(Date incio) {
+		this.incio = incio;
+	}
+
+	public Date getFin() {
+		return fin;
+	}
+
+	public void setFin(Date fin) {
+		this.fin = fin;
+	} 
 }
