@@ -16,9 +16,9 @@ public class Billete extends Producto{
 	
 	
 
-	public Billete(String origen, String destino, Date incio, Date fin, int cantidad) {
+	public Billete(String origen, String destino, Date incio) {
 
-		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), incio, fin);
+		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), incio);
 
 		this.origen = origen;
 		this.destino = destino;
