@@ -1,8 +1,6 @@
 package Code;
 
 import java.sql.Date;
-import java.util.Random;
-
 import BBDD.Db;
 
 public class Billete extends Producto{
@@ -44,10 +42,7 @@ public class Billete extends Producto{
 	
 	public static String billete_generateId(String origen, String destino) {
 		
-		Random rdm = new Random();
-		int n = rdm.nextInt(1000);
-		
-		return origen.substring(0, 4).toUpperCase() + destino.substring(0, 4).toUpperCase() + String.format("%03d", n);
+		return origen.substring(0, 4).toUpperCase() + destino.substring(0, 4).toUpperCase() + db.producto_generateId();
 	}
 
 	public String getOrigen() {

@@ -168,7 +168,26 @@ public class Db {
 		return lon;
 	}
 	
-	public int producto_generateId () {
+	public ArrayList<String> listarCiudades () {
+		
+		ArrayList<String> lista = new ArrayList<String>();
+
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery("select nom_ciu from ciudades");
+			while(rs.next())
+				lista.add(rs.getString("nom_ciu"));
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+}
+
+
+	public String producto_generateId () {
 
 		int n = 0;
 		
@@ -184,7 +203,8 @@ public class Db {
 			e.printStackTrace();
 		}
 
-		return n;
+		return String.format("%03d", n);
 	}
+	
 	
 }
