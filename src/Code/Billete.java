@@ -9,6 +9,7 @@ public class Billete extends Producto{
 
 	private String origen;
 	private String destino;
+	private LocalDate fecha;
 	
 	final static double precioCombustible = 1;
 
@@ -19,12 +20,13 @@ public class Billete extends Producto{
 		
 	}
 
-	public Billete(String origen, String destino, LocalDate incio) {
+	public Billete(String origen, String destino, LocalDate fecha) {
 
-		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), incio);
+		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), fecha);
 
 		this.origen = origen;
 		this.destino = destino;
+		this.fecha=fecha;
 	}
 
 	public static double billete_getPrecio(String origen, String destino) {
@@ -43,7 +45,7 @@ public class Billete extends Producto{
 		double a = Math.pow(Math.sin(dLat/2),2) + Math.pow(Math.sin(dLon/2),2) * Math.cos(lat1) * Math.cos(lat2);
 		double rad = 6371;
 		double c = 2 * Math.asin(Math.sqrt(a));
-		return rad * c * precioCombustible;
+		return Math.round((rad * c * precioCombustible)*100.0)/100.0;
 	}
 	
 	public static String billete_generateId(String origen, String destino) {
@@ -70,7 +72,7 @@ public class Billete extends Producto{
 
 	@Override
 	public String toString() {
-		return "Origen:" + origen + ", Destino:" + destino + ", Precio:" + billete_getPrecio(origen, destino)+ "\n";
+		return "Origen:" + origen + ", Destino:" + destino + ", Fecha: "+ fecha + ", Precio:" + billete_getPrecio(origen, destino)+ "\n";
 	}
 	
 	

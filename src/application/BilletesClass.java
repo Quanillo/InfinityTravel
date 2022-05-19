@@ -10,6 +10,7 @@ import Code.Billete;
 import Code.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -54,7 +55,7 @@ public class BilletesClass extends MainInfinityClass {
 				for(int i=0; i<numBilletes ;i++) {  //bucle que genera billetes en funcion del número de billetes seleccionados
 					Billete billeteIda=new Billete(origen, destino, ida);
 					Billete billeteVuelta=new Billete(destino, origen, vuelta);
-					cliente.addProducto(billeteIda);
+					cliente.addProducto(billeteIda); //introducimos los billetes en el arrayList de productos alojado en Cliente 
 					cliente.addProducto(billeteVuelta);
 					System.out.println(billeteIda);
 					System.out.println(billeteVuelta);
@@ -80,7 +81,6 @@ public class BilletesClass extends MainInfinityClass {
 		if(cbOrigen.getValue()!=null && cbDestino.getValue()!=null && dpIda.getValue()!=null && getNumBilletes()>0) { 
 			return true;
 		}
-
 		else {
 			return false;
 		}
@@ -92,36 +92,54 @@ public class BilletesClass extends MainInfinityClass {
 		if(evt.equals(masBilletes)) {
 			nb++;
 			setNumBilletes(nb);
+			setTextPrecio();
 		}
 			
 		else if (evt.equals(menosBilletes))
 			nb--;
-			if(nb>0)
+			if(nb>0) {
 				setNumBilletes(nb);
+				setTextPrecio();
+			}
 			else
 				setNumBilletes(0);
 	}
 	
-	public void alterPrecio () {
+	public void setTextPrecio () {
 		String precio="null";
-		
-			if(cbOrigen.getValue()!=null && cbDestino.getValue()!=null) {
-				precio = String.valueOf(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue()) * getNumBilletes()) ;
-				 txtPrecio.setText(precio);
+			if(checkCamposVacios()) {
+				for(int i=0; i<getNumBilletes();i++) {
+					precio = String.valueOf(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue()) * getNumBilletes()) ;
+					txtPrecio.setText(precio);
+				}	
 			}
-		
-
+			else {
+				txtPrecio.setText("0");
+			}
 	}
 	
-	/*
-	private void eventAction(ActionEvent event) {
+	@FXML
+	private void eventActionPrecio(ActionEvent event) {  
 		Object evt=event.getSource();
-		
-		if(evt.equals(cbOrigen) || evt.equals(cbDestino)) {
-			alterPrecio();
+		int nb=getNumBilletes();
+		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda)) {
+			setTextPrecio();
 		}
+		else if(evt.equals(masBilletes)) {
+			nb++;
+			setNumBilletes(nb);
+			setTextPrecio();
+		}
+			
+		else if (evt.equals(menosBilletes))
+			nb--;
+			if(nb>0) {
+				setNumBilletes(nb);
+				setTextPrecio();
+			}
+			else
+				setNumBilletes(0);
 	}
-	*/
 	////////////////////////GETTERS & SETTERS////////////////////////
 
 	public void setComboBox() {
