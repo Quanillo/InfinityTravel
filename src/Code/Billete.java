@@ -66,4 +66,11 @@ public class Billete extends Producto{
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
+
+	@Override
+	public String toString() {
+		return "Origen:" + origen + ", Destino:" + destino + ", Precio:" + billete_getPrecio(origen, destino)+ "\n";
+	}
+	
+	
 }

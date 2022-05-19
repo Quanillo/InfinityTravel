@@ -13,8 +13,8 @@ public class DbCiudad {
 	private static String password = "Passw0rd";
 	private static String url="jdbc:oracle:thin:@localhost:1521:"+bd;
 	private static Connection connection = null;
-	private static Statement st;
-	private static ResultSet rs;
+	private static Statement st = null;
+	private static ResultSet rs = null;
 
 	public void connect() {
 
