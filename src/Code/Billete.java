@@ -31,8 +31,9 @@ public class Billete extends Producto{
 		
 		double lat1 = dbc.ciudad_getLatitud(origen);
 		double lon1 = dbc.ciudad_getLongitud(origen);
-		double lat2 = dbc.ciudad_getLatitud(origen);;
-		double lon2 = dbc.ciudad_getLongitud(origen);;
+		double lat2 = dbc.ciudad_getLatitud(destino);;
+		double lon2 = dbc.ciudad_getLongitud(destino);;
+		
 		
 		//FORMULA DE HAVERSINE
 		double dLat = Math.toRadians(lat2 - lat1);
@@ -42,7 +43,7 @@ public class Billete extends Producto{
 		double a = Math.pow(Math.sin(dLat/2),2) + Math.pow(Math.sin(dLon/2),2) * Math.cos(lat1) * Math.cos(lat2);
 		double rad = 6371;
 		double c = 2 * Math.asin(Math.sqrt(a));
-		return rad * c * precioCombustible; // km
+		return rad * c * precioCombustible;
 	}
 	
 	public static String billete_generateId(String origen, String destino) {

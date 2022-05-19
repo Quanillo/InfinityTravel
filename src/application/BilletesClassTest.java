@@ -20,8 +20,7 @@ public class BilletesClassTest {
 		double n = Billete.billete_getPrecio("Madrid", "Roma");
 		if (n>0)
 			x = true;
-		
+		System.out.println(n);
 		assertEquals(true, x);
 	}
-
 }
