@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 
 import BBDD.Db;
+import BBDD.DbCiudad;
+import BBDD.DbReserva;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -46,9 +48,13 @@ public class Main extends Application {
 
 	}
 	private static Db db = new Db();
+	private static DbCiudad dbc = new DbCiudad();
+	private static DbReserva dbr = new DbReserva();
 
 	public static void main(String[] args) {
 		db.connect();
+		dbc.connect();
+		dbr.connect();
 		launch(args);
 	}
 }

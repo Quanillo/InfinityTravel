@@ -33,8 +33,8 @@
       </Text>
       <DatePicker fx:id="dpIda" layoutX="50.0" layoutY="125.0" prefHeight="51.0" prefWidth="274.0" />
       <DatePicker fx:id="dpVuelta" layoutX="326.0" layoutY="125.0" prefHeight="51.0" prefWidth="274.0" />
-      <ComboBox fx:id="cbOrigen" layoutX="50.0" layoutY="25.0" onAction="#eventAction" onMouseClicked="#setComboBox" prefHeight="51.0" prefWidth="350.0" />
-      <ComboBox fx:id="cbDestino" layoutX="400.0" layoutY="25.0" onAction="#eventAction" onMouseClicked="#setComboBox" prefHeight="51.0" prefWidth="350.0" />
+      <ComboBox fx:id="cbOrigen" layoutX="50.0" layoutY="25.0" onMouseClicked="#setComboBox" prefHeight="51.0" prefWidth="350.0" />
+      <ComboBox fx:id="cbDestino" layoutX="400.0" layoutY="25.0" onMouseClicked="#setComboBox" prefHeight="51.0" prefWidth="350.0" />
       <Button fx:id="btnAddCarrito" layoutX="600.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#reservaBilletes" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
