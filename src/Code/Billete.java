@@ -1,9 +1,9 @@
 package Code;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 import BBDD.Db;
+import BBDD.DbCiudad;
 
 public class Billete extends Producto{
 
@@ -13,6 +13,7 @@ public class Billete extends Producto{
 	final static double precioCombustible = 1;
 
 	static Db db = new Db();
+	static DbCiudad dbc = new DbCiudad();
 	
 	public Billete() {
 		
@@ -28,10 +29,10 @@ public class Billete extends Producto{
 
 	public static double billete_getPrecio(String origen, String destino) {
 		
-		double lat1 = db.ciudad_getLatitud(origen);
-		double lon1 = db.ciudad_getLongitud(origen);
-		double lat2 = db.ciudad_getLatitud(origen);;
-		double lon2 = db.ciudad_getLongitud(origen);;
+		double lat1 = dbc.ciudad_getLatitud(origen);
+		double lon1 = dbc.ciudad_getLongitud(origen);
+		double lat2 = dbc.ciudad_getLatitud(origen);;
+		double lon2 = dbc.ciudad_getLongitud(origen);;
 		
 		//FORMULA DE HAVERSINE
 		double dLat = Math.toRadians(lat2 - lat1);

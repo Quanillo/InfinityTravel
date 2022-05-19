@@ -6,11 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
-import Code.Ciudad;
 import Code.Cliente;
-import Code.Experiencia;
 
 public class Db {
 
@@ -43,7 +39,7 @@ public class Db {
 		boolean insertado = false;
 
 		try {
-			
+
 			String sql= "insert into cliente (username, pass, mail) values(? , ? , ?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, c.getUsername());
@@ -111,7 +107,7 @@ public class Db {
 		String username, pass, mail;
 
 		try {
-			String sql="select username, pass, mail from cliente where username=?";
+			String sql="select username, pass, mail from cliente where user=?";
 			pst=connection.prepareStatement(sql);
 			pst.setString(1, user);
 			rs=pst.executeQuery();
@@ -137,84 +133,6 @@ public class Db {
 
 	}
 
-	public double ciudad_getLatitud (String ciudad) {
-
-		double lat = 0;
-		
-		try {
-
-			st = connection.createStatement();
-			rs = st.executeQuery("select lat from ciudad where nom_ciu = '"+ciudad+"'");
-
-			while(rs.next()) 
-				lat = rs.getDouble(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return lat;
-	}
-	
-	public double ciudad_getLongitud (String ciudad) {
-
-		double lon = 0;
-		
-		try {
-			
-			st = connection.createStatement();
-			rs = st.executeQuery("select lon from ciudad where nom_ciu = '"+ciudad+"'");
-
-			while(rs.next()) 
-				lon = rs.getDouble(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return lon;
-	}
-	
-	public ArrayList<String> listarCiudades () {
-		
-		ArrayList<String> lista = new ArrayList<String>();
-
-		try {
-			st = connection.createStatement();
-			rs = st.executeQuery("select nom_ciu from ciudad");
-			while(rs.next())
-				lista.add(rs.getString("nom_ciu"));
-
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return lista;
-	}
-
-
-	public String producto_generateId () {
-
-		int n = 0;
-		
-		try {
-			
-			st = connection.createStatement();
-			rs = st.executeQuery("select count(*) from producto");
-
-			while(rs.next()) 
-				n = rs.getInt(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return String.format("%03d", n);
-	}
-	
-	//////////// guardamos y almacenamos el usuario conectado y le damos getters y setters
-	
 	public static String getUserConnected() {
 		return userConnected;
 	}

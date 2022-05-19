@@ -1,6 +1,5 @@
 package Code;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public abstract class Producto {

@@ -5,17 +5,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import BBDD.Db;
+import BBDD.DbCiudad;
 import Code.Billete;
 import Code.Cliente;
-import Code.Reserva;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
@@ -39,8 +37,8 @@ public class BilletesClass extends MainInfinityClass {
 	@FXML private BorderPane bp;
 	@FXML private AnchorPane ap;
 	private static Db db = new Db();
+	private static DbCiudad dbc = new DbCiudad();
 	private static boolean idayvueltaboolean;
-	private static Billete b=new Billete();
 	////////////////////////METODOS////////////////////////
 	
 	public void reservaBilletes(MouseEvent event) { 
@@ -124,7 +122,7 @@ public class BilletesClass extends MainInfinityClass {
 	////////////////////////GETTERS & SETTERS////////////////////////
 
 	public void setComboBox() {
-		ArrayList<String> listaCiudades = db.listarCiudades();
+		ArrayList<String> listaCiudades = dbc.listarCiudades();
 		ObservableList<String> list=FXCollections.observableArrayList();
 		for(int i=0; i<listaCiudades.size();i++) {
 			list.add(listaCiudades.get(i));
@@ -165,6 +163,7 @@ public class BilletesClass extends MainInfinityClass {
 		bp.setCenter(root);;
 	}
 	
+	@SuppressWarnings("unused")
 	private void clear () {
 		
 	}
