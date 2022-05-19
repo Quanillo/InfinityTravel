@@ -8,26 +8,19 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletesClass">
    <children>
-      <BorderPane fx:id="bp" layoutX="240.0" layoutY="100.0" prefHeight="200.0" prefWidth="800.0">
+      <BorderPane fx:id="bp" layoutX="240.0" layoutY="100.0" prefHeight="500.0" prefWidth="800.0">
          <center>
-            <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
-      <Button fx:id="btnAddCarrito" layoutX="1125.0" layoutY="500.0" mnemonicParsing="false" onMouseClicked="#reservaBilletes" prefHeight="75.0" prefWidth="125.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
-         <font>
-            <Font name="Malgun Gothic Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button fx:id="btnSoloIda" layoutX="240.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#cargaSoloIda" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1D334A;" text="solo ida" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnSoloIda" layoutX="240.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#cargaSoloIda" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1D334A;" text="solo ida" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic" size="14.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnVuelta" layoutX="400.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#cargaIdaYvuelta" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1D334A;" text="ida y vuelta" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnVuelta" layoutX="400.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#cargaIdaYvuelta" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1D334A;" text="ida y vuelta" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic" size="14.0" />
          </font>

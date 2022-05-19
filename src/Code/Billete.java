@@ -12,9 +12,11 @@ public class Billete extends Producto{
 	
 	final static double precioCombustible = 1;
 
-	static Db db;
+	static Db db = new Db();
 	
-	
+	public Billete() {
+		
+	}
 
 	public Billete(String origen, String destino, LocalDate incio) {
 
@@ -44,7 +46,8 @@ public class Billete extends Producto{
 	
 	public static String billete_generateId(String origen, String destino) {
 		
-		return origen.substring(0, 4).toUpperCase() + destino.substring(0, 4).toUpperCase() + db.producto_generateId();
+		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + 1;//db.producto_generateId();
+		return s;
 	}
 
 	public String getOrigen() {

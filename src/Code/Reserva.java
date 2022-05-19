@@ -17,6 +17,7 @@ public class Reserva {
 		this.fechaReserva = fechaReserva;
 		this.idReserva = 0;//generar idreserva!!;
 		this.cliente=cliente;
+		this.listaProductos= new ArrayList<Producto>();
 	}
 	
 

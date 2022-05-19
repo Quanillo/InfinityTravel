@@ -111,7 +111,7 @@ public class Db {
 		String username, pass, mail;
 
 		try {
-			String sql="select username, pass, mail from cliente where user=?";
+			String sql="select username, pass, mail from cliente where username=?";
 			pst=connection.prepareStatement(sql);
 			pst.setString(1, user);
 			rs=pst.executeQuery();

@@ -14,7 +14,7 @@ public class Cliente {
 	private LocalDate fNacimiento;
 	private int telefono;
 	
-	ArrayList<Reserva> listaReservas;
+	ArrayList<Producto> carrito = new ArrayList<Producto>();
 
 	public Cliente(String username, String pass, String correo) {
 		this.username = username;
@@ -33,10 +33,13 @@ public class Cliente {
 		this.dni = dni;
 		this.fNacimiento = fNacimiento;
 		this.telefono = telefono;
+		this.carrito = new ArrayList<Producto>();
 	}
-
-
-
+	
+	
+	public void addProducto(Producto p) {
+		carrito.add(p);
+	}
 
 	public String getUsername() {
 		return username;
@@ -133,26 +136,29 @@ public class Cliente {
 	}
 
 
-
-	public ArrayList<Reserva> getListaReservas() {
-		return listaReservas;
+	ArrayList<Producto> getCarrito() {
+		return carrito;
 	}
 
 
-
-	public void setListaReservas(ArrayList<Reserva> listaReservas) {
-		this.listaReservas = listaReservas;
+	void setCarrito(ArrayList<Producto> carrito) {
+		this.carrito = carrito;
 	}
 
-	
 
 	@Override
 	public String toString() {
-		return "Username: " + username + ", Pass: " + pass + ", Correo: " + correo + ", Nombre: " + nombre
-				+ ", Apellidos: " + apellidos + ", Dni: " + dni + ", Fecha de nacimiento: " + fNacimiento + ", Telefono: "
-				+ telefono + ", Reservas: " + listaReservas + "]";
+		return "Cliente [username=" + username + ", pass=" + pass + ", correo=" + correo + ", nombre=" + nombre
+				+ ", apellidos=" + apellidos + ", dni=" + dni + ", fNacimiento=" + fNacimiento + ", telefono="
+				+ telefono + ", carrito=" + carrito + "]";
 	}
+
+
+
 	
+
+	
+
 	
 	
 }
