@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Code.Ciudad;
 import Code.Cliente;
 import Code.Experiencia;
 
@@ -21,7 +22,7 @@ public class Db {
 	private static Statement st;
 	private static PreparedStatement pst;
 	private static ResultSet rs;
-
+	private static String userConnected;
 
 	public void connect() {
 
@@ -42,8 +43,8 @@ public class Db {
 		boolean insertado = false;
 
 		try {
-
-			String sql= "insert into cliente (user_id, username, pass, mail) values(? , ? , ?)";
+			
+			String sql= "insert into cliente (username, pass, mail) values(? , ? , ?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, c.getUsername());
 			pst.setString(2, c.getPass());
@@ -69,9 +70,9 @@ public class Db {
 		try {
 			String s = "";
 			st = connection.createStatement();
-			rs = st.executeQuery("select user_id from cliente where username = '"+username+"'");
+			rs = st.executeQuery("select username from cliente where username = '"+username+"'");
 			while(rs.next())
-				s = rs.getString("user_id");
+				s = rs.getString("username");
 
 			if(s == "")
 				return false;
@@ -110,7 +111,7 @@ public class Db {
 		String username, pass, mail;
 
 		try {
-			String sql="select username, pass, mail from cliente where binary user=?";
+			String sql="select username, pass, mail from cliente where user=?";
 			pst=connection.prepareStatement(sql);
 			pst.setString(1, user);
 			rs=pst.executeQuery();
@@ -124,6 +125,12 @@ public class Db {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				pst.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
 		}
 
 		return cliente;
@@ -174,7 +181,7 @@ public class Db {
 
 		try {
 			st = connection.createStatement();
-			rs = st.executeQuery("select nom_ciu from ciudades");
+			rs = st.executeQuery("select nom_ciu from ciudad");
 			while(rs.next())
 				lista.add(rs.getString("nom_ciu"));
 
@@ -184,7 +191,7 @@ public class Db {
 		}
 
 		return lista;
-}
+	}
 
 
 	public String producto_generateId () {
@@ -206,5 +213,13 @@ public class Db {
 		return String.format("%03d", n);
 	}
 	
+	//////////// guardamos y almacenamos el usuario conectado y le damos getters y setters
 	
+	public static String getUserConnected() {
+		return userConnected;
+	}
+
+	public static void setUserConnected(String userConnected) {
+		Db.userConnected = userConnected;
+	}
 }

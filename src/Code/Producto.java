@@ -1,15 +1,16 @@
 package Code;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public abstract class Producto {
 	
 	private String idProducto;
 	private double importeProducto;
-	private Date incio;
-	private Date fin;
+	private LocalDate incio;
+	private LocalDate fin;
 	
-	public Producto(String idProducto, double importeProducto, Date incio, Date fin) {
+	public Producto(String idProducto, double importeProducto, LocalDate incio, LocalDate fin) {
 		
 		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;
@@ -17,7 +18,7 @@ public abstract class Producto {
 		this.fin = fin;
 	}
 
-	public Producto(String idProducto, double importeProducto, Date incio) {
+	public Producto(String idProducto, double importeProducto, LocalDate incio) {
 		
 		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;
@@ -42,19 +43,19 @@ public abstract class Producto {
 		this.importeProducto = importeProducto;
 	}
 
-	public Date getIncio() {
+	public LocalDate getIncio() {
 		return incio;
 	}
 
-	public void setIncio(Date incio) {
+	public void setIncio(LocalDate incio) {
 		this.incio = incio;
 	}
 
-	public Date getFin() {
+	public LocalDate getFin() {
 		return fin;
 	}
 
-	public void setFin(Date fin) {
+	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	} 
 }

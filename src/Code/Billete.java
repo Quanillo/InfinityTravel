@@ -1,6 +1,8 @@
 package Code;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
 import BBDD.Db;
 
 public class Billete extends Producto{
@@ -14,7 +16,7 @@ public class Billete extends Producto{
 	
 	
 
-	public Billete(String origen, String destino, Date incio) {
+	public Billete(String origen, String destino, LocalDate incio) {
 
 		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), incio);
 

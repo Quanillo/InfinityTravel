@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginClass">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginClass">
    <center>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="812.0" style="-fx-background-color: #f6f6f6;" BorderPane.alignment="CENTER">
          <children>
@@ -79,6 +79,39 @@
                </children>
             </Pane>
             <Pane layoutX="960.0" layoutY="150.0" prefHeight="420.0" prefWidth="100.0" style="-fx-background-color: #5dc1b9;" />
+            <Pane prefHeight="30.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;">
+               <children>
+                  <Text fill="#f6f6f6" layoutX="23.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I n f i n i t y     T r a v e l" wrappingWidth="410.13671875">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="257.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="1250.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #e55137;">
+                     <children>
+                        <Button fx:id="close" layoutX="-6.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="27.0" prefWidth="43.0" style="-fx-background-color: transparent;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Pane>
          </children>
       </AnchorPane>
    </center>

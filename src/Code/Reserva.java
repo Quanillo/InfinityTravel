@@ -12,15 +12,15 @@ public class Reserva {
 	ArrayList<Producto> listaProductos;
 	ArrayList<Pack> listapack;
 	
-	public Reserva(Cliente cliente, LocalDate fechaReserva, int idReserva, double importeTotal) {
+	public Reserva(Cliente cliente, LocalDate fechaReserva) {
 		super();
 		this.fechaReserva = fechaReserva;
-		this.idReserva = idReserva;
-		this.importeTotal = importeTotal;
+		this.idReserva = 0;//generar idreserva!!;
 		this.cliente=cliente;
 	}
 	
-	public void anadirProducto(Producto p) {
+
+	public void addProducto(Producto p) {
 		listaProductos.add(p);
 	}
 	
@@ -59,7 +59,7 @@ public class Reserva {
 	void setImporteTotal(double importeTotal) {
 		this.importeTotal = importeTotal;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Reserva [cliente=" + cliente + ", fechaReserva=" + fechaReserva + ", idReserva=" + idReserva
