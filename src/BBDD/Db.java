@@ -18,7 +18,10 @@ public class Db {
 	private static Statement st;
 	private static PreparedStatement pst;
 	private static ResultSet rs;
-	private static String userConnected;
+	//private static String username;
+	private static Cliente userConnected; //He tenido que hacer un cliente estatico para que se guarde la lista de productos, creandolo cada vez con el string del username no 
+	//funcionaba. De esta forma cada vez que querramos acceder a algo del usuario conectado, solo hay que poner Db.getUserConnected(); ni siquiera es necesario crear un objeto
+	//de la clase Db.  :)
 
 	public void connect() {
 
@@ -133,11 +136,46 @@ public class Db {
 
 	}
 
-	public static String getUserConnected() {
+	public static Cliente getUserConnected() {
 		return userConnected;
 	}
 
-	public static void setUserConnected(String userConnected) {
-		Db.userConnected = userConnected;
+	public static void setUserConnected(String user) { //este metodo esta copiado de select cliente, para utilizarlo me pedia hacerlo static, asi que he hecho este igual
+		Cliente cliente=null;							//por si acaso, ya lo miraremos en clase.
+		String username, pass, mail;
+
+		try {
+			String sql="select username, pass, mail from cliente where username=?";
+			pst=connection.prepareStatement(sql);
+			pst.setString(1, user);
+			rs=pst.executeQuery();
+
+			if(rs.next()) {
+
+				username=rs.getString("username");
+				pass=rs.getString("pass");
+				mail=rs.getString("mail");
+				cliente=new Cliente(username, pass, mail);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pst.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		}
+		Db.userConnected = cliente;
 	}
+	
+	
 }
+
+/*public static String getUsername() {
+return username;
+}
+
+public static void setUsername(String userConnected) {
+Db.username = userConnected;
+}*/

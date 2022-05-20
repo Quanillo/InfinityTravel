@@ -2,15 +2,66 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BilletesClass">
    <children>
-      <BorderPane fx:id="bp" layoutX="240.0" layoutY="100.0" prefHeight="500.0" prefWidth="800.0">
+      <BorderPane fx:id="bp" layoutX="226.0" layoutY="100.0" prefHeight="500.0" prefWidth="800.0">
          <center>
-            <AnchorPane fx:id="ap" prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="500.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnMenosBilletes" layoutX="700.0" layoutY="125.0" mnemonicParsing="false" onAction="#precioSumaResta" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #1D334A;" text="-" textFill="#f6f6f6">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnMasBilletes" layoutX="600.0" layoutY="125.0" mnemonicParsing="false" onAction="#precioSumaResta" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #1D334A;" text="+" textFill="#f6f6f6">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="txtNumBilletes" fill="#1d334a" layoutX="650.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Malgun Gothic" size="32.0" />
+                     </font>
+                  </Text>
+                  <DatePicker fx:id="dpIda" layoutX="50.0" layoutY="125.0" onAction="#eventActiongetPrecioBilleteBase" prefHeight="51.0" prefWidth="550.0" />
+                  <ComboBox fx:id="cbOrigen" layoutX="50.0" layoutY="25.0" onAction="#eventActiongetPrecioBilleteBase" onMouseClicked="#setComboBoxOrigen" prefHeight="51.0" prefWidth="327.0" />
+                  <ComboBox fx:id="cbDestino" layoutX="443.0" layoutY="25.0" onAction="#eventActiongetPrecioBilleteBase" onMouseClicked="#setComboBoxDestino" prefHeight="51.0" prefWidth="307.0" />
+                  <Button fx:id="btnAddCarrito" layoutX="600.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#reservaBilletes" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="txtPrecio" fill="#1d334a" layoutX="450.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" wrappingWidth="150.0">
+                     <font>
+                        <Font name="Malgun Gothic" size="40.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnCambiaCiudad" layoutX="377.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#cambiaCiudad" prefHeight="51.0" prefWidth="66.0" style="-fx-background-color: #1D334A;" text="&gt;&lt;" textFill="#f6f6f6">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
       <Button fx:id="btnSoloIda" layoutX="240.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#cargaSoloIda" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #1D334A;" text="solo ida" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">

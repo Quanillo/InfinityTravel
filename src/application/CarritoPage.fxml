@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="hola" layoutX="619.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carrito">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="hola1" layoutX="413.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui se desglosará el carrito y su importe...">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

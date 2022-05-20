@@ -22,9 +22,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
-public class BilletesClass extends MainInfinityClass {
+public class BilletesClass extends MainInfinityClass{
 	
-	@FXML private Text numBilletes;
+	@FXML private Text txtNumBilletes;
 	@FXML private Text txtPrecio;
 	@FXML private ComboBox<String> cbOrigen;
 	@FXML private ComboBox<String> cbDestino;
@@ -32,19 +32,21 @@ public class BilletesClass extends MainInfinityClass {
 	@FXML private DatePicker dpVuelta;
 	@FXML private Button btnSoloIda;
 	@FXML private Button btnVuelta;
-	@FXML private Button masBilletes;
-	@FXML private Button menosBilletes;
+	@FXML private Button btnMasBilletes;
+	@FXML private Button btnMenosBilletes;
 	@FXML private Button btnAddCarrito;
+	@FXML private Button btnCambiaCiudad;
 	@FXML private BorderPane bp;
 	@FXML private AnchorPane ap;
-	private static Db db = new Db();
+	//private static Db db = new Db();
 	private static DbCiudad dbc = new DbCiudad();
 	private static boolean idayvueltaboolean;
 	private static double precioBase;
 	////////////////////////METODOS////////////////////////
 	
 	public void reservaBilletes(MouseEvent event) { 
-		Cliente cliente=db.selectCliente(Db.getUserConnected()); 
+		//Cliente cliente=db.selectCliente(Db.getUsername()); 
+		Cliente cliente=Db.getUserConnected();
 		int numBilletes= getNumBilletes();
 		
 		if(checkCamposVacios()) { //chekeamos que los campos estan rellenos
@@ -71,11 +73,12 @@ public class BilletesClass extends MainInfinityClass {
 				}
 			}
 		}
-		else {
+		else {//este else creo que se puede eliminar
 			System.out.println("Algo salió mal...");
 		}
+
+		clear();
 	}
-	
 	
 	//si los campos estan seleccionaddos y hay más de 0 billetes seleccionados returna true
 	public boolean checkCamposVacios() {
@@ -87,17 +90,38 @@ public class BilletesClass extends MainInfinityClass {
 		else 
 			return false;
 	}
-	
-	public void alterNumBilletes (MouseEvent event) {  //sumamos numero de billetes
+
+	//para cambiar el orden de las ciudades. trolea todavía no cambia la segunda ciudad...revisar
+	public void cambiaCiudad() {
+		String destino=cbDestino.getValue();
+		String origen=cbOrigen.getValue();
+		cbDestino.getSelectionModel().select(origen);
+		cbOrigen.getSelectionModel().select(destino);
+		
+	}
+	//metodo que calcula el precio del billete base cada vez que se cambian las cuidades de origen y destino estando ambas completas
+	@FXML
+	public void eventActiongetPrecioBilleteBase (ActionEvent event) {
+		Object evt=event.getSource();
+		double precio=0;
+		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
+			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
+			txtPrecio.setText("0.00");
+			setTextPrecio();
+		}
+		precioBase=precio;
+	}
+	//metodo que suma el numero de billetes segun va dandole al boton de masBilletes o menosBilletes y actualiza el precio si los campos estan completos
+	@FXML
+	private void precioSumaResta(ActionEvent event) {  
 		Object evt=event.getSource();
 		int nb=getNumBilletes();
-		if(evt.equals(masBilletes)) {
+		if(evt.equals(btnMasBilletes)) {
 			nb++;
 			setNumBilletes(nb);
 			setTextPrecio();
-		}
-			
-		else if (evt.equals(menosBilletes))
+		}	
+		else if (evt.equals(btnMenosBilletes)) {
 			nb--;
 			if(nb>0) {
 				setNumBilletes(nb);
@@ -105,22 +129,70 @@ public class BilletesClass extends MainInfinityClass {
 			}
 			else
 				setNumBilletes(0);
+		}
 	}
 	
+	////////////////////////GETTERS & SETTERS////////////////////////
+	//metodo que rellena el combobox de origen, sin incluir la ciudad seleccionada en el destino 
+	public void setComboBoxOrigen() {
+		ArrayList<String> listaCiudades = dbc.listarCiudades();
+		ObservableList<String> list=FXCollections.observableArrayList();
+		for(int i=0; i<listaCiudades.size();i++) {
+			if(cbDestino.getValue()==null) {
+				list.add(listaCiudades.get(i));
+			}
+			else if(!cbDestino.getValue().equals(listaCiudades.get(i))) {
+				list.add(listaCiudades.get(i));
+			}
+		}
+		cbOrigen.setItems(list);
+		
+	}
+	//metodo que rellena el combobox de destino, sin incluir la ciudad seleccionada en el origen
+	public void setComboBoxDestino() {
+		ArrayList<String> listaCiudades = dbc.listarCiudades();
+		ObservableList<String> list=FXCollections.observableArrayList();
+		for(int i=0; i<listaCiudades.size();i++) {
+			if(cbOrigen.getValue()==null) {
+				list.add(listaCiudades.get(i));
+			}
+			else if(!cbOrigen.getValue().equals(listaCiudades.get(i))) {
+				list.add(listaCiudades.get(i));
+			}
+		}
+		cbDestino.setItems(list);
+	}
+	
+	
+	
+	public int getNumBilletes () {
+		int nb=Integer.parseInt(txtNumBilletes.getText());
+		return nb;
+	}
+	
+	public void setNumBilletes (int nb) {
+		if(nb<1) 
+			txtNumBilletes.setText("1");
+		else
+			txtNumBilletes.setText(""+ nb);
+	}
+	
+	public double getPrecioBilletes () {
+		double pb=Integer.parseInt(txtPrecio.getText());
+		return pb;
+	}
+	//setTextPrecio() y setPrecioBilletes se pueden fusionar.
 	public void setTextPrecio () {
-		String sPrecio="null";
 		double dPrecio = 0;
 			if(checkCamposVacios()) {
 				for(int i=0; i<getNumBilletes();i++) {
 					dPrecio =precioBase* getNumBilletes() ;
 				}
 				if(idayvueltaboolean) {
-					sPrecio=String.valueOf(dPrecio*2);
-					txtPrecio.setText(sPrecio);
+					setPrecioBilletes(dPrecio);
 				}
 				else {
-					sPrecio=String.valueOf(dPrecio);
-					txtPrecio.setText(sPrecio);
+					setPrecioBilletes(dPrecio);
 				}
 			}
 			else {
@@ -128,68 +200,9 @@ public class BilletesClass extends MainInfinityClass {
 			}
 	}
 	
-	@FXML
-	public void eventActiongetPrecioBilleteBase (ActionEvent event) {
-		Object evt=event.getSource();
-		double precio=0;
-		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
-			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
-			setTextPrecio();
-		}
-		precioBase=precio;
-	}
-	
-	@FXML
-	private void precioSumaResta(ActionEvent event) {  
-		Object evt=event.getSource();
-		int nb=getNumBilletes();
-		if(evt.equals(masBilletes)) {
-			nb++;
-			setNumBilletes(nb);
-			setTextPrecio();
-		}	
-		else if (evt.equals(menosBilletes)) {
-			nb--;
-			if(nb>0) {
-				setNumBilletes(nb);
-				setTextPrecio();
-			}
-			else
-				setNumBilletes(0);
-		}
-	}
-	////////////////////////GETTERS & SETTERS////////////////////////
-
-	public void setComboBox() {
-		ArrayList<String> listaCiudades = dbc.listarCiudades();
-		ObservableList<String> list=FXCollections.observableArrayList();
-		for(int i=0; i<listaCiudades.size();i++) {
-			list.add(listaCiudades.get(i));
-		}
-		cbDestino.setItems(list);
-		cbOrigen.setItems(list);
-		
-	}
-	
-	public int getNumBilletes () {
-		int nb=Integer.parseInt(numBilletes.getText());
-		return nb;
-	}
-	
-	public void setNumBilletes (int nb) {
-		if(nb<1) 
-			numBilletes.setText("1");
-		else
-			numBilletes.setText(""+ nb);
-	}
-	
-	public double getPrecioBilletes () {
-		double nb=Integer.parseInt(txtPrecio.getText());
-		return nb;
-	}
-	
 	public void setPrecioBilletes (double pb) {
-		txtPrecio.setText(""+pb);
+		double precio = Math.round(pb*100.0)/100.0;
+		txtPrecio.setText(""+precio);
 	}
 	
 	////////////////////////LOAD PAGES////////////////////////
@@ -214,9 +227,33 @@ public class BilletesClass extends MainInfinityClass {
 		bp.setCenter(root);;
 	}
 	
-	@SuppressWarnings("unused")
 	private void clear () {
-		
+		txtNumBilletes.setText("1");
+		txtPrecio.setText("0.00");
+		cbOrigen.setValue(null);
+		cbDestino.setValue(null);
+		dpIda.setValue(null);
+		if(idayvueltaboolean)
+			dpVuelta.setValue(null);
 	}
-	
+
 }
+
+/*public void alterNumBilletes (MouseEvent event) {  //sumamos numero de billetes
+Object evt=event.getSource();
+int nb=getNumBilletes();
+if(evt.equals(masBilletes)) {
+	nb++;
+	setNumBilletes(nb);
+	setTextPrecio();
+}
+	
+else if (evt.equals(menosBilletes))
+	nb--;
+	if(nb>0) {
+		setNumBilletes(nb);
+		setTextPrecio();
+	}
+	else
+		setNumBilletes(0);
+}*/

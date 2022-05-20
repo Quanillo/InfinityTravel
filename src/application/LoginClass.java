@@ -73,6 +73,7 @@ public class LoginClass {
 			if(state==true) {
 				loadPage("MainInfinity");
 				Db.setUserConnected(user);
+				//Db.setUsername(user);
 			}
 			else {
 				txt.setText("Datos de acceso incorrectos.");

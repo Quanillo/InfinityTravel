@@ -22,7 +22,6 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-
 	public Cliente(String username, String pass, String correo, String nombre, String apellidos, String dni,
 			LocalDate fNacimiento, int telefono) {
 		this.username = username;
@@ -35,7 +34,14 @@ public class Cliente {
 		this.telefono = telefono;
 		this.carrito = new ArrayList<Producto>();
 	}
-	
+	//metodo que calcula el precio final del array de productos carrito.
+	public double calculaPrecioFinal () {
+		double pf=0;
+		for(int i=0; i<carrito.size(); i++) {
+			pf+=carrito.get(i).getImporteProducto();
+		}
+		return Math.round(pf*100.0)/100.0;
+	}
 	
 	public void addProducto(Producto p) {
 		carrito.add(p);
@@ -136,15 +142,15 @@ public class Cliente {
 	}
 
 
-	ArrayList<Producto> getCarrito() {
+	public ArrayList<Producto> getCarrito() {
 		return carrito;
 	}
 
 
-	void setCarrito(ArrayList<Producto> carrito) {
+	public void setCarrito(ArrayList<Producto> carrito) {
 		this.carrito = carrito;
 	}
-
+	
 
 	@Override
 	public String toString() {

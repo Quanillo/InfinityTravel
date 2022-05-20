@@ -11,7 +11,7 @@ public class Billete extends Producto{
 	private String origen;
 	private String destino;
 	
-	final static double precioCombustible = 1;
+	final static double precioCombustible = 0.25;
 
 	static Db db = new Db();
 	static DbCiudad dbc = new DbCiudad();
@@ -83,7 +83,7 @@ public class Billete extends Producto{
 
 	@Override
 	public String toString() {
-		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €";
+		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €\n";
 	}
 
 }
