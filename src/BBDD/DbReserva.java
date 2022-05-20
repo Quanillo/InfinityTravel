@@ -66,22 +66,23 @@ public class DbReserva {
 		
 		return n;
 	}
-	/*
-	public ArrayList<Producto> listarProductosReservados(Cliente c) {
-		
-		ArrayList<Producto> lista = new ArrayList<Producto>();
-		
+	
+	public String reserva_generateId () {
+
+		int n = 0;
+
 		try {
 
 			st = connection.createStatement();
-			rs = st.executeQuery("select // from cliente natural join reserva natural join reserva_producto natural join producto where username = '"+c.getUsername()+"'");
-			
+			rs = st.executeQuery("select count(*) from reserva");
+
+			while(rs.next()) 
+				n = rs.getInt(1);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		return lista;
+
+		return "RES" + String.format("%06d", n+1);
 	}
-	*/
 }

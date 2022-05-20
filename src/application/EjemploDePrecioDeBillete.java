@@ -8,7 +8,7 @@ import BBDD.Db;
 import BBDD.DbCiudad;
 import Code.Billete;
 
-public class BilletesClassTest {
+public class EjemploDePrecioDeBillete {
 
 	@Test
 	public void test() {

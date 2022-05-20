@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
+import BBDD.DbProducto;
 import BBDD.DbReserva;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -50,11 +51,14 @@ public class Main extends Application {
 	private static Db db = new Db();
 	private static DbCiudad dbc = new DbCiudad();
 	private static DbReserva dbr = new DbReserva();
+	private static DbProducto dbp = new DbProducto();
 
 	public static void main(String[] args) {
 		db.connect();
 		dbc.connect();
 		dbr.connect();
+		dbp.connect();
+		
 		launch(args);
 	}
 }

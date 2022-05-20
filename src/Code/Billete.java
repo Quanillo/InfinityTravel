@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
+import BBDD.DbProducto;
 
 public class Billete extends Producto{
 
 	private String origen;
 	private String destino;
-	private LocalDate fecha;
 	
 	final static double precioCombustible = 1;
 
@@ -26,7 +26,6 @@ public class Billete extends Producto{
 
 		this.origen = origen;
 		this.destino = destino;
-		this.fecha=fecha;
 	}
 
 	public static double billete_getPrecio(String origen, String destino) {
@@ -50,7 +49,7 @@ public class Billete extends Producto{
 	
 	public static String billete_generateId(String origen, String destino) {
 		
-		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + 1;//db.producto_generateId();
+		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + DbProducto.producto_generateId();
 		return s;
 	}
 
@@ -69,11 +68,22 @@ public class Billete extends Producto{
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
+	
+	public String getIdBillete () {
+		return super.getIdProducto();
+	}
+	
+	public double getImporteBillete () {
+		return super.getImporteProducto();
+	}
+	
+	public LocalDate getFechaBillete () {
+		return super.getIncio();
+	}
 
 	@Override
 	public String toString() {
-		return "Origen:" + origen + ", Destino:" + destino + ", Fecha: "+ fecha + ", Precio:" + billete_getPrecio(origen, destino)+ "\n";
+		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €";
 	}
-	
-	
+
 }
