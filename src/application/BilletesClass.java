@@ -40,6 +40,7 @@ public class BilletesClass extends MainInfinityClass {
 	private static Db db = new Db();
 	private static DbCiudad dbc = new DbCiudad();
 	private static boolean idayvueltaboolean;
+	private static double precioBase;
 	////////////////////////METODOS////////////////////////
 	
 	public void reservaBilletes(MouseEvent event) { 
@@ -78,12 +79,13 @@ public class BilletesClass extends MainInfinityClass {
 	
 	//si los campos estan seleccionaddos y hay más de 0 billetes seleccionados returna true
 	public boolean checkCamposVacios() {
-		if(cbOrigen.getValue()!=null && cbDestino.getValue()!=null && dpIda.getValue()!=null && getNumBilletes()>0) { 
+		if(idayvueltaboolean && cbOrigen.getValue()!=null && cbDestino.getValue()!=null && dpIda.getValue()!=null && dpVuelta.getValue()!=null && getNumBilletes()>=1)  
 			return true;
-		}
-		else {
+		
+		else if(!idayvueltaboolean && cbOrigen.getValue()!=null && cbDestino.getValue()!=null && dpIda.getValue()!=null && getNumBilletes()>=1) 
+			return true;
+		else 
 			return false;
-		}
 	}
 	
 	public void alterNumBilletes (MouseEvent event) {  //sumamos numero de billetes
@@ -106,12 +108,20 @@ public class BilletesClass extends MainInfinityClass {
 	}
 	
 	public void setTextPrecio () {
-		String precio="null";
+		String sPrecio="null";
+		double dPrecio = 0;
 			if(checkCamposVacios()) {
 				for(int i=0; i<getNumBilletes();i++) {
-					precio = String.valueOf(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue()) * getNumBilletes()) ;
-					txtPrecio.setText(precio);
-				}	
+					dPrecio =precioBase* getNumBilletes() ;
+				}
+				if(idayvueltaboolean) {
+					sPrecio=String.valueOf(dPrecio*2);
+					txtPrecio.setText(sPrecio);
+				}
+				else {
+					sPrecio=String.valueOf(dPrecio);
+					txtPrecio.setText(sPrecio);
+				}
 			}
 			else {
 				txtPrecio.setText("0");
@@ -119,19 +129,26 @@ public class BilletesClass extends MainInfinityClass {
 	}
 	
 	@FXML
-	private void eventActionPrecio(ActionEvent event) {  
+	public void eventActiongetPrecioBilleteBase (ActionEvent event) {
 		Object evt=event.getSource();
-		int nb=getNumBilletes();
-		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda)) {
+		double precio=0;
+		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
+			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
 			setTextPrecio();
 		}
-		else if(evt.equals(masBilletes)) {
+		precioBase=precio;
+	}
+	
+	@FXML
+	private void precioSumaResta(ActionEvent event) {  
+		Object evt=event.getSource();
+		int nb=getNumBilletes();
+		if(evt.equals(masBilletes)) {
 			nb++;
 			setNumBilletes(nb);
 			setTextPrecio();
-		}
-			
-		else if (evt.equals(menosBilletes))
+		}	
+		else if (evt.equals(menosBilletes)) {
 			nb--;
 			if(nb>0) {
 				setNumBilletes(nb);
@@ -139,6 +156,7 @@ public class BilletesClass extends MainInfinityClass {
 			}
 			else
 				setNumBilletes(0);
+		}
 	}
 	////////////////////////GETTERS & SETTERS////////////////////////
 
@@ -159,7 +177,19 @@ public class BilletesClass extends MainInfinityClass {
 	}
 	
 	public void setNumBilletes (int nb) {
-		numBilletes.setText(""+nb);
+		if(nb<1) 
+			numBilletes.setText("1");
+		else
+			numBilletes.setText(""+ nb);
+	}
+	
+	public double getPrecioBilletes () {
+		double nb=Integer.parseInt(txtPrecio.getText());
+		return nb;
+	}
+	
+	public void setPrecioBilletes (double pb) {
+		txtPrecio.setText(""+pb);
 	}
 	
 	////////////////////////LOAD PAGES////////////////////////

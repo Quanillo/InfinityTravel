@@ -148,44 +148,4 @@ public class RegistroClass {
 		Platform.exit();
 	}
 
-	/*public boolean checkCliente (String user, String pass, String pass2, String correo) {  //metodo que valida los campos de registro y si son validos inserta un cliente en la bbdd. devuelve 1 si es insertado
-		boolean state=false;
-		if(user.length()>=4) {
-			if(validaCorreo(correo)){ //comprobamos que el usuario tiene minimo 4 caracteres
-				if(pass.equals(pass2)) { //comprobamos que las contraseñas coinciden
-					if(pass.length()>=6) { //comprobamos que la contraseña tiene minimo 6 caracteres.
-						if(!db.username_already_exists(user)){ //llamamos a un metodo que devuelve boolean comprobando que el usuario no este registrado en la bbdd	
-							state=true;
-						}
-						else {
-							state=false;
-							txt.setText("Usuario registrado. Elija otro nombre de usuario porfavor.");
-							clear();
-						}
-					}
-					else {
-						state=false;
-						txt.setText("Contraseña inválida: debe tener al menos 6 caracteres.");
-						clear();
-					}
-				}
-				else {
-					state=false;
-					txt.setText("Contraseña inválida: la confirmación no coincide.");
-					clear();
-				}
-			}
-			else {
-				state=false;
-				txt.setText("Formato del correo electrónico inválido.");
-				clear();
-			}
-		}
-		else {
-			state=false;
-			txt.setText("El nombre de usuario debe tener al menos 4 caracteres.");
-			clear();
-		}
-		return state;
-	}*/
 }
