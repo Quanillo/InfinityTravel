@@ -69,21 +69,17 @@ public class Billete extends Producto{
 		this.destino = destino;
 	}
 	
-	public String getIdBillete () {
-		return super.getIdProducto();
+	public String getOrigenId() {
+		return this.origen.substring(0, 3).toUpperCase();
 	}
 	
-	public double getImporteBillete () {
-		return super.getImporteProducto();
-	}
-	
-	public LocalDate getFechaBillete () {
-		return super.getIncio();
+	public String getDestinoId() {
+		return this.destino.substring(0, 3).toUpperCase();
 	}
 
 	@Override
 	public String toString() {
-		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €\n";
+		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" ï¿½\n";
 	}
 
 }

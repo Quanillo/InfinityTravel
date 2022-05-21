@@ -74,16 +74,15 @@ public class DbProducto {
 			return false;
 
 	}
-	/*
+	
 	public void insertBilleteIntoDb (Billete b) {
 
 		try {
 
-			String sql= "insert into producto (id_prod, importe_prod, inicio) values(? , ? , ?)";
+			String sql= "insert into producto (id_prod, importe_prod) values(? , ?)";//falta meter la fecha pero hay conflicto LocalDate !- Date
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, "");
-			pst.setString(2, "");
-			pst.setString(3, "");
+			pst.setString(1, b.getIdProducto());
+			pst.setDouble(2, b.getImporteProducto());
 
 			pst.executeUpdate(); 
 
@@ -100,11 +99,11 @@ public class DbProducto {
 
 		try {
 
-			String sql= "insert into billete (username, pass, mail) values(? , ? , ?)";
+			String sql= "insert into billete (id_prod, origen, destino) values(? , ? , ?)";//ampliable a asiento y clase
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, "");
-			pst.setString(2, "");
-			pst.setString(3, "");
+			pst.setString(1, b.getIdProducto());
+			pst.setString(2, b.getOrigenId());
+			pst.setString(3, b.getDestinoId());
 
 			pst.executeUpdate(); 
 
@@ -119,5 +118,5 @@ public class DbProducto {
 			}
 		}
 
-	}*/
+	}
 }
