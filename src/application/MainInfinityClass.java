@@ -125,7 +125,7 @@ public class MainInfinityClass {
 	//metodo que muestra el precio final de los productos que hay en el carrito
 	public void setTextPrecio() {
 		Cliente cliente=Db.getUserConnected();
-		double pf=cliente.calculaPrecioFinal();
+		double pf=cliente.calculaPrecioCarrito();
 		txtPrecioFinal.setText(""+pf);
 	}
 		

@@ -67,7 +67,7 @@ public class DbReserva {
 		return n;
 	}
 	
-	public String reserva_generateId () {
+	public static String reserva_generateId () {
 
 		int n = 0;
 

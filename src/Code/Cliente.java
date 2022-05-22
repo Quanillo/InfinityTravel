@@ -35,7 +35,7 @@ public class Cliente {
 		this.carrito = new ArrayList<Producto>();
 	}
 	//metodo que calcula el precio final del array de productos carrito.
-	public double calculaPrecioFinal () {
+	public double calculaPrecioCarrito () {
 		double pf=0;
 		for(int i=0; i<carrito.size(); i++) {
 			pf+=carrito.get(i).getImporteProducto();
@@ -51,84 +51,57 @@ public class Cliente {
 		return username;
 	}
 
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-
 
 	public String getPass() {
 		return pass;
 	}
 
-
-
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-
-
 
 	public String getCorreo() {
 		return correo;
 	}
 
-
-
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	public String getApellidos() {
 		return apellidos;
 	}
 
-
-
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
-
 
 	public String getDni() {
 		return dni;
 	}
 
-
-
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
-
 
 	public LocalDate getfNacimiento() {
 		return fNacimiento;
 	}
 
-
-
 	public void setfNacimiento(LocalDate fNacimiento) {
 		this.fNacimiento = fNacimiento;
 	}
-
 
 
 	public int getTelefono() {
@@ -136,35 +109,22 @@ public class Cliente {
 	}
 
 
-
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-
 
 	public ArrayList<Producto> getCarrito() {
 		return carrito;
 	}
 
-
 	public void setCarrito(ArrayList<Producto> carrito) {
 		this.carrito = carrito;
 	}
 	
-
 	@Override
 	public String toString() {
 		return "Cliente [username=" + username + ", pass=" + pass + ", correo=" + correo + ", nombre=" + nombre
 				+ ", apellidos=" + apellidos + ", dni=" + dni + ", fNacimiento=" + fNacimiento + ", telefono="
 				+ telefono + ", carrito=" + carrito + "]";
 	}
-
-
-
-	
-
-	
-
-	
-	
 }

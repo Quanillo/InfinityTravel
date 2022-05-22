@@ -49,7 +49,7 @@ public class Billete extends Producto{
 	
 	public static String billete_generateId(String origen, String destino) {
 		
-		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + DbProducto.producto_generateId();
+		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + DbProducto.billete_generateId();
 		return s;
 	}
 
