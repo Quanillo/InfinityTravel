@@ -1,42 +1,44 @@
 package Code;
 
+import java.time.LocalDate;
+
 public class Experiencia extends Producto{
 	
 	private String lugar;
 	private String nombre;
 	private String ciudad;
 	
-	public Experiencia() { super(); }
+	public Experiencia(String idItem, double importeProducto, LocalDate incio, LocalDate fin, String lugar, String nombre, String ciudad) {
+		
+		super(idItem, importeProducto, incio, fin);
+		
+		this.lugar = lugar;
+		this.nombre = nombre;
+		this.ciudad = ciudad;
+	}
 
-	String getLugar() {
+	public String getLugar() {
 		return lugar;
 	}
 
-	void setLugar(String lugar) {
+	public void setLugar(String lugar) {
 		this.lugar = lugar;
 	}
 
-	String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	String getCiudadExp() {
+	public String getCiudad() {
 		return ciudad;
 	}
 
-	void setCiudadExp(String ciudadExp) {
-		this.ciudad = ciudadExp;
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
-
-	@Override
-	public String toString() {
-		return "Experiencia [lugar=" + lugar + ", nombre=" + nombre + ", ciudad=" + ciudad + "]";
-	}
-	
-	
 
 }

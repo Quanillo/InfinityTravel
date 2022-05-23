@@ -4,34 +4,34 @@ import java.time.LocalDate;
 
 public abstract class Producto {
 	
-	private String idProducto;
+	private String idItem;
 	private double importeProducto;
 	private LocalDate incio;
 	private LocalDate fin;
 	
-	public Producto(String idProducto, double importeProducto, LocalDate incio, LocalDate fin) {
+	public Producto(String idItem, double importeProducto, LocalDate incio, LocalDate fin) {
 		
-		this.idProducto = idProducto;
+		this.idItem = idItem;
 		this.importeProducto = importeProducto;
 		this.incio = incio;
 		this.fin = fin;
 	}
 
-	public Producto(String idProducto, double importeProducto, LocalDate incio) {
+	public Producto(String idItem, double importeProducto, LocalDate incio) {
 		
-		this.idProducto = idProducto;
+		this.idItem = idItem;
 		this.importeProducto = importeProducto;
 		this.incio = incio;
 	}
 	
 	public Producto() {}
 
-	public String getIdProducto() {
-		return idProducto;
+	public String getIdItem() {
+		return idItem;
 	}
 
-	public void setIdProducto(String idProducto) {
-		this.idProducto = idProducto;
+	public void setIdItem(String idProducto) {
+		this.idItem = idProducto;
 	}
 
 	public double getImporteProducto() {

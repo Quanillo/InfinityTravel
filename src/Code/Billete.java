@@ -79,7 +79,7 @@ public class Billete extends Producto{
 
 	@Override
 	public String toString() {
-		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" ï¿½\n";
+		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €\n";
 	}
 
 }
