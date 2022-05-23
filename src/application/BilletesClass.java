@@ -95,8 +95,12 @@ public class BilletesClass extends MainInfinityClass{
 	public void cambiaCiudad() {
 		String destino=cbDestino.getValue();
 		String origen=cbOrigen.getValue();
-		cbDestino.getSelectionModel().select(origen);
-		cbOrigen.getSelectionModel().select(destino);
+		cbDestino.setValue(null);
+		cbOrigen.setValue(null);
+		setComboBoxOrigen();
+		setComboBoxDestino();
+		cbDestino.setValue(origen);
+		cbOrigen.setValue(destino);
 		
 	}
 	//metodo que calcula el precio del billete base cada vez que se cambian las cuidades de origen y destino estando ambas completas
