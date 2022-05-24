@@ -128,5 +128,10 @@ public class MainInfinityClass {
 		double pf=cliente.calculaPrecioCarrito();
 		txtPrecioFinal.setText(""+pf);
 	}
-		
+	
+	public void limpiaCarrito() {
+		txtPrecioFinal.setText(null);
+		txtCarrito.setText(null);
+	}
+	
 }

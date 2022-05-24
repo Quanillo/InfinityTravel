@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Code.Billete;
 import Code.Producto;
 
 public class DbProducto {
@@ -34,14 +35,14 @@ public class DbProducto {
 
 	}
 
-	public static String producto_generateId () {
+	public static String compra_generateId () {
 
 		int n = 0;
 
 		try {
 
 			st = connection.createStatement();
-			rs = st.executeQuery("select count(*) from producto");
+			rs = st.executeQuery("select count(*) from compra");
 
 			while(rs.next()) 
 				n = rs.getInt(1);
@@ -53,7 +54,7 @@ public class DbProducto {
 		return "PRD" + String.format("%06d", n+1);
 	}
 
-	public static String billete_generateId () {
+	public static String billete_generateId (String origen, String destino) {
 
 		int n = 0;
 
@@ -69,7 +70,7 @@ public class DbProducto {
 			e.printStackTrace();
 		}
 
-		return String.format("%03d", n+1);
+		return String.format(origen.substring(0,3).toUpperCase()+String.format(destino.substring(0,3).toUpperCase())+"%03d", n+1);
 	}
 	/*
 	public boolean producto_existe(String id) {
@@ -94,17 +95,19 @@ public class DbProducto {
 			return false;
 
 	}
-	*/
-	/*
-	public void comprarBillete (Cliente c, Billete b) {
+	 */
 
+	@SuppressWarnings("static-access")
+	public void insertBillete (Billete b) {
+
+		b.setIdProducto(billete_generateId(b.getOrigen(), b.getDestino()));
+		
 		try {
 
-			String sql= "insert into billete (id_prod, origen, destino) values(? , ? , ?)";//ampliable a asiento y clase
+			String sql= "insert into producto values(? , ?)";//ampliable a asiento y clase
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, b.getIdProducto());
-			pst.setString(2, b.getOrigenId());
-			pst.setString(3, b.getDestinoId());
+			pst.setDouble(2, b.billete_getPrecio(b.getOrigen(), b.getDestino()));
 
 			pst.executeUpdate(); 
 
@@ -121,17 +124,17 @@ public class DbProducto {
 
 		try {
 
-			String sql= "insert into producto (id_prod, id_item, importe_prod) values(? , ? , ?)";//falta meter la fecha pero hay conflicto LocalDate !- Date
+			String sql= "insert into billete (id_prod, id_origen, id_destino) values(? , ? , ?)";//ampliable a asiento y clase
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, producto_generateId());
-			pst.setString(2, b.getIdProducto());
-			pst.setDouble(3, b.getImporteProducto());
+			pst.setString(1, b.getIdProducto());
+			pst.setString(2, b.getOrigenId());
+			pst.setString(3, b.getDestinoId());
 
-			pst.executeUpdate(); 
+			pst.executeUpdate();
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		} finally {
 			try {
 				pst.close();
@@ -140,38 +143,41 @@ public class DbProducto {
 			}
 		}
 	}
-	*/
+
 	public void checkout(ArrayList<Producto> carrito) {
 
-		ArrayList<String> codigos = new ArrayList<String>();
 		String id_res = DbReserva.reserva_generateId();
 		double total = 0;
-		
+
 		//Se insertan los productos comprados en la tabla de productos
 		for(Producto p : carrito) {
 
-			try {
-				String id = producto_generateId();
-				String sql= "insert into producto values(? , ? , ? , null , null)";
-				pst = connection.prepareStatement(sql);
-				pst.setString(1, id);
-				pst.setString(2, p.getIdItem());
-				pst.setDouble(3, p.getImporteProducto());
-
-				pst.executeUpdate(); 
-				codigos.add(id);
-				total += p.getImporteProducto();
-			} catch (SQLException e) {
-				e.printStackTrace();
-
-			} finally {
+			if(p instanceof Billete) {
+				Billete aux = (Billete) p;
+				insertBillete(aux);
+			}
+			else {
 				try {
-					pst.close();
-				} catch (SQLException e){
+					String sql= "insert into producto values(? , ?)";
+					pst = connection.prepareStatement(sql);
+					pst.setString(1, p.getIdProducto());
+					if(p instanceof Billete)
+						pst.setDouble(2, p.getImporteProducto());
+					else
+						pst.setDouble(2, p.getImporteProducto());
+					pst.executeUpdate();
+					total += p.getImporteProducto();
+				} catch (SQLException e) {
 					e.printStackTrace();
+
+				} finally {
+					try {
+						pst.close();
+					} catch (SQLException e){
+						e.printStackTrace();
+					}
 				}
 			}
-
 		}
 
 		//Se le crea una reserva al cliente conectado
@@ -201,12 +207,13 @@ public class DbProducto {
 
 			try {
 
-				String sql= "insert into producto_reservado values(? , ? , ? , ?)";
+				String sql= "insert into compra values(? , ? , ? , ?, ?, null, null)";
 				pst = connection.prepareStatement(sql);
-				pst.setString(1, id_res);
-				pst.setString(2, Db.getUserConnected().getUsername());
-				pst.setString(3, codigos.get(i));
-				pst.setString(4, carrito.get(i).getIdItem());
+				pst.setString(1, compra_generateId());
+				pst.setString(2, id_res);
+				pst.setString(3, Db.getUserConnected().getUsername());
+				pst.setString(4, carrito.get(i).getIdProducto());
+				pst.setDouble(5, carrito.get(i).getImporteProducto());
 
 				pst.executeUpdate(); 
 

@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class CarritoClass implements Initializable{
+public class CarritoClass extends  MainInfinityClass implements Initializable{
 
 	@FXML private TextFlow txtListado;
 	@FXML private Text txtCarrito;
@@ -44,6 +44,8 @@ public class CarritoClass implements Initializable{
 		Cliente cliente=Db.getUserConnected();
 		ArrayList<Producto> listaProductos =cliente.getCarrito();
 		dbp.checkout(listaProductos);
+		Db.getUserConnected().getCarrito().removeAll(listaProductos);
+		finish();
 	}
 		
 
@@ -51,7 +53,10 @@ public class CarritoClass implements Initializable{
 		public void initialize(URL arg0, ResourceBundle arg1) {
 		setTextCarrito();
 		}
-	
+	public void finish() {
+		txtCarrito.setText("Compra realizada con éxito! \n :)");
+		
+	}
 }
 
 //------Esto es un ejemplo de como se inicializa un Text al abrir la pagina implementando Initializable

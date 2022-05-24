@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
-import BBDD.DbProducto;
 
 public class Billete extends Producto{
 
@@ -21,13 +20,15 @@ public class Billete extends Producto{
 	}
 
 	public Billete(String origen, String destino, LocalDate fecha) {
-
-		super(billete_generateId(origen, destino), billete_getPrecio(origen, destino), fecha);
-
+		
+		super(billete_getPrecio(origen, destino), fecha);
+		
 		this.origen = origen;
 		this.destino = destino;
 	}
 
+	
+	
 	public static double billete_getPrecio(String origen, String destino) {
 		
 		double lat1 = dbc.ciudad_getLatitud(origen);
@@ -45,12 +46,6 @@ public class Billete extends Producto{
 		double rad = 6371;
 		double c = 2 * Math.asin(Math.sqrt(a));
 		return Math.round((rad * c * precioCombustible)*100.0)/100.0;
-	}
-	
-	public static String billete_generateId(String origen, String destino) {
-		
-		String s = origen.substring(0, 3).toUpperCase() + destino.substring(0, 3).toUpperCase() + DbProducto.billete_generateId();
-		return s;
 	}
 
 	public String getOrigen() {
