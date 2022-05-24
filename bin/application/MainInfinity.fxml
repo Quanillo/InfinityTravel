@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainInfinityClass">
+<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6f6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainInfinityClass">
    <children>
       <AnchorPane layoutY="30.0" maxHeight="122.0" maxWidth="1280.0" minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="1280.0" style="-fx-background-color: #1D334A;">
          <children>
@@ -86,7 +86,24 @@
       </AnchorPane>
       <BorderPane fx:id="bp" layoutY="120.0" prefHeight="600.0" prefWidth="1280.0">
          <center>
-            <AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="668.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/fondo.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#1d334a" layoutX="32.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="410.1367187499999">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="52.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1d334a" layoutX="32.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cata huevos en cualquier lugar" wrappingWidth="670.1367187499999">
+                     <font>
+                        <Font name="Malgun Gothic" size="32.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
          </center>
          <right>
             <AnchorPane prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
