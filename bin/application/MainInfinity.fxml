@@ -17,9 +17,9 @@
    <children>
       <AnchorPane layoutY="30.0" maxHeight="122.0" maxWidth="1280.0" minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="1280.0" style="-fx-background-color: #1D334A;">
          <children>
-            <HBox layoutX="14.0" layoutY="19.0" prefHeight="63.0" prefWidth="1152.0">
+            <HBox layoutX="117.0" layoutY="19.0" prefHeight="63.0" prefWidth="1049.0">
                <children>
-                  <Button fx:id="packs" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#packsLoad" prefHeight="53.0" prefWidth="142.0" style="-fx-background-color: #1d334a;" text="Packs" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Billetes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#billetesLoad" prefHeight="53.0" prefWidth="255.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -27,7 +27,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Billetes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#billetesLoad" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Alojamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#alojamientoLoad" prefHeight="53.0" prefWidth="317.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -35,7 +35,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Alojamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#alojamientoLoad" prefHeight="53.0" prefWidth="202.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Experiencias" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#experienciasLoad" prefHeight="53.0" prefWidth="314.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -43,23 +43,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Vehiculos" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#vehiculosLoad" prefHeight="53.0" prefWidth="293.0" style="-fx-background-color: #1d334a;" text="Vehiculos de alquiler" textAlignment="CENTER" textFill="#f6f6f6">
-                     <font>
-                        <Font name="Malgun Gothic" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="Experiencias" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#experienciasLoad" prefHeight="53.0" prefWidth="196.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
-                     <font>
-                        <Font name="Malgun Gothic" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="Seguros" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#segurosLoad" prefHeight="53.0" prefWidth="159.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Seguros" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#segurosLoad" prefHeight="53.0" prefWidth="267.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -82,6 +66,19 @@
                </cursor>
             </Button>
             <Line endX="100.0" layoutX="1068.0" layoutY="25.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
+            <Line endX="100.0" layoutX="13.0" layoutY="30.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
+            <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/carrito.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
       <BorderPane fx:id="bp" layoutY="120.0" prefHeight="600.0" prefWidth="1280.0">
@@ -98,7 +95,7 @@
                         <Font name="Malgun Gothic Bold" size="52.0" />
                      </font>
                   </Text>
-                  <Text fill="#1d334a" layoutX="32.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cata huevos en cualquier lugar" wrappingWidth="670.1367187499999">
+                  <Text fill="#1d334a" layoutX="32.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="infoooooooooooooooooooooooooo" wrappingWidth="670.1367187499999">
                      <font>
                         <Font name="Malgun Gothic" size="32.0" />
                      </font>
