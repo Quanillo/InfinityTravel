@@ -25,31 +25,16 @@ public class AlojamientoClass extends MainInfinityClass{
 	@FXML private DatePicker dpSalida;
 	@FXML private ImageView imageView; 
 	@FXML private Button button;
-	@FXML private Button buttonPapa;
 	@FXML private Image img;
 	private static DbCiudad dbc = new DbCiudad();
-	String papa = "https://memegenerator.net/img/instances/82133322/quien-es-tu-papa-ahh-quin.jpg";
 	String imgUrl = "https://www.rutaspormarruecosali.com/pics_fotosnoticias/75/big_res_rutas-por-marruecos-ali-los-5-mejores-hoteles-de-marrakechl.jpg";
 	
 	
 	@FXML
-    void setImagen(MouseEvent event) {
+    public void setImagen(MouseEvent event) {
 		URLConnection connection;
 		try {
 			connection = new URL(imgUrl).openConnection();
-			connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-			img = new Image(connection.getInputStream());
-			imageView.setImage(img);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
-	
-	@FXML
-    void setImagenPapa(MouseEvent event) {
-		URLConnection connection;
-		try {
-			connection = new URL(papa).openConnection();
 			connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
 			img = new Image(connection.getInputStream());
 			imageView.setImage(img);
@@ -67,4 +52,9 @@ public class AlojamientoClass extends MainInfinityClass{
 		cbCiudad.setItems(list);
 		
 	}
+	
+
+	
 }
+
+

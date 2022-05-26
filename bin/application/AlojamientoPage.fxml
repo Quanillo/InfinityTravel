@@ -50,13 +50,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="buttonPapa" layoutX="239.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#setImagenPapa" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #e55137;" text="P" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
-         <font>
-            <Font name="Malgun Gothic Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>
