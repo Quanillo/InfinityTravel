@@ -217,7 +217,7 @@ public class DbProducto {
 			
 			Alojamiento aux = null;
 			st = connection.createStatement();
-			rs = st.executeQuery("select*from alojamiento where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
+			rs = st.executeQuery("select*from producto natural join alojamiento where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
 
 			while(rs.next()) 
 				aux = new Alojamiento(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
@@ -230,6 +230,7 @@ public class DbProducto {
 		return lista;
 	}
 	
+
 	public ArrayList<Experiencia> getExperiencias (String ciudad) {
 
 		ArrayList<Experiencia> lista = new ArrayList<Experiencia>();
@@ -238,7 +239,7 @@ public class DbProducto {
 
 			Experiencia aux = null;
 			st = connection.createStatement();
-			rs = st.executeQuery("select*from producto natural join alojamiento where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
+			rs = st.executeQuery("select*from producto natural join producto where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
 
 			while(rs.next()) 
 				aux = new Experiencia(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));

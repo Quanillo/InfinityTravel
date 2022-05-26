@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6f6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainInfinityClass">
+<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6f6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainInfinityClass">
    <children>
       <AnchorPane layoutY="30.0" maxHeight="122.0" maxWidth="1280.0" minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="1280.0" style="-fx-background-color: #1D334A;">
          <children>
@@ -103,9 +103,9 @@
                </children></AnchorPane>
          </center>
          <right>
-            <AnchorPane prefHeight="600.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="600.0" prefWidth="250.0" visible="false" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="apCarrito" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" visible="false">
+                  <AnchorPane fx:id="apCarrito" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;">
                      <children>
                         <AnchorPane layoutX="11.0" layoutY="8.0" prefHeight="532.0" prefWidth="230.0" style="-fx-background-color: white;">
                            <children>
@@ -144,7 +144,8 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
          </right>
       </BorderPane>
       <Pane prefHeight="30.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;">

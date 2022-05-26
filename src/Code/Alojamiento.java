@@ -7,6 +7,7 @@ public class Alojamiento extends Producto {
 	private String id_ciudad;
 	private String url;
 	
+	
 	public Alojamiento(String idProducto, double importeProducto, String nombre, String direccion, String id_ciudad, String url) {
 		
 		super(idProducto, importeProducto, null, null);
