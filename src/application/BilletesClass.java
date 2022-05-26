@@ -22,6 +22,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+
+
 public class BilletesClass extends MainInfinityClass{
 	
 	@FXML private Text txtNumBilletes;

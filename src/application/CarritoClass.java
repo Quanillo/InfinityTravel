@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -55,43 +54,51 @@ public class CarritoClass extends  MainInfinityClass implements Initializable{
 		String carrito="";double total = 0;
 		for(int i=0; i<listaProductos.size(); i++) {
 			carrito+=listaProductos.get(i).toString();
-			total=listaProductos.get(i).getImporteProducto();
+			total+=listaProductos.get(i).getImporteProducto();
 		}
 		carrito+="\nImporte final: " + total;
 		dbp.checkout(listaProductos);
 		Db.getUserConnected().getCarrito().removeAll(listaProductos);
-		mandarFactura(carrito);
+		enviarMail("ppetersondaw@gmail.com", "Factura", carrito);
 		finish();
 	}
 
-	public void mandarFactura (String body) {
-		String to = "ppetersondaw@gmail.com";
-		String from = "infinitytravelnoreply@gmail.com";
-		String host = "smtp.gmail.com";
+	
+	private static void enviarMail(String destinatario, String asunto, String cuerpo) {
+	    // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
+	    String remitente = "infinitytravelnoreply";  //Para la dirección nomcuenta@gmail.com
+	    String clave = "Ullman10";
+	    Properties props = System.getProperties();
+	    props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+	    props.put("mail.smtp.user", remitente);
+	    props.put("mail.smtp.clave", "Ullman10");    //La clave de la cuenta
+	    props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
+	    props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
+	 
+	    
+	    
+	    props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory"); 
+		props.setProperty("mail.smtp.socketFactory.fallback", "false"); 
+		props.setProperty("mail.smtp.port", "465"); 
+		props.setProperty("mail.smtp.socketFactory.port", "465"); 
+	    
 
-		Properties properties = System.getProperties();
-		properties.put("mail.smtp.host", host);
-		properties.put("mail.smtp.port", "465");
-		properties.put("mail.smtp.ssl.enable", "true");
-		properties.put("mail.smtp.auth", "true");
+	    Session session = Session.getDefaultInstance(props);
+	    MimeMessage message = new MimeMessage(session);
 
-		Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("infinitytravelnoreply@gmail.com", "Ullman10");
-			}
-		});
-
-		try {
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(from));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject("Factura");
-			message.setText(body);
-
-			Transport.send(message);
-		} catch (MessagingException mex) {
-			mex.printStackTrace();
-		}
+	    try {
+	        message.setFrom(new InternetAddress(remitente));
+	        message.addRecipients(Message.RecipientType.TO, destinatario);   //Se podrían añadir varios de la misma manera
+	        message.setSubject(asunto);
+	        message.setText(cuerpo);
+	        Transport transport = session.getTransport("smtp");
+	        transport.connect("smtp.gmail.com", remitente, clave);
+	        transport.sendMessage(message, message.getAllRecipients());
+	        transport.close();
+	    }
+	    catch (MessagingException me) {
+	        me.printStackTrace();   //Si se produce un error
+	    }
 	}
 	
 	@Override
@@ -101,7 +108,7 @@ public class CarritoClass extends  MainInfinityClass implements Initializable{
 	public void finish() {
 		txtCarrito.setText("Compra realizada con éxito! \n :)");
 
-	}
+	}	
 }
 
 //------Esto es un ejemplo de como se inicializa un Text al abrir la pagina implementando Initializable
