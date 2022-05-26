@@ -62,15 +62,12 @@ public class BilletesClass extends MainInfinityClass{
 					Billete billeteVuelta=new Billete(destino, origen, vuelta);
 					cliente.addProducto(billeteIda);//introducimos los billetes en el arrayList de productos alojado en Cliente 
 					cliente.addProducto(billeteVuelta);
-					System.out.println(billeteIda);
-					System.out.println(billeteVuelta);
 				}
 			}
 			else {
 				for(int i=0; i<numBilletes ;i++) {//bucle que genera billetes en funcion del número de billetes seleccionados
 					Billete billeteIda=new Billete(origen, destino, ida); //si la vuelta no esta seleccionada solo generamos billetes de ida
 					cliente.addProducto(billeteIda);
-					System.out.println(billeteIda);
 					//añadir a la bbdd los billetes cuando la reserva se haya confirmado en el carrito
 				}
 			}
@@ -184,7 +181,7 @@ public class BilletesClass extends MainInfinityClass{
 	}
 	
 	public double getPrecioBilletes () {
-		double pb=Integer.parseInt(txtPrecio.getText());
+		double pb=Double.parseDouble(txtPrecio.getText());
 		return pb;
 	}
 	//setTextPrecio() y setPrecioBilletes se pueden fusionar.

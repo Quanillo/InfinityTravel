@@ -51,12 +51,14 @@ public class CarritoClass extends  MainInfinityClass implements Initializable{
 	public void comprar(MouseEvent event) {
 		Cliente cliente=Db.getUserConnected();
 		ArrayList<Producto> listaProductos =cliente.getCarrito();
-		String carrito="";double total = 0;
+		String carrito="Reserva a nombre de: " + cliente.getNombre() +" " + cliente.getApellidos()+ "\n\n"
+				+ "Detalles de la reserva: \n\n";
+		double total = 0;
 		for(int i=0; i<listaProductos.size(); i++) {
 			carrito+=listaProductos.get(i).toString();
 			total+=listaProductos.get(i).getImporteProducto();
 		}
-		carrito+="\nImporte final: " + Math.round(total*100.0)/100.0 +"€";
+		carrito+="\n\nImporte final: \n" + Math.round(total*100.0)/100.0 +"€";
 		dbp.checkout(listaProductos);
 		Db.getUserConnected().getCarrito().removeAll(listaProductos);
 		enviarMail(cliente.getCorreo(), "Factura", carrito);

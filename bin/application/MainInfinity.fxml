@@ -67,7 +67,7 @@
             </Button>
             <Line endX="100.0" layoutX="1068.0" layoutY="25.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
             <Line endX="100.0" layoutX="15.0" layoutY="29.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
-            <Button layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Button">
+            <Button fx:id="User" layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#userLoad" prefHeight="63.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

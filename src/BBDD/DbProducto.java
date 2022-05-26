@@ -1,5 +1,6 @@
 package BBDD;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -134,7 +135,7 @@ public class DbProducto {
 				Billete aux = (Billete) p;
 				insertBillete(aux);
 			}
-			else {
+		/*	else {
 				try {
 					String sql= "insert into producto values(? , ?)";
 					pst = connection.prepareStatement(sql);
@@ -155,7 +156,7 @@ public class DbProducto {
 						e.printStackTrace();
 					}
 				}
-			}
+			}	*/
 		}
 
 		//Se le crea una reserva al cliente conectado
@@ -179,24 +180,28 @@ public class DbProducto {
 				e.printStackTrace();
 			}
 		}
-
+		
 		//Se asocia a cada uno de los productos comprados la reserva creada
 		for(int i = 0; i < carrito.size(); i++) {
 
 			try {
 
-				String sql= "insert into compra values(? , ? , ? , ?, ?, null, null)";
+				String sql= "insert into compra values(? , ? , ? , ?, ?, ?, ?)";
 				pst = connection.prepareStatement(sql);
 				pst.setString(1, compra_generateId());
 				pst.setString(2, id_res);
 				pst.setString(3, Db.getUserConnected().getUsername());
 				pst.setString(4, carrito.get(i).getIdProducto());
 				pst.setDouble(5, carrito.get(i).getImporteProducto());
-
+				pst.setDate(6, Date.valueOf(carrito.get(i).getIncio())); //HE METIDO ESTO PARA LAS FECHAS DE INICIO Y FIN
+				if(carrito.get(i).getFin()!=null) {
+					pst.setDate(7, Date.valueOf(carrito.get(i).getFin()));
+				}
 				pst.executeUpdate(); 
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				if(carrito.get(i).getFin()!=null) //??? waltrapada mug maxima xD
+					e.printStackTrace();
 
 			} finally {
 				try {

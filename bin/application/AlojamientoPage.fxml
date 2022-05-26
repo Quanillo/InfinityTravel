@@ -12,9 +12,8 @@
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlojamientoClass">
    <children>
       <ComboBox fx:id="cbCiudad" layoutX="60.0" layoutY="72.0" onMouseClicked="#setComboBoxCiudad" prefHeight="50.0" prefWidth="400.0" />
-      <ComboBox fx:id="cbAlojamientos" layoutX="61.0" layoutY="207.0" onMouseClicked="#setComboBoxAlojamiento2" prefHeight="50.0" prefWidth="400.0" />
-      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="343.0" prefHeight="51.0" prefWidth="200.0" />
-      <DatePicker fx:id="dpSalida" layoutX="260.0" layoutY="343.0" prefHeight="51.0" prefWidth="200.0" />
+      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" />
+      <DatePicker fx:id="dpSalida" layoutX="260.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" />
       <Text fill="#1d334a" layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
@@ -31,7 +30,7 @@
          </font>
       </Text>
       <ImageView fx:id="imageView" fitHeight="454.0" fitWidth="579.0" layoutX="496.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="button" layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#prueba" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnAddCarrito" layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#reservaAlojamiento" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>
@@ -39,7 +38,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fill="#1d334a" layoutX="287.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
+      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="287.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
          <font>
             <Font name="Malgun Gothic" size="32.0" />
          </font>
@@ -54,10 +53,11 @@
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fill="#1c3145a3" layoutX="287.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="48.13671875">
+      <Text fx:id="txtPrecioBase" fill="#1c3145a3" layoutX="287.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="48.13671875">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
+      <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setAlojamientoSeleccionado" onMouseClicked="#setComboBoxAlojamiento" prefHeight="50.0" prefWidth="400.0" />
    </children>
 </AnchorPane>

@@ -30,6 +30,7 @@ public class MainInfinityClass {
 	@FXML private Button Experiencias;
 	@FXML private Button Seguros;
 	@FXML private Button exit;
+	@FXML private Button User;
 	//------Atributos del carrito------
 	@FXML private AnchorPane apCarrito;
 	@FXML private Button btnVerCarrito;
@@ -71,6 +72,11 @@ public class MainInfinityClass {
 	@FXML 
 	private void carritoLoad(MouseEvent event) {
 		loadPage("CarritoPage");
+	}
+	
+	@FXML 
+	private void userLoad(MouseEvent event) {
+		loadPage("UserPage");
 	}
 	
 	@FXML
@@ -117,6 +123,7 @@ public class MainInfinityClass {
 		else {
 			for(int i=0; i<listaProductos.size(); i++) {
 				carrito+=listaProductos.get(i).toString();
+				System.out.println(listaProductos.get(i).toString());
 			}
 		}
 		txtCarrito.setText(carrito);

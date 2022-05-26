@@ -49,5 +49,12 @@ public class Alojamiento extends Producto {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(this.getClass().getSimpleName())+"\n"+ nombre +"\n"+ super.getIncio()+ " | " +super.getFin() + "\n"+super.getImporteProducto()+" €\n";
+	}
+	
+	
 	
 }
