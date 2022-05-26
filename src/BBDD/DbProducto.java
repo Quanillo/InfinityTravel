@@ -5,10 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
+import Code.Alojamiento;
 import Code.Billete;
+import Code.Experiencia;
 import Code.Producto;
+import Code.Seguro;
 
 public class DbProducto {
 
@@ -229,5 +235,68 @@ public class DbProducto {
 			}
 
 		}
+	}
+
+	public ArrayList<Alojamiento> getAlojamientos (String ciudad) {
+
+		ArrayList<Alojamiento> lista = new ArrayList<Alojamiento>();
+
+		try {
+			
+			Alojamiento aux = null;
+			st = connection.createStatement();
+			rs = st.executeQuery("select*from alojamiento where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
+
+			while(rs.next()) 
+				aux = new Alojamiento(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				lista.add(aux);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+	
+	public ArrayList<Experiencia> getExperiencias (String ciudad) {
+
+		ArrayList<Experiencia> lista = new ArrayList<Experiencia>();
+
+		try {
+
+			Experiencia aux = null;
+			st = connection.createStatement();
+			rs = st.executeQuery("select*from producto natural join alojamiento where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
+
+			while(rs.next()) 
+				aux = new Experiencia(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				lista.add(aux);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+	
+	public ArrayList<Seguro> getSeguros () {
+
+		ArrayList<Seguro> lista = new ArrayList<Seguro>();
+
+		try {
+
+			Seguro aux = null;
+			st = connection.createStatement();
+			rs = st.executeQuery("select*from producto natural join seguro'");
+
+			while(rs.next()) 
+				aux = new Seguro(rs.getString(1), rs.getDouble(2), rs.getString(3));
+				lista.add(aux);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
 	}
 }

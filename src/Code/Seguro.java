@@ -1,34 +1,20 @@
 package Code;
 
-import java.time.LocalDate;
-
-public class Seguro extends Producto{
+public class Seguro extends Producto {
 	
-	private String categoria;
-	private double precioSemana;
-	
-	public Seguro(String idItem, double importeProducto, LocalDate incio, LocalDate fin, String categoria, double precioSemana) {
+	private String nombre;
+
+	public Seguro(String idProducto, double importeProducto, String nombre) {
 		
-		super(idItem, importeProducto, incio, fin);
-		
-		this.categoria = categoria;
-		this.precioSemana = precioSemana;
+		super(idProducto, importeProducto, null, null);
+		this.nombre = nombre;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-
-	public double getPrecioSemana() {
-		return precioSemana;
-	}
-
-	public void setPrecioSemana(double precioSemana) {
-		this.precioSemana = precioSemana;
-	}
-
 }

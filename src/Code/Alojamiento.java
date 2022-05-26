@@ -1,64 +1,52 @@
 package Code;
 
-import java.time.LocalDate;
+public class Alojamiento extends Producto {
 
-public class Alojamiento extends Producto{
-	
-	private String direccion;
 	private String nombre;
-	private String info;
-	private String ciudad;
-	private double precioNoche;
+	private String direccion;
+	private String id_ciudad;
+	private String url;
 	
-	public Alojamiento(String idItem, double importeProducto, LocalDate incio, LocalDate fin, String direccion, String nombre, String info, String ciudad, double precioNoche) {
+	public Alojamiento(String idProducto, double importeProducto, String nombre, String direccion, String id_ciudad, String url) {
 		
-		super(idItem, /*metodo que genera el importe segun el numero de noches*/importeProducto, incio, fin);
+		super(idProducto, importeProducto, null, null);
 		
-		this.direccion = direccion;
 		this.nombre = nombre;
-		this.info = info;
-		this.ciudad = ciudad;
-		this.precioNoche = precioNoche;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+		this.id_ciudad = id_ciudad;
+		this.url = url;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getInfo() {
-		return info;
+	
+	public String getDireccion() {
+		return direccion;
 	}
-
-	public void setInfo(String info) {
-		this.info = info;
+	
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
-
-	public String getCiudad() {
-		return ciudad;
+	
+	public String getId_ciudad() {
+		return id_ciudad;
 	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	
+	public void setId_ciudad(String id_ciudad) {
+		this.id_ciudad = id_ciudad;
 	}
-
-	public double getPrecioNoche() {
-		return precioNoche;
+	
+	public String getUrl() {
+		return url;
 	}
-
-	public void setPrecioNoche(double precioNoche) {
-		this.precioNoche = precioNoche;
+	
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }

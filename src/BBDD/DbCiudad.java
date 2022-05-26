@@ -29,8 +29,8 @@ public class DbCiudad {
 		}
 
 	}
-	
-//-------------------------------------------------------------
+
+	//-------------------------------------------------------------
 	public double ciudad_getLatitud (String ciudad) {
 
 		double lat = 0;
@@ -49,8 +49,8 @@ public class DbCiudad {
 
 		return lat;
 	}
-	
-//-------------------------------------------------------------
+
+	//-------------------------------------------------------------
 	public double ciudad_getLongitud (String ciudad) {
 
 		double lon = 0;
@@ -69,8 +69,8 @@ public class DbCiudad {
 
 		return lon;
 	}
-	
-//-------------------------------------------------------------
+
+	//-------------------------------------------------------------
 	public ArrayList<String> listarCiudades () {
 
 		ArrayList<String> lista = new ArrayList<String>();
@@ -88,6 +88,41 @@ public class DbCiudad {
 
 		return lista;
 	}
-	
-//-------------------------------------------------------------
+
+	//-------------------------------------------------------------
+	public ArrayList<String> listarCiudadesConAlojamiento () {
+
+		ArrayList<String> lista = new ArrayList<String>();
+
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery("select distinct nom_ciu from alojamiento natural join ciudad");
+			while(rs.next())
+				lista.add(rs.getString("nom_ciu"));
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+	//-------------------------------------------------------------
+	public ArrayList<String> listarCiudadesConExperiencia () {
+
+		ArrayList<String> lista = new ArrayList<String>();
+
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery("select distinct nom_ciu from experiencia natural join ciudad");
+			while(rs.next())
+				lista.add(rs.getString("nom_ciu"));
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
 }

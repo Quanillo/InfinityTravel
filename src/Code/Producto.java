@@ -9,9 +9,9 @@ public abstract class Producto {
 	private LocalDate incio;
 	private LocalDate fin;
 	
-	public Producto(String idItem, double importeProducto, LocalDate incio, LocalDate fin) {
+	public Producto(String idProducto, double importeProducto, LocalDate incio, LocalDate fin) {
 		
-		this.idProducto = idItem;
+		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;
 		this.incio = incio;
 		this.fin = fin;

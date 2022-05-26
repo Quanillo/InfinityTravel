@@ -1,44 +1,52 @@
 package Code;
 
-import java.time.LocalDate;
-
-public class Experiencia extends Producto{
+public class Experiencia extends Producto {
 	
-	private String lugar;
 	private String nombre;
-	private String ciudad;
+	private String ubicacion;
+	private String id_ciudad;
+	private String url;
 	
-	public Experiencia(String idItem, double importeProducto, LocalDate incio, LocalDate fin, String lugar, String nombre, String ciudad) {
+	public Experiencia(String idProducto, double importeProducto, String nombre, String ubicacion, String id_ciudad, String url) {
 		
-		super(idItem, importeProducto, incio, fin);
+		super(idProducto, importeProducto, null, null);
 		
-		this.lugar = lugar;
 		this.nombre = nombre;
-		this.ciudad = ciudad;
+		this.ubicacion = ubicacion;
+		this.id_ciudad = id_ciudad;
+		this.url = url;
 	}
-
-	public String getLugar() {
-		return lugar;
-	}
-
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
-
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getCiudad() {
-		return ciudad;
+	
+	public String getUbicacion() {
+		return ubicacion;
 	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
 	}
-
+	
+	public String getId_ciudad() {
+		return id_ciudad;
+	}
+	
+	public void setId_ciudad(String id_ciudad) {
+		this.id_ciudad = id_ciudad;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 }
