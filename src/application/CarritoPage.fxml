@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarritoClass">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarritoClass">
    <children>
       <Button fx:id="btnComprar" layoutX="913.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#comprar" prefHeight="55.0" prefWidth="117.0" style="-fx-background-color: #e55137;" text="comprar" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
@@ -18,13 +18,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ScrollPane layoutX="250.0" prefHeight="503.0" prefWidth="780.0">
+      <ScrollPane layoutX="250.0" layoutY="50.0" prefHeight="442.0" prefWidth="780.0">
          <content>
-            <TextFlow fx:id="txtListado" lineSpacing="2.0" prefHeight="496.0" prefWidth="762.0" textAlignment="CENTER">
+            <TextFlow fx:id="txtListado" lineSpacing="2.0" prefHeight="439.0" prefWidth="778.0" textAlignment="CENTER">
                <children>
-                  <Text fx:id="txtCarrito" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="83.0">
+                  <Text fx:id="txtCarrito" fill="#1d334a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="83.0">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Malgun Gothic" size="22.0" />
                      </font>
                   </Text>
                </children>
