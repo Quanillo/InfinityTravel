@@ -53,7 +53,7 @@
                   </Button>
                </children>
             </HBox>
-            <Button layoutX="1188.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
+            <Button layoutX="1190.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
                   <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,12 +66,12 @@
                </cursor>
             </Button>
             <Line endX="100.0" layoutX="1068.0" layoutY="25.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
-            <Line endX="100.0" layoutX="13.0" layoutY="30.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
-            <Button layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
+            <Line endX="100.0" layoutX="15.0" layoutY="29.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
+            <Button layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/carrito.png" />
+                        <Image url="@../../images/usu.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,17 +85,17 @@
          <center>
             <AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="668.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="640.0" fitWidth="1288.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/fondo.jpg" />
                      </image>
                   </ImageView>
-                  <Text fill="#1d334a" layoutX="32.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="410.1367187499999">
+                  <Text fill="#1d334a" layoutX="288.0" layoutY="283.0" stroke="#c4cfda" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="511.1367187499999">
                      <font>
-                        <Font name="Malgun Gothic Bold" size="52.0" />
+                        <Font name="Malgun Gothic Bold" size="64.0" />
                      </font>
                   </Text>
-                  <Text fill="#1d334a" layoutX="32.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="infoooooooooooooooooooooooooo" wrappingWidth="670.1367187499999">
+                  <Text fill="#1d334a" layoutX="288.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">
                      <font>
                         <Font name="Malgun Gothic" size="32.0" />
                      </font>
@@ -109,9 +109,9 @@
                      <children>
                         <AnchorPane layoutX="11.0" layoutY="8.0" prefHeight="532.0" prefWidth="230.0" style="-fx-background-color: white;">
                            <children>
-                              <ScrollPane layoutX="-5.0" prefHeight="532.0" prefWidth="239.0">
+                              <ScrollPane hbarPolicy="NEVER" layoutX="-5.0" prefHeight="532.0" prefWidth="239.0">
                                  <content>
-                                    <Text fx:id="txtCarrito" onMouseDragOver="#setTextCarrito" onMouseDragReleased="#setTextCarrito" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="223.13671875">
+                                    <Text fx:id="txtCarrito" fill="#1d334a" layoutX="30.0" onMouseDragOver="#setTextCarrito" onMouseDragReleased="#setTextCarrito" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -122,7 +122,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="6.0" layoutY="540.0" prefHeight="55.0" prefWidth="212.0" style="-fx-background-color: WHITE;">
                            <children>
-                              <Button fx:id="btnVerCarrito" layoutX="157.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#carritoLoad" prefHeight="55.0" prefWidth="83.0" style="-fx-background-color: #e55137;" text="ver varrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+                              <Button fx:id="btnVerCarrito" layoutX="157.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#carritoLoad" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: #e55137;" text="ver varrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
                                  <font>
                                     <Font name="Malgun Gothic Bold" size="14.0" />
                                  </font>
@@ -130,14 +130,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Text fx:id="txtPrecioFinal" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT">
+                              <Text fx:id="txtPrecioFinal" fill="#1d334a" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="113.0">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="Malgun Gothic" size="24.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="131.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+                              <Text fill="#1d334a" layoutX="131.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="Malgun Gothic" size="24.0" />
                                  </font>
                               </Text>
                            </children>

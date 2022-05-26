@@ -74,30 +74,6 @@ public class DbProducto {
 
 		return String.format(origen.substring(0,3).toUpperCase()+String.format(destino.substring(0,3).toUpperCase())+"%03d", n+1);
 	}
-	/*
-	public boolean producto_existe(String id) {
-
-		int n = 0;
-
-		try {
-
-			st = connection.createStatement();
-			rs = st.executeQuery("select count(*) from producto where reserva_id = '"+id+"'");
-
-			while(rs.next()) 
-				n = rs.getInt(1);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		if(n>0)
-			return true;
-		else
-			return false;
-
-	}
-	 */
 
 	@SuppressWarnings("static-access")
 	public void insertBillete (Billete b) {

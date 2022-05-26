@@ -244,22 +244,3 @@ public class BilletesClass extends MainInfinityClass{
 	}
 
 }
-
-/*public void alterNumBilletes (MouseEvent event) {  //sumamos numero de billetes
-Object evt=event.getSource();
-int nb=getNumBilletes();
-if(evt.equals(masBilletes)) {
-	nb++;
-	setNumBilletes(nb);
-	setTextPrecio();
-}
-	
-else if (evt.equals(menosBilletes))
-	nb--;
-	if(nb>0) {
-		setNumBilletes(nb);
-		setTextPrecio();
-	}
-	else
-		setNumBilletes(0);
-}*/
