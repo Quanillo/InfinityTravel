@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarritoClass">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CarritoClass">
    <children>
-      <Button fx:id="btnComprar" layoutX="913.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#comprar" prefHeight="55.0" prefWidth="117.0" style="-fx-background-color: #e55137;" text="comprar" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnComprar" layoutX="440.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#comprar" prefHeight="55.0" prefWidth="400.0" style="-fx-background-color: #e55137;" text="comprar" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="14.0" />
          </font>
@@ -18,11 +18,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ScrollPane layoutX="250.0" layoutY="50.0" prefHeight="442.0" prefWidth="780.0">
+      <ScrollPane layoutX="250.0" layoutY="50.0" prefHeight="442.0" prefWidth="780.0" style="-fx-background-color: #1d334a;">
          <content>
-            <TextFlow fx:id="txtListado" lineSpacing="2.0" prefHeight="439.0" prefWidth="778.0" textAlignment="CENTER">
+            <TextFlow fx:id="txtListado" lineSpacing="2.0" prefHeight="439.0" prefWidth="778.0" style="-fx-background-color: #1d334a;" textAlignment="CENTER">
                <children>
-                  <Text fx:id="txtCarrito" fill="#1d334a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="83.0">
+                  <Text fx:id="txtCarrito" fill="#f6f6f6" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="83.0">
                      <font>
                         <Font name="Malgun Gothic" size="22.0" />
                      </font>
