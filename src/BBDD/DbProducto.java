@@ -135,28 +135,6 @@ public class DbProducto {
 				Billete aux = (Billete) p;
 				insertBillete(aux);
 			}
-		/*	else {
-				try {
-					String sql= "insert into producto values(? , ?)";
-					pst = connection.prepareStatement(sql);
-					pst.setString(1, p.getIdProducto());
-					if(p instanceof Billete)
-						pst.setDouble(2, p.getImporteProducto());
-					else
-						pst.setDouble(2, p.getImporteProducto());
-					pst.executeUpdate();
-					total += p.getImporteProducto();
-				} catch (SQLException e) {
-					e.printStackTrace();
-
-				} finally {
-					try {
-						pst.close();
-					} catch (SQLException e){
-						e.printStackTrace();
-					}
-				}
-			}	*/
 		}
 
 		//Se le crea una reserva al cliente conectado
@@ -186,21 +164,22 @@ public class DbProducto {
 
 			try {
 
-				String sql= "insert into compra values(? , ? , ? , ?, ?, ?, ?)";
+				String sql= "insert into compra values(? , ? , ? , ? , ? , ? , ?)";
 				pst = connection.prepareStatement(sql);
 				pst.setString(1, compra_generateId());
 				pst.setString(2, id_res);
 				pst.setString(3, Db.getUserConnected().getUsername());
 				pst.setString(4, carrito.get(i).getIdProducto());
 				pst.setDouble(5, carrito.get(i).getImporteProducto());
-				pst.setDate(6, Date.valueOf(carrito.get(i).getIncio())); //HE METIDO ESTO PARA LAS FECHAS DE INICIO Y FIN
-				if(carrito.get(i).getFin()!=null) {
+				pst.setDate(6, Date.valueOf(carrito.get(i).getIncio()));
+				if(carrito.get(i).getFin()!=null) 
 					pst.setDate(7, Date.valueOf(carrito.get(i).getFin()));
-				}
+				else
+					pst.setDate(7, null);
+				
 				pst.executeUpdate(); 
 
 			} catch (SQLException e) {
-				if(carrito.get(i).getFin()!=null) //??? waltrapada mug maxima xD
 					e.printStackTrace();
 
 			} finally {
