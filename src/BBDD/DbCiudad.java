@@ -97,9 +97,9 @@ public class DbCiudad {
 		try {
 			st = connection.createStatement();
 			rs = st.executeQuery("select distinct nom_ciu from alojamiento natural join ciudad");
-			while(rs.next())
+			while(rs.next()) {
 				lista.add(rs.getString("nom_ciu"));
-
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -115,9 +115,9 @@ public class DbCiudad {
 		try {
 			st = connection.createStatement();
 			rs = st.executeQuery("select distinct nom_ciu from experiencia natural join ciudad");
-			while(rs.next())
+			while(rs.next()) {
 				lista.add(rs.getString("nom_ciu"));
-
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

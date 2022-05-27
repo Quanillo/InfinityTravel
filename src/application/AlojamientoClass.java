@@ -32,6 +32,7 @@ public class AlojamientoClass {
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtPrecioBase;
+	@FXML private Text txtNombre;
 	@FXML private ComboBox<String> cbCiudad;
 	@FXML private ComboBox<Alojamiento> cbAlojamientos;
 	@FXML private DatePicker dpEntrada;
@@ -67,33 +68,21 @@ public class AlojamientoClass {
 	@FXML
 	public void eventActiongetPrecios (ActionEvent event) {
 		Object evt=event.getSource();
-		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida)){// && checkCamposVacios()
+		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida)&& checkCamposVacios()){
 			//txtPrecio.setText("0");txtPrecioBase.setText("0");
 			setTextPrecio(getNumNoches());
 			System.out.println(getNumNoches());
 		}
 	}
 
-	@FXML
-	public void eventActionSetAlojamiento(ActionEvent event) {
-		if(cbAlojamientos.getValue()!=null) {
-			alojamientoSeleccionado=cbAlojamientos.getValue();
-			setImagen();
-		}
-	}
-	
 	public boolean checkCamposVacios() {
-		if(cbCiudad.getValue()!=null && cbAlojamientos.getValue()!=null && dpEntrada.getValue()!=null && dpSalida.getValue()!=null ) //&& numNoches>=1 
+		if(cbCiudad.getValue()!=null && cbAlojamientos.getValue()!=null && dpEntrada.getValue()!=null && dpSalida.getValue()!=null && getNumNoches()>=1 ) 
 			return true;
 		else 
 			return false;
 	}
-	
 
-	
 	//--------------------- Getters and setters  ---------------------------
-	
-
 	
 	public int getNumNoches() { 
 		int noches = 0;
@@ -138,8 +127,11 @@ public class AlojamientoClass {
 	}
 	
 	public void setAlojamientoSeleccionado (ActionEvent event) {
-		this.alojamientoSeleccionado=cbAlojamientos.getValue();
-		setImagen();
+		if(cbAlojamientos.getValue()!=null) {
+			this.alojamientoSeleccionado=cbAlojamientos.getValue();
+			setImagen();
+			txtNombre.setText(alojamientoSeleccionado.getNombre());
+		}
 	}
 	
 	//--------------  SET COMBOBOXES  ------------------
@@ -153,56 +145,15 @@ public class AlojamientoClass {
 		cbCiudad.setItems(list);
 	}
 	
-	/*public void setComboBoxAlojamiento2() {
+	public void setComboBoxAlojamiento() {
 		if(cbCiudad.getValue()!=null) {
 			String ciudad=cbCiudad.getValue();
 			ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-			cbAlojamientos.valueProperty().set(null);
-			cbAlojamientos.getItems().addAll(listaAlojamientos);
-			
-			cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
-				@Override
-				public String toString(Alojamiento alojamiento) {
-					if(alojamiento!=null)
-						return alojamiento.getNombre();
-					else
-						return null;
-				}
-	
-				@Override
-				public Alojamiento fromString(String userId) {
-					return null;
-				}
-			}); 
-		}
-	}	*/	
-	
-	
-	public void getchoice () {
-		cbAlojamientos.valueProperty().addListener((listaAlojamientos) -> {
-            
-        });
-	}
-	
-	public void clear () {
-		txtPrecio.setText("0");
-		txtPrecioBase.setText("0");
-		cbCiudad.setValue(null);
-		cbAlojamientos.setValue(null);
-		dpEntrada.setValue(null);
-		dpSalida.setValue(null);
-	}
-	
-	
-	public void setComboBoxAlojamiento() {
-		String ciudad=cbCiudad.getValue();
-		ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-		for(int i=0; i<listaAlojamientos.size(); i++) {
-			System.out.println(listaAlojamientos.get(i).getNombre());
-		}
+			for(int i=0; i<listaAlojamientos.size(); i++) {
+				System.out.println(listaAlojamientos.get(i).getNombre());
+			}
 			cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
 			cbAlojamientos.getSelectionModel().selectFirst();
-			
 			cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
 				public ListCell<Alojamiento> call(ListView<Alojamiento> l){
 					return new ListCell<Alojamiento>(){
@@ -218,8 +169,6 @@ public class AlojamientoClass {
 					} ;
 				}
 			});
-			
-			//selected value showed in combo box
 			cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
 				@Override
 				public String toString(Alojamiento user) {
@@ -229,13 +178,25 @@ public class AlojamientoClass {
 						return user.getNombre();
 					}
 				}
-
 				@Override
 				public Alojamiento fromString(String userId) {
 					return null;
 				}
 			});	
-		}  
+		}
+	}
+	
+	//--------------  Limpieza  ------------------
+	
+	public void clear () {
+		txtPrecio.setText("0");
+		txtPrecioBase.setText("0");
+		cbCiudad.setValue(null);
+		cbAlojamientos.setValue(null);
+		dpEntrada.setValue(null);
+		dpSalida.setValue(null);
+	}
+	
 	
 }
 
@@ -285,3 +246,36 @@ for(int i=0; i<listaAlojamientos.size(); i++) {
 	});	
 }  */
 
+
+/*public void setComboBoxAlojamiento2() {
+if(cbCiudad.getValue()!=null) {
+	String ciudad=cbCiudad.getValue();
+	ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
+	cbAlojamientos.valueProperty().set(null);
+	cbAlojamientos.getItems().addAll(listaAlojamientos);
+	
+	cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
+		@Override
+		public String toString(Alojamiento alojamiento) {
+			if(alojamiento!=null)
+				return alojamiento.getNombre();
+			else
+				return null;
+		}
+
+		@Override
+		public Alojamiento fromString(String userId) {
+			return null;
+		}
+	}); 
+}
+}	*/	
+
+
+/*@FXML
+public void eventActionSetAlojamiento(ActionEvent event) {
+	if(cbAlojamientos.getValue()!=null) {
+		alojamientoSeleccionado=cbAlojamientos.getValue();
+		setImagen();
+	}
+}*/

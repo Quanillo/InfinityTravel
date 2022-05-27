@@ -1,20 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExperienciasClass">
    <children>
-      <Text fx:id="hola" layoutX="560.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experiencias">
+      <ComboBox fx:id="cbCiudad" layoutX="60.0" layoutY="72.0" onMouseClicked="#setComboBoxCiudad" prefHeight="50.0" prefWidth="400.0" />
+      <DatePicker fx:id="dpFecha" layoutX="60.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="400.0" />
+      <Text fill="#1d334a" layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
          <font>
-            <Font size="26.0" />
+            <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="hola1" layoutX="533.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work in progress...">
+      <Text fill="#1d334a" layoutX="60.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experiencia">
          <font>
-            <Font size="26.0" />
+            <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
+      <Text fill="#1d334a" layoutX="60.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas">
+         <font>
+            <Font name="Malgun Gothic" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnAddCarrito" layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#reservaExperiencia" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+         <font>
+            <Font name="Malgun Gothic Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="285.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
+         <font>
+            <Font name="Malgun Gothic" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="#1d334a" layoutX="439.0" layoutY="526.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="20.13671875">
+         <font>
+            <Font name="Malgun Gothic" size="32.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setExperienciaSeleccionada" onMouseClicked="#setComboBoxExperiencia" prefHeight="50.0" prefWidth="400.0" />
+      <AnchorPane layoutX="470.0" layoutY="99.0" prefHeight="435.0" prefWidth="560.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="373.0" fitWidth="541.0" layoutX="6.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="txtNombre" layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="547.2734375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

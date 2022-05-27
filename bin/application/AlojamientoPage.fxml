@@ -58,9 +58,14 @@
          </font>
       </Text>
       <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setAlojamientoSeleccionado" onMouseClicked="#setComboBoxAlojamiento" prefHeight="50.0" prefWidth="400.0" />
-      <AnchorPane layoutX="568.0" layoutY="88.0" prefHeight="435.0" prefWidth="634.0">
+      <AnchorPane layoutX="470.0" layoutY="99.0" prefHeight="435.0" prefWidth="560.0">
          <children>
-            <ImageView fx:id="imageView" fitHeight="412.0" fitWidth="615.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="373.0" fitWidth="541.0" layoutX="6.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="txtNombre" layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="547.2734375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
