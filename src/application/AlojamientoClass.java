@@ -145,14 +145,55 @@ public class AlojamientoClass {
 	//--------------  SET COMBOBOXES  ------------------
 
 	public void setComboBoxCiudad() {
-		ArrayList<String> listaCiudades = dbc.listarCiudades();
+		ArrayList<String> listaCiudades = dbc.listarCiudadesConAlojamiento();
 		ObservableList<String> list=FXCollections.observableArrayList();
 		for(int i=0; i<listaCiudades.size();i++) {
 			list.add(listaCiudades.get(i));
 		}
 		cbCiudad.setItems(list);
 	}
-
+	
+	/*public void setComboBoxAlojamiento2() {
+		if(cbCiudad.getValue()!=null) {
+			String ciudad=cbCiudad.getValue();
+			ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
+			cbAlojamientos.valueProperty().set(null);
+			cbAlojamientos.getItems().addAll(listaAlojamientos);
+			
+			cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
+				@Override
+				public String toString(Alojamiento alojamiento) {
+					if(alojamiento!=null)
+						return alojamiento.getNombre();
+					else
+						return null;
+				}
+	
+				@Override
+				public Alojamiento fromString(String userId) {
+					return null;
+				}
+			}); 
+		}
+	}	*/	
+	
+	
+	public void getchoice () {
+		cbAlojamientos.valueProperty().addListener((listaAlojamientos) -> {
+            
+        });
+	}
+	
+	public void clear () {
+		txtPrecio.setText("0");
+		txtPrecioBase.setText("0");
+		cbCiudad.setValue(null);
+		cbAlojamientos.setValue(null);
+		dpEntrada.setValue(null);
+		dpSalida.setValue(null);
+	}
+	
+	
 	public void setComboBoxAlojamiento() {
 		String ciudad=cbCiudad.getValue();
 		ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
@@ -161,7 +202,7 @@ public class AlojamientoClass {
 		}
 			cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
 			cbAlojamientos.getSelectionModel().selectFirst();
-			// list of values showed in combo box drop down
+			
 			cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
 				public ListCell<Alojamiento> call(ListView<Alojamiento> l){
 					return new ListCell<Alojamiento>(){
@@ -194,48 +235,53 @@ public class AlojamientoClass {
 					return null;
 				}
 			});	
-	}
-	
-/*	public void setComboBoxAlojamiento2() {
-		if(cbCiudad.getValue()!=null) {
-			cbAlojamientos.getSelectionModel().clearSelection();
-			String ciudad=cbCiudad.getValue();
-			ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-			for(int i=0; i<listaAlojamientos.size(); i++) {
-				System.out.println(listaAlojamientos.get(i).getNombre());
-			}
-			cbAlojamientos.getItems().addAll(listaAlojamientos);
-			
-			cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
-				@Override
-				public String toString(Alojamiento alojamiento) {
-					return alojamiento.getNombre();
-				}
-	
-				@Override
-				public Alojamiento fromString(String userId) {
-					return null;
-				}
-			}); 
-		}	
-	}		*/
-	
-	
-	public void getchoice () {
-		cbAlojamientos.valueProperty().addListener((listaAlojamientos) -> {
-            
-        });
-	}
-	
-	public void clear () {
-		txtPrecio.setText("0");
-		txtPrecioBase.setText("0");
-		cbCiudad.setValue(null);
-		cbAlojamientos.setValue(null);
-		dpEntrada.setValue(null);
-		dpSalida.setValue(null);
-	}
+		}  
 	
 }
 
+//--------------- CEMENTERIO DE CODIGO PERRO -------------------
+
+
+/*public void setComboBoxAlojamiento2() {
+String ciudad=cbCiudad.getValue();
+ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
+for(int i=0; i<listaAlojamientos.size(); i++) {
+	System.out.println(listaAlojamientos.get(i).getNombre());
+}
+	cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
+	cbAlojamientos.getSelectionModel().selectFirst();
+	// list of values showed in combo box drop down
+	cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
+		public ListCell<Alojamiento> call(ListView<Alojamiento> l){
+			return new ListCell<Alojamiento>(){
+				@Override
+				protected void updateItem(Alojamiento item, boolean empty) {
+					super.updateItem(item, empty);
+					if (item == null || empty) {
+						setGraphic(null);
+					} else {
+						setText(item.getNombre());
+					}
+				}
+			} ;
+		}
+	});
+	
+	//selected value showed in combo box
+	cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
+		@Override
+		public String toString(Alojamiento user) {
+			if (user == null){
+				return null;
+			} else {
+				return user.getNombre();
+			}
+		}
+
+		@Override
+		public Alojamiento fromString(String userId) {
+			return null;
+		}
+	});	
+}  */
 

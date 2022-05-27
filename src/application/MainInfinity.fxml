@@ -100,53 +100,51 @@
                         <Font name="Malgun Gothic" size="32.0" />
                      </font>
                   </Text>
-               </children></AnchorPane>
-         </center>
-         <right>
-            <AnchorPane prefHeight="600.0" prefWidth="250.0" visible="false" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane fx:id="apCarrito" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;">
+                  <AnchorPane layoutX="1030.0" layoutY="-2.0" prefHeight="600.0" prefWidth="250.0">
                      <children>
-                        <AnchorPane layoutX="11.0" layoutY="8.0" prefHeight="532.0" prefWidth="230.0" style="-fx-background-color: white;">
+                        <AnchorPane fx:id="apCarrito" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" visible="false">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="-5.0" prefHeight="532.0" prefWidth="239.0">
-                                 <content>
-                                    <Text fx:id="txtCarrito" fill="#1d334a" layoutX="30.0" onMouseDragOver="#setTextCarrito" onMouseDragReleased="#setTextCarrito" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.0">
+                              <AnchorPane layoutX="11.0" layoutY="8.0" prefHeight="532.0" prefWidth="230.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <ScrollPane hbarPolicy="NEVER" layoutX="-5.0" prefHeight="532.0" prefWidth="239.0">
+                                       <content>
+                                          <Text fx:id="txtCarrito" fill="#1d334a" layoutX="30.0" onMouseDragOver="#setTextCarrito" onMouseDragReleased="#setTextCarrito" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="238.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="6.0" layoutY="540.0" prefHeight="55.0" prefWidth="212.0" style="-fx-background-color: WHITE;">
+                                 <children>
+                                    <Button fx:id="btnVerCarrito" layoutX="157.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#carritoLoad" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: #e55137;" text="ver varrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Malgun Gothic Bold" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Text fx:id="txtPrecioFinal" fill="#1d334a" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="113.0">
+                                       <font>
+                                          <Font name="Malgun Gothic" size="24.0" />
                                        </font>
                                     </Text>
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="6.0" layoutY="540.0" prefHeight="55.0" prefWidth="212.0" style="-fx-background-color: WHITE;">
-                           <children>
-                              <Button fx:id="btnVerCarrito" layoutX="157.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#carritoLoad" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: #e55137;" text="ver varrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
-                                 <font>
-                                    <Font name="Malgun Gothic Bold" size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Text fx:id="txtPrecioFinal" fill="#1d334a" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="113.0">
-                                 <font>
-                                    <Font name="Malgun Gothic" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text fill="#1d334a" layoutX="131.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
-                                 <font>
-                                    <Font name="Malgun Gothic" size="24.0" />
-                                 </font>
-                              </Text>
+                                    <Text fill="#1d334a" layoutX="131.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+                                       <font>
+                                          <Font name="Malgun Gothic" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-               </children>
-            </AnchorPane>
-         </right>
+               </children></AnchorPane>
+         </center>
       </BorderPane>
       <Pane prefHeight="30.0" prefWidth="1280.0" style="-fx-background-color: #5dc1b9;">
          <children>

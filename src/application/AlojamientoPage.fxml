@@ -29,7 +29,6 @@
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <ImageView fx:id="imageView" fitHeight="454.0" fitWidth="579.0" layoutX="496.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="btnAddCarrito" layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#reservaAlojamiento" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
@@ -59,5 +58,10 @@
          </font>
       </Text>
       <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setAlojamientoSeleccionado" onMouseClicked="#setComboBoxAlojamiento" prefHeight="50.0" prefWidth="400.0" />
+      <AnchorPane layoutX="568.0" layoutY="88.0" prefHeight="435.0" prefWidth="634.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="412.0" fitWidth="615.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
