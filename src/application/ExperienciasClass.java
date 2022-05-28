@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
@@ -15,11 +17,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,7 +32,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
-public class ExperienciasClass extends MainInfinityClass{
+public class ExperienciasClass extends MainInfinityClass implements Initializable{
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtNombre;
@@ -202,6 +207,38 @@ public class ExperienciasClass extends MainInfinityClass{
 		}
 	}
 	
+	//Setero del calendario entrada
+	public void setDatePickerEntrada () {
+		LocalDate hoy=LocalDate.now();
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                hoy.plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                hoy, item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpFecha.setShowWeekNumbers(false);
+	    dpFecha.setDayCellFactory(dayCellFactory);
+	    dpFecha.setValue(hoy.plusDays(1));
+	}
+	
 	//--------------  Limiar campos  ------------------
 	
 	public void clear () {
@@ -211,4 +248,11 @@ public class ExperienciasClass extends MainInfinityClass{
 		dpFecha.setValue(null);
 	}
 	
+
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setDatePickerEntrada();
+		
+	}
 }

@@ -3,9 +3,11 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
@@ -16,11 +18,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,7 +33,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
-public class AlojamientoClass {
+public class AlojamientoClass implements Initializable{
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtPrecioBase;
@@ -70,6 +75,7 @@ public class AlojamientoClass {
 		Object evt=event.getSource();
 		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida)&& checkCamposVacios()){
 			//txtPrecio.setText("0");txtPrecioBase.setText("0");
+			setDatePickerSalida();
 			setTextPrecio(getNumNoches());
 			System.out.println(getNumNoches());
 		}
@@ -183,6 +189,70 @@ public class AlojamientoClass {
 		}
 	}
 	
+
+	//Setero del calendario entrada
+	public void setDatePickerEntrada () {
+		LocalDate hoy=LocalDate.now();
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                hoy.plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                hoy, item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpEntrada.setShowWeekNumbers(false);
+	    dpEntrada.setDayCellFactory(dayCellFactory);
+	    dpEntrada.setValue(hoy.plusDays(1));
+	}
+	//seteo del calendario salida
+	public void setDatePickerSalida () {
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                dpEntrada.getValue().plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                dpEntrada.getValue(), item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpSalida.setShowWeekNumbers(false);
+	    dpSalida.setDayCellFactory(dayCellFactory);
+	    dpSalida.setValue(dpEntrada.getValue().plusDays(1));
+	}
+	
+    
 	//--------------  Limpieza  ------------------
 	
 	public void clear () {
@@ -193,86 +263,13 @@ public class AlojamientoClass {
 		dpEntrada.setValue(null);
 		dpSalida.setValue(null);
 	}
-	
-	
-}
 
-//--------------- CEMENTERIO DE CODIGO PERRO -------------------
-
-
-/*public void setComboBoxAlojamiento2() {
-String ciudad=cbCiudad.getValue();
-ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-for(int i=0; i<listaAlojamientos.size(); i++) {
-	System.out.println(listaAlojamientos.get(i).getNombre());
-}
-	cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
-	cbAlojamientos.getSelectionModel().selectFirst();
-	// list of values showed in combo box drop down
-	cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
-		public ListCell<Alojamiento> call(ListView<Alojamiento> l){
-			return new ListCell<Alojamiento>(){
-				@Override
-				protected void updateItem(Alojamiento item, boolean empty) {
-					super.updateItem(item, empty);
-					if (item == null || empty) {
-						setGraphic(null);
-					} else {
-						setText(item.getNombre());
-					}
-				}
-			} ;
-		}
-	});
-	
-	//selected value showed in combo box
-	cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
-		@Override
-		public String toString(Alojamiento user) {
-			if (user == null){
-				return null;
-			} else {
-				return user.getNombre();
-			}
-		}
-
-		@Override
-		public Alojamiento fromString(String userId) {
-			return null;
-		}
-	});	
-}  */
-
-
-/*public void setComboBoxAlojamiento2() {
-if(cbCiudad.getValue()!=null) {
-	String ciudad=cbCiudad.getValue();
-	ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-	cbAlojamientos.valueProperty().set(null);
-	cbAlojamientos.getItems().addAll(listaAlojamientos);
-	
-	cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
-		@Override
-		public String toString(Alojamiento alojamiento) {
-			if(alojamiento!=null)
-				return alojamiento.getNombre();
-			else
-				return null;
-		}
-
-		@Override
-		public Alojamiento fromString(String userId) {
-			return null;
-		}
-	}); 
-}
-}	*/	
-
-
-/*@FXML
-public void eventActionSetAlojamiento(ActionEvent event) {
-	if(cbAlojamientos.getValue()!=null) {
-		alojamientoSeleccionado=cbAlojamientos.getValue();
-		setImagen();
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setDatePickerEntrada();
+		
 	}
-}*/
+	
+}
+
+

@@ -1,7 +1,9 @@
 package application;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ResourceBundle;
 
 import BBDD.Db;
 import BBDD.DbProducto;
@@ -9,13 +11,17 @@ import Code.Cliente;
 import Code.Seguro;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Callback;
 
-public class SegurosClass extends MainInfinityClass{
+public class SegurosClass extends MainInfinityClass implements Initializable{
 	@FXML private DatePicker dpInicio;
 	@FXML private DatePicker dpFin;
 	@FXML private Button btnEco;
@@ -71,6 +77,7 @@ public class SegurosClass extends MainInfinityClass{
 			precio=getPrecio();
 		}
 		else if(evt.equals(dpInicio) || evt.equals(dpFin)) {
+			setDatePickerFin();
 			precio=getPrecio();
 		}
 		txtPrecio.setText(""+precio);
@@ -104,6 +111,68 @@ public class SegurosClass extends MainInfinityClass{
 			return false;
 	}
 
+	//Setero del calendario entrada
+	public void setDatePickerInicio () {
+		LocalDate hoy=LocalDate.now();
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                hoy.plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                hoy, item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpInicio.setShowWeekNumbers(false);
+	    dpInicio.setDayCellFactory(dayCellFactory);
+	    dpInicio.setValue(hoy.plusDays(1));
+	}
+	//seteo del calendario salida
+	public void setDatePickerFin() {
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                dpInicio.getValue().plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                dpInicio.getValue(), item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpFin.setShowWeekNumbers(false);
+	    dpFin.setDayCellFactory(dayCellFactory);
+	    dpFin.setValue(dpInicio.getValue().plusDays(1));
+	}
+	
 	public void clear() {
 		txtPrecio.setText("0");
 		txtSeguro.setText(null);
@@ -112,4 +181,11 @@ public class SegurosClass extends MainInfinityClass{
 		dpFin.setValue(null);
 	}
 	
+
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setDatePickerInicio();
+		
+	}
 }

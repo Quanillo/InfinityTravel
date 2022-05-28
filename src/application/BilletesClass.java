@@ -1,8 +1,11 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import BBDD.Db;
 import BBDD.DbCiudad;
@@ -13,18 +16,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 
 
-public class BilletesClass extends MainInfinityClass{
+public class BilletesClass extends MainInfinityClass implements Initializable{
 	
 	@FXML private Text txtNumBilletes;
 	@FXML private Text txtPrecio;
@@ -110,6 +117,11 @@ public class BilletesClass extends MainInfinityClass{
 			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
 			txtPrecio.setText("0.00");
 			setTextPrecio();
+			try {
+				setDatePickerVuelta();
+			}catch(NullPointerException e) {
+				
+			}
 		}
 		precioBase=precio;
 	}
@@ -207,6 +219,70 @@ public class BilletesClass extends MainInfinityClass{
 		txtPrecio.setText(""+precio);
 	}
 	
+
+	//Setero del calendario entrada
+	public void setDatePickerIda () {
+		LocalDate hoy=LocalDate.now();
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                hoy.plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                hoy, item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpIda.setShowWeekNumbers(false);
+	    dpIda.setDayCellFactory(dayCellFactory);
+	    dpIda.setValue(hoy.plusDays(1));
+	}
+	//seteo del calendario salida
+	public void setDatePickerVuelta () {
+	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	        new Callback<DatePicker, DateCell>() {
+	            @Override
+	            public DateCell call(final DatePicker datePicker) {
+	                return new DateCell() {
+	                    @Override
+	                    public void updateItem(LocalDate item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (item.isBefore(
+	                                dpIda.getValue().plusDays(1))
+	                            ) {
+	                                setDisable(true);
+	                                setStyle("-fx-background-color: #ffc0cb;");
+	                        }
+	                        long p = ChronoUnit.DAYS.between(
+	                                dpIda.getValue(), item
+	                        );
+	                        setTooltip(new Tooltip(
+	                            "You're about to stay for " + p + " days")
+	                        );
+	                }
+	            };
+	        }
+	    };
+	    dpVuelta.setShowWeekNumbers(false);
+	    dpVuelta.setDayCellFactory(dayCellFactory);
+	    dpVuelta.setValue(dpIda.getValue().plusDays(1));
+	}
+	
+	
 	////////////////////////LOAD PAGES////////////////////////
 	
 	public void cargaIdaYvuelta(MouseEvent event) {
@@ -238,5 +314,13 @@ public class BilletesClass extends MainInfinityClass{
 		if(idayvueltaboolean)
 			dpVuelta.setValue(null);
 	}
+	
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		setDatePickerIda();
+		
+	}
+	
 
 }
