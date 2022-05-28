@@ -68,7 +68,6 @@ public class BilletesClass extends MainInfinityClass{
 				for(int i=0; i<numBilletes ;i++) {//bucle que genera billetes en funcion del número de billetes seleccionados
 					Billete billeteIda=new Billete(origen, destino, ida); //si la vuelta no esta seleccionada solo generamos billetes de ida
 					cliente.addProducto(billeteIda);
-					//añadir a la bbdd los billetes cuando la reserva se haya confirmado en el carrito
 				}
 			}
 		}
@@ -189,7 +188,7 @@ public class BilletesClass extends MainInfinityClass{
 		double dPrecio = 0;
 			if(checkCamposVacios()) {
 				for(int i=0; i<getNumBilletes();i++) {
-					dPrecio =precioBase* getNumBilletes() ;
+					dPrecio = precioBase * getNumBilletes() ;
 				}
 				if(idayvueltaboolean) {
 					setPrecioBilletes(dPrecio);

@@ -48,5 +48,10 @@ public class Experiencia extends Producto {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		 return String.valueOf(this.getClass().getSimpleName())+"\n"+ nombre +"\n"+ super.getIncio()+ "\n"+super.getImporteProducto()+" €\n";
+	}
 	
 }

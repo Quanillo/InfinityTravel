@@ -50,19 +50,24 @@ public class CarritoClass extends  MainInfinityClass implements Initializable{
 
 	public void comprar(MouseEvent event) {
 		Cliente cliente=Db.getUserConnected();
-		ArrayList<Producto> listaProductos =cliente.getCarrito();
-		String carrito="Reserva a nombre de: " + cliente.getNombre() +" " + cliente.getApellidos()+ "\n\n"
-				+ "Detalles de la reserva: \n\n";
-		double total = 0;
-		for(int i=0; i<listaProductos.size(); i++) {
-			carrito+=listaProductos.get(i).toString();
-			total+=listaProductos.get(i).getImporteProducto();
+		if(cliente.isClienteValidado()) {
+			ArrayList<Producto> listaProductos =cliente.getCarrito();
+			String carrito="Reserva a nombre de: " + cliente.getNombre() +" " + cliente.getApellidos()+ "\n\n"
+					+ "Detalles de la reserva: \n\n";
+			double total = 0;
+			for(int i=0; i<listaProductos.size(); i++) {
+				carrito+=listaProductos.get(i).toString();
+				total+=listaProductos.get(i).getImporteProducto();
+			}
+			carrito+="\n\nImporte final: \n" + Math.round(total*100.0)/100.0 +"€";
+			dbp.checkout(listaProductos);
+			Db.getUserConnected().getCarrito().removeAll(listaProductos);
+			enviarMail(cliente.getCorreo(), "Factura", carrito);
+			finish();
 		}
-		carrito+="\n\nImporte final: \n" + Math.round(total*100.0)/100.0 +"€";
-		dbp.checkout(listaProductos);
-		Db.getUserConnected().getCarrito().removeAll(listaProductos);
-		enviarMail(cliente.getCorreo(), "Factura", carrito);
-		finish();
+		else {
+			txtCarrito.setText("Cliente no válidado. Dirijase a la zona de Usuario para completar la información necesaria para realizar la factura.");
+		}
 	}
 
 	

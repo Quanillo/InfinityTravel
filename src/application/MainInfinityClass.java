@@ -23,6 +23,7 @@ public class MainInfinityClass {
 	@FXML private Pane p;
 	@FXML private BorderPane bp;
 	@FXML private AnchorPane ap;
+	@FXML private AnchorPane apHome;
 	@FXML private Button packs;
 	@FXML private Button Billetes;
 	@FXML private Button Alojamiento;
@@ -31,13 +32,19 @@ public class MainInfinityClass {
 	@FXML private Button Seguros;
 	@FXML private Button exit;
 	@FXML private Button User;
+	@FXML private Button Home;
 	//------Atributos del carrito------
 	@FXML private AnchorPane apCarrito;
 	@FXML private Button btnVerCarrito;
 	@FXML private Text txtPrecioFinal;
 	@FXML private Text txtCarrito;
 	@FXML private TextFlow txtCarritoFlow;
+	@FXML private Pane pNumProductos;
+	@FXML private Text txtNumProductos;
 	private long c=1; //contador para mostrar y esconder el carrito
+	private int numProdCarrito=0;
+	
+	//------Metodos de carga de páginas-------
 	
 	@FXML 
 	private void packsLoad(MouseEvent event) {
@@ -79,6 +86,11 @@ public class MainInfinityClass {
 		loadPage("UserPage");
 	}
 	
+	@FXML 
+	private void homeLoad(MouseEvent event) {
+		loadPage("HomePage");
+	}
+	
 	@FXML
 	private void close(MouseEvent event) {
 		Platform.exit();
@@ -113,7 +125,7 @@ public class MainInfinityClass {
 
 	//metodo que muestra los productos que hay en el carrito en el campo de texto resrvado
 	public void setTextCarrito() {
-		//Cliente cliente=db.selectCliente(Db.getUsername()); 
+		
 		Cliente cliente=Db.getUserConnected();
 		ArrayList<Producto> listaProductos =cliente.getCarrito();
 		String carrito="";
@@ -123,8 +135,13 @@ public class MainInfinityClass {
 		else {
 			for(int i=0; i<listaProductos.size(); i++) {
 				carrito+=listaProductos.get(i).toString();
+				numProdCarrito++;
 				System.out.println(listaProductos.get(i).toString());
 			}
+		}
+		if(numProdCarrito>=1) {
+			txtNumProductos.setText(""+numProdCarrito);
+			pNumProductos.setVisible(true);
 		}
 		txtCarrito.setText(carrito);
 		setTextPrecio();
@@ -139,6 +156,9 @@ public class MainInfinityClass {
 	public void limpiaCarrito() {
 		txtPrecioFinal.setText(null);
 		txtCarrito.setText(null);
+		numProdCarrito=0;
+		txtNumProductos.setText(null);
+		pNumProductos.setVisible(false);
 	}
 	
 }

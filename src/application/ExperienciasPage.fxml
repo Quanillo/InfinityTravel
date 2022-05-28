@@ -46,7 +46,7 @@
             <Font name="Malgun Gothic" size="32.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setExperienciaSeleccionada" onMouseClicked="#setComboBoxExperiencia" prefHeight="50.0" prefWidth="400.0" />
+      <ComboBox fx:id="cbExperiencias" layoutX="60.0" layoutY="216.0" onAction="#setExperienciaSeleccionada" onMouseClicked="#setComboBoxExperiencia" prefHeight="50.0" prefWidth="400.0" />
       <AnchorPane layoutX="470.0" layoutY="99.0" prefHeight="435.0" prefWidth="560.0">
          <children>
             <ImageView fx:id="imageView" fitHeight="373.0" fitWidth="541.0" layoutX="6.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />

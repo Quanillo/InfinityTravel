@@ -127,11 +127,8 @@ public class ExperienciasClass extends MainInfinityClass{
 		if(cbCiudad.getValue()!=null) {
 			String ciudad=cbCiudad.getValue();
 			ArrayList<Experiencia> listaExperiencias=dbp.getExperiencias(ciudad);
-			for(int i=0; i<listaExperiencias.size(); i++) {
-				System.out.println(listaExperiencias.get(i).getNombre());
-			}
 			cbExperiencias.setItems(FXCollections.observableList(listaExperiencias));
-			cbExperiencias.getSelectionModel().selectFirst();
+			//cbExperiencias.getSelectionModel().selectFirst();
 			cbExperiencias.setCellFactory(new Callback<ListView<Experiencia>,ListCell<Experiencia>>(){
 				public ListCell<Experiencia> call(ListView<Experiencia> l){
 					return new ListCell<Experiencia>(){
@@ -158,6 +155,47 @@ public class ExperienciasClass extends MainInfinityClass{
 				}
 				@Override
 				public Experiencia fromString(String userId) {
+					return null;
+				}
+			});	
+		}
+	}
+	
+	
+	
+	
+	public void setComboBoxExperienciaP() {
+		if(cbCiudad.getValue()!=null) {
+			String ciudad=cbCiudad.getValue();
+			ArrayList<Experiencia> listaExperiencias=dbp.getExperiencias(ciudad);
+			cbExperiencias.setItems(FXCollections.observableList(listaExperiencias));
+			//cbExperiencias.getSelectionModel().selectFirst();
+			cbExperiencias.setCellFactory(new Callback<ListView<Experiencia>,ListCell<Experiencia>>(){
+				public ListCell<Experiencia> call(ListView<Experiencia> l){
+					return new ListCell<Experiencia>(){
+						@Override
+						protected void updateItem(Experiencia item, boolean empty) {
+							super.updateItem(item, empty);
+							if (item == null || empty) {
+								setGraphic(null);
+							} else {
+								setText(item.getNombre());
+							}
+						}
+					} ;
+				}
+			});
+			cbExperiencias.setConverter(new StringConverter<Experiencia>() {
+				@Override
+				public String toString(Experiencia exp) {
+					if (exp == null){
+						return null;
+					} else {
+						return exp.getNombre();
+					}
+				}
+				@Override
+				public Experiencia fromString(String exp) {
 					return null;
 				}
 			});	

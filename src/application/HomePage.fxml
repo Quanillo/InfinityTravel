@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="apHome" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="641.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/fondo.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#1d334a" layoutX="79.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">
+         <font>
+            <Font name="Malgun Gothic" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="#1d334a" layoutX="79.0" layoutY="229.0" stroke="#c4cfda" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="511.1367187499999">
+         <font>
+            <Font name="Malgun Gothic Bold" size="64.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -27,6 +27,7 @@ public class UserClass {
 			user.setTelefono(Integer.parseInt(txtTelefono.getText()));
 			user.setfNacimiento(dpNacimiento.getValue());
 			//Db.updateCliente(user);
+			user.setClienteValidado(true);
 		}
 		clear();
 	}

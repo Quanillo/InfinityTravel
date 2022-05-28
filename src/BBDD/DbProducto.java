@@ -224,7 +224,7 @@ public class DbProducto {
 
 			Experiencia aux = null;
 			st = connection.createStatement();
-			rs = st.executeQuery("select*from producto natural join producto where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
+			rs = st.executeQuery("select*from producto natural join experiencia where id_ciu = '"+ciudad.substring(0,3).toUpperCase()+"'");
 
 			while(rs.next()) {
 				aux = new Experiencia(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
@@ -257,4 +257,25 @@ public class DbProducto {
 
 		return lista;
 	}
+	
+	
+	public Seguro getSeguro (String nombre) {
+		
+		Seguro aux = null;
+		
+		try {
+			
+ 			st = connection.createStatement();
+ 			rs = st.executeQuery("select*from producto natural join seguro where upper(nom_seg) = upper('"+nombre+"')");
+
+			while(rs.next()) 
+				aux = new Seguro(rs.getString(1), rs.getDouble(2), rs.getString(3));
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return aux;
+	}
+	
 }

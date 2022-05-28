@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -17,9 +18,9 @@
    <children>
       <AnchorPane layoutY="30.0" maxHeight="122.0" maxWidth="1280.0" minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="1280.0" style="-fx-background-color: #1D334A;">
          <children>
-            <HBox layoutX="117.0" layoutY="19.0" prefHeight="63.0" prefWidth="1049.0">
+            <HBox layoutX="14.0" layoutY="21.0" prefHeight="63.0" prefWidth="1009.0">
                <children>
-                  <Button fx:id="Billetes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#billetesLoad" prefHeight="53.0" prefWidth="255.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Billetes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#billetesLoad" prefHeight="53.0" prefWidth="223.0" style="-fx-background-color: #1d334a;" text="Billetes" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -27,7 +28,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Alojamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#alojamientoLoad" prefHeight="53.0" prefWidth="317.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Alojamiento" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#alojamientoLoad" prefHeight="53.0" prefWidth="264.0" style="-fx-background-color: #1d334a;" text="Alojamiento" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -35,7 +36,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Experiencias" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#experienciasLoad" prefHeight="53.0" prefWidth="314.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Experiencias" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#experienciasLoad" prefHeight="53.0" prefWidth="279.0" style="-fx-background-color: #1d334a;" text="Experiencias" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -43,7 +44,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="Seguros" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#segurosLoad" prefHeight="53.0" prefWidth="267.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
+                  <Button fx:id="Seguros" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#segurosLoad" prefHeight="53.0" prefWidth="243.0" style="-fx-background-color: #1d334a;" text="Seguros" textAlignment="CENTER" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
@@ -53,9 +54,9 @@
                   </Button>
                </children>
             </HBox>
-            <Button layoutX="1190.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="63.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
+            <Button layoutX="1190.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#muerstraCarrito" prefHeight="58.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Button">
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/carrito.png" />
                      </image>
@@ -65,11 +66,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Line endX="100.0" layoutX="1068.0" layoutY="25.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
-            <Line endX="100.0" layoutX="15.0" layoutY="29.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
-            <Button fx:id="User" layoutX="24.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#userLoad" prefHeight="63.0" prefWidth="76.0" style="-fx-background-color: transparent;" text="Button">
+            <Line endX="100.0" layoutX="925.0" layoutY="25.0" startX="100.0" startY="40.0" stroke="#f6f6f6" strokeWidth="3.0" />
+            <Button fx:id="User" layoutX="1128.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#userLoad" prefHeight="53.0" prefWidth="60.0" style="-fx-background-color: transparent;" text="Button" translateZ="2.0">
                <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="38.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/usu.png" />
                      </image>
@@ -79,27 +79,49 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="Home" layoutX="1051.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#homeLoad" prefHeight="58.0" prefWidth="63.0" style="-fx-background-color: transparent;" text="Button">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane fx:id="pNumProductos" layoutX="1229.0" layoutY="43.0" prefHeight="31.0" prefWidth="37.0" visible="false">
+               <children>
+                  <Circle fill="#e55137" layoutX="19.0" layoutY="16.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="txtNumProductos" fill="WHITE" layoutX="4.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="30.0" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
       <BorderPane fx:id="bp" layoutY="120.0" prefHeight="600.0" prefWidth="1280.0">
          <center>
             <AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="640.0" fitWidth="1288.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/fondo.jpg" />
-                     </image>
-                  </ImageView>
-                  <Text fill="#1d334a" layoutX="288.0" layoutY="283.0" stroke="#c4cfda" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="511.1367187499999">
-                     <font>
-                        <Font name="Malgun Gothic Bold" size="64.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#1d334a" layoutX="288.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">
-                     <font>
-                        <Font name="Malgun Gothic" size="32.0" />
-                     </font>
-                  </Text>
+                  <AnchorPane fx:id="apHome" layoutY="-2.0">
+                     <children>
+                        <ImageView fitHeight="641.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/fondo.jpg" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#1d334a" layoutX="79.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">
+                           <font>
+                              <Font name="Malgun Gothic" size="32.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#1d334a" layoutX="79.0" layoutY="229.0" stroke="#c4cfda" strokeType="OUTSIDE" strokeWidth="0.0" text="Infinity Travel" wrappingWidth="511.1367187499999">
+                           <font>
+                              <Font name="Malgun Gothic Bold" size="64.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane layoutX="1030.0" layoutY="-2.0" prefHeight="600.0" prefWidth="250.0">
                      <children>
                         <AnchorPane fx:id="apCarrito" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #5dc1b9;" visible="false">

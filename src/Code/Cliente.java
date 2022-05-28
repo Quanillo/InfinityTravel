@@ -13,6 +13,7 @@ public class Cliente {
 	private String dni;
 	private LocalDate fNacimiento;
 	private int telefono;
+	private boolean clienteValidado;
 	
 	ArrayList<Producto> carrito = new ArrayList<Producto>();
 
@@ -33,6 +34,7 @@ public class Cliente {
 		this.fNacimiento = fNacimiento;
 		this.telefono = telefono;
 		this.carrito = new ArrayList<Producto>();
+		//this.clienteValidado=METODO QUE VALIDE SI EL CLIENTE HA INTRODUCIDO LOS DATOS O NO!!!!
 	}
 	//metodo que calcula el precio final del array de productos carrito.
 	public double calculaPrecioCarrito () {
@@ -121,6 +123,14 @@ public class Cliente {
 		this.carrito = carrito;
 	}
 	
+	public boolean isClienteValidado() {
+		return clienteValidado;
+	}
+
+	public void setClienteValidado(boolean clienteValidado) {
+		this.clienteValidado = clienteValidado;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [username=" + username + ", pass=" + pass + ", correo=" + correo + ", nombre=" + nombre

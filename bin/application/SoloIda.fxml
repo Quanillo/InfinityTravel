@@ -44,11 +44,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="387.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" wrappingWidth="213.0">
-         <font>
-            <Font name="Malgun Gothic" size="40.0" />
-         </font>
-      </Text>
       <Button fx:id="btnCambiaCiudad" layoutX="377.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#cambiaCiudad" prefHeight="51.0" prefWidth="66.0" style="-fx-background-color: #1D334A;" textFill="#f6f6f6">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -64,5 +59,15 @@
             </ImageView>
          </graphic>
       </Button>
+      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="386.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="150.0">
+         <font>
+            <Font name="Malgun Gothic" size="40.0" />
+         </font>
+      </Text>
+      <Text fill="#1d334a" layoutX="547.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="24.0">
+         <font>
+            <Font name="Malgun Gothic" size="40.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

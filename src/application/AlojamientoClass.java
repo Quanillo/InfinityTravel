@@ -149,11 +149,8 @@ public class AlojamientoClass {
 		if(cbCiudad.getValue()!=null) {
 			String ciudad=cbCiudad.getValue();
 			ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
-			for(int i=0; i<listaAlojamientos.size(); i++) {
-				System.out.println(listaAlojamientos.get(i).getNombre());
-			}
 			cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
-			cbAlojamientos.getSelectionModel().selectFirst();
+			//cbAlojamientos.getSelectionModel().selectFirst();
 			cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
 				public ListCell<Alojamiento> call(ListView<Alojamiento> l){
 					return new ListCell<Alojamiento>(){
@@ -171,15 +168,15 @@ public class AlojamientoClass {
 			});
 			cbAlojamientos.setConverter(new StringConverter<Alojamiento>() {
 				@Override
-				public String toString(Alojamiento user) {
-					if (user == null){
+				public String toString(Alojamiento aloj) {
+					if (aloj == null){
 						return null;
 					} else {
-						return user.getNombre();
+						return aloj.getNombre();
 					}
 				}
 				@Override
-				public Alojamiento fromString(String userId) {
+				public Alojamiento fromString(String aloj) {
 					return null;
 				}
 			});	
