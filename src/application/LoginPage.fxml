@@ -42,7 +42,7 @@
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></PasswordField>
-                  <Button fx:id="btnLogin" layoutX="40.0" layoutY="467.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #e55137;" text="Iniciar sesión" textFill="#f6f6f6">
+                  <Button fx:id="btnLogin" layoutX="40.0" layoutY="467.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #e55137;" stylesheets="@../../styles/button.css" text="Iniciar sesión" textFill="#f6f6f6">
                      <font>
                         <Font name="Malgun Gothic" size="20.0" />
                      </font>
