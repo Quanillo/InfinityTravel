@@ -5,22 +5,24 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
-import BBDD.Db;
-import BBDD.DbProducto;
-import Code.Cliente;
-import Code.Seguro;
+import code.Cliente;
+import code.Seguro;
+import db.Db;
+import db.DbProducto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Callback;
 
+/**
+ * Clase controladora de la ventana de compra de seguros.
+ */
 public class SegurosClass extends MainInfinityClass implements Initializable{
 	@FXML private DatePicker dpInicio;
 	@FXML private DatePicker dpFin;

@@ -1,11 +1,14 @@
-package Code;
+package code;
 
 import java.time.LocalDate;
 
-import BBDD.Db;
-import BBDD.DbCiudad;
+import db.Db;
+import db.DbCiudad;
 
-public class Billete extends Producto{
+/**
+ * Esta clase construye productos de tipo billete.
+ */
+public class Billete extends Producto {
 
 	private String origen;
 	private String destino;
@@ -76,5 +79,4 @@ public class Billete extends Producto{
 	public String toString() {
 		return String.valueOf(this.getClass().getSimpleName())+"\n"+origen+" > "+destino+" | "+super.getIncio()+"\n"+super.getImporteProducto()+" €\n";
 	}
-
 }

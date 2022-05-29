@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import BBDD.Db;
-import Code.Cliente;
+import code.Cliente;
+import db.Db;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +19,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+/**
+ * Clase controladora de la ventana de registro.
+ */
 public class RegistroClass {
 
 	@FXML private BorderPane bp;
@@ -67,7 +70,7 @@ public class RegistroClass {
 				boolean state=false;
 				if(checkCamposValidos(user, pass, pass2, correo)) { //si checkCamposValidos nos devuelve true los campos son validos
 					Cliente c = new Cliente (user, pass, correo);
-					if(db.register_InsertClientes(c)) { //aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd, si devuelve true es que se ha insertado con exito
+					if(db.registrarCliente(c)) { //aqui llamariamos a un metodo para guardar el usuario y la contraseña en la bbdd, si devuelve true es que se ha insertado con exito
 						state=true;
 					}
 				}

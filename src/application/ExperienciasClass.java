@@ -4,15 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import BBDD.Db;
-import BBDD.DbCiudad;
-import BBDD.DbProducto;
-import Code.Cliente;
-import Code.Experiencia;
+import code.Cliente;
+import code.Experiencia;
+import db.Db;
+import db.DbCiudad;
+import db.DbProducto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +23,6 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +30,9 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
+/**
+ * Clase controladora de la ventana de compra de experiencias.
+ */
 public class ExperienciasClass extends MainInfinityClass implements Initializable{
 	
 	@FXML private Text txtPrecio;

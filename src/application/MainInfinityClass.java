@@ -2,10 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import BBDD.Db;
-import Code.Cliente;
-import Code.Producto;
+import code.Cliente;
+import code.Producto;
+import db.Db;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +17,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+/**
+ * Clase controladora de la ventana principal.
+ */
 public class MainInfinityClass {
 
 	@FXML private Pane p;

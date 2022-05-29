@@ -3,8 +3,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import BBDD.Db;
-import Code.Cliente;
+import code.Cliente;
+import db.Db;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+/**
+ * Clase controladora de la ventana personal del usuario.
+ */
 public class UserClass implements Initializable {
 
 	@FXML private Text txtValidado;

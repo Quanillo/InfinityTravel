@@ -2,7 +2,7 @@ package application;
 
 import java.io.IOException;
 
-import BBDD.Db;
+import db.Db;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +17,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
+/**
+ * Clase controladora de la ventana de inicio de sesion.
+ */
 public class LoginClass {
 
 	@FXML private BorderPane bp;

@@ -1,5 +1,8 @@
-package Code;
+package code;
 
+/**
+ * Esta clase construye productos de tipo alojamiento.
+ */
 public class Alojamiento extends Producto {
 
 	private String nombre;
@@ -8,7 +11,7 @@ public class Alojamiento extends Producto {
 	private String url;
 	
 	
-	public Alojamiento(String idProducto, double importeProducto, String nombre, String direccion, String id_ciudad, String url) {
+	public Alojamiento (String idProducto, double importeProducto, String nombre, String direccion, String id_ciudad, String url) {
 		
 		super(idProducto, importeProducto, null, null);
 		
@@ -54,7 +57,4 @@ public class Alojamiento extends Producto {
 	public String toString() {
 		return String.valueOf(this.getClass().getSimpleName())+"\n"+ nombre +"\n"+ super.getIncio()+ " | " +super.getFin() + "\n"+super.getImporteProducto()+" €\n";
 	}
-	
-	
-	
 }

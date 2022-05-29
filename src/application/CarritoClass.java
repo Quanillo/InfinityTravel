@@ -12,10 +12,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import BBDD.Db;
-import BBDD.DbProducto;
-import Code.Cliente;
-import Code.Producto;
+import code.Cliente;
+import code.Producto;
+import db.Db;
+import db.DbProducto;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,6 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+/**
+ * Clase controladora de la ventana del carrito.
+ */
 public class CarritoClass extends  MainInfinityClass implements Initializable{
 
 	@FXML private TextFlow txtListado;

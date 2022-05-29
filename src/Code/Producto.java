@@ -1,7 +1,10 @@
-package Code;
+package code;
 
 import java.time.LocalDate;
 
+/**
+ * Clase abstracta padre de todas las clases de productos especificos.
+ */
 public abstract class Producto {
 	
 	private String idProducto;
@@ -9,7 +12,7 @@ public abstract class Producto {
 	private LocalDate incio;
 	private LocalDate fin;
 	
-	public Producto(String idProducto, double importeProducto, LocalDate incio, LocalDate fin) {
+	public Producto (String idProducto, double importeProducto, LocalDate incio, LocalDate fin) {
 		
 		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;
@@ -17,7 +20,7 @@ public abstract class Producto {
 		this.fin = fin;
 	}
 
-	public Producto(String idProducto, double importeProducto, LocalDate incio) {
+	public Producto (String idProducto, double importeProducto, LocalDate incio) {
 		
 		this.idProducto = idProducto;
 		this.importeProducto = importeProducto;

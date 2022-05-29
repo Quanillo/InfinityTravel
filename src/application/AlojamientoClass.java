@@ -8,11 +8,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import BBDD.Db;
-import BBDD.DbCiudad;
-import BBDD.DbProducto;
-import Code.Alojamiento;
-import Code.Cliente;
+import code.Alojamiento;
+import code.Cliente;
+import db.Db;
+import db.DbCiudad;
+import db.DbProducto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +24,6 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +31,10 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
-public class AlojamientoClass implements Initializable{
+/**
+ * Clase controladora de la ventana de compra de alojamientos.
+ */
+public class AlojamientoClass implements Initializable {
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtPrecioBase;
@@ -240,7 +242,6 @@ public class AlojamientoClass implements Initializable{
 	    dpSalida.setValue(dpEntrada.getValue().plusDays(1));
 	}
 	
-    
 	//--------------  Limpieza  ------------------
 	
 	public void clear () {
@@ -259,5 +260,3 @@ public class AlojamientoClass implements Initializable{
 	}
 	
 }
-
-

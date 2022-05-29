@@ -1,10 +1,13 @@
-package Code;
+package code;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import BBDD.Db;
+import db.Db;
 
+/**
+ * Esta clase almacena los datos del cliente asi como los productos que guarda en el carrito.
+ */
 public class Cliente {
 
 	private String username;

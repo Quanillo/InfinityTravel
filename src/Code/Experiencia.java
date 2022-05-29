@@ -1,5 +1,8 @@
-package Code;
+package code;
 
+/**
+ * Esta clase construye productos de tipo experiencia.
+ */
 public class Experiencia extends Producto {
 	
 	private String nombre;

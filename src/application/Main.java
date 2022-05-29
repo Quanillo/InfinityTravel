@@ -2,10 +2,10 @@ package application;
 	
 import java.io.IOException;
 
-import BBDD.Db;
-import BBDD.DbCiudad;
-import BBDD.DbProducto;
-import BBDD.DbReserva;
+import db.Db;
+import db.DbCiudad;
+import db.DbProducto;
+import db.DbReserva;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 
 
 public class Main extends Application {
+	
 	private double xOffset=0;
 	private double yOffset=0;
 	
@@ -34,7 +35,6 @@ public class Main extends Application {
             }
         });
 		
-		//move around here
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

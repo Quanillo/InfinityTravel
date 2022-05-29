@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import BBDD.Db;
-import BBDD.DbCiudad;
-import Code.Billete;
-import Code.Cliente;
+import code.Billete;
+import code.Cliente;
+import db.Db;
+import db.DbCiudad;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,8 +27,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
-
-
+/**
+ * Clase controladora de la ventana de compra de billetes.
+ */
 public class BilletesClass extends MainInfinityClass implements Initializable{
 	
 	@FXML private Text txtNumBilletes;
