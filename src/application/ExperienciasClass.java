@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import code.Cliente;
-import code.Experiencia;
+import Code.Cliente;
+import Code.Experiencia;
 import db.Db;
 import db.DbCiudad;
 import db.DbProducto;
@@ -33,7 +33,7 @@ import javafx.util.StringConverter;
 /**
  * Clase controladora de la ventana de compra de experiencias.
  */
-public class ExperienciasClass extends MainInfinityClass implements Initializable{
+public class ExperienciasClass implements Initializable{
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtNombre;

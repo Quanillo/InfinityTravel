@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import code.Billete;
-import code.Cliente;
+import Code.Billete;
+import Code.Cliente;
 import db.Db;
 import db.DbCiudad;
 import javafx.collections.FXCollections;
@@ -30,7 +30,7 @@ import javafx.util.Callback;
 /**
  * Clase controladora de la ventana de compra de billetes.
  */
-public class BilletesClass extends MainInfinityClass implements Initializable{
+public class BilletesClass implements Initializable{
 	
 	@FXML private Text txtNumBilletes;
 	@FXML private Text txtPrecio;
@@ -115,12 +115,6 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
 			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
 			txtPrecio.setText("0.00");
-			
-			try {
-				setDatePickerVuelta();
-			}catch(NullPointerException e) {
-				
-			}
 		}
 		precioBase=precio;
 	}
@@ -246,29 +240,33 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 	}
 	//seteo del calendario salida
 	public void setDatePickerVuelta () {
-	    final Callback<DatePicker, DateCell> dayCellFactory = 
-	        new Callback<DatePicker, DateCell>() {
-	            @Override
-	            public DateCell call(final DatePicker datePicker) {
-	                return new DateCell() {
-	                    @Override
-	                    public void updateItem(LocalDate item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (item.isBefore(
-	                                dpIda.getValue().plusDays(1))
-	                            ) {
-	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
-	                        }
-	                }
-	            };
-	        }
-	    };
-	    dpVuelta.setShowWeekNumbers(false);
-	    dpVuelta.setDayCellFactory(dayCellFactory);
-	    dpVuelta.setValue(dpIda.getValue().plusDays(1));
+		try {
+			final Callback<DatePicker, DateCell> dayCellFactory = 
+					new Callback<DatePicker, DateCell>() {
+				@Override
+				public DateCell call(final DatePicker datePicker) {
+					return new DateCell() {
+						@Override
+						public void updateItem(LocalDate item, boolean empty) {
+							super.updateItem(item, empty);
+							if (item.isBefore(
+									dpIda.getValue().plusDays(1))
+									) {
+								setDisable(true);
+								setStyle("-fx-background-color: #ffc0cb;");
+							}
+						}
+					};
+				}
+			};
+			dpVuelta.setShowWeekNumbers(false);
+			dpVuelta.setDayCellFactory(dayCellFactory);
+			dpVuelta.setValue(dpIda.getValue().plusDays(1));
+		}catch(NullPointerException e) {
+
+		}
 	}
-	
+
 	
 	////////////////////////LOAD PAGES////////////////////////
 	
@@ -297,9 +295,11 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 		txtPrecio.setText("0.00");
 		cbOrigen.setValue(null);
 		cbDestino.setValue(null);
-		dpIda.setValue(null);
+		
 		if(idayvueltaboolean)
 			dpVuelta.setValue(null);
+		
+		dpIda.setValue(null);
 	}
 	
 

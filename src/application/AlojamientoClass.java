@@ -8,8 +8,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import code.Alojamiento;
-import code.Cliente;
+import Code.Alojamiento;
+import Code.Cliente;
 import db.Db;
 import db.DbCiudad;
 import db.DbProducto;
@@ -34,7 +34,7 @@ import javafx.util.StringConverter;
 /**
  * Clase controladora de la ventana de compra de alojamientos.
  */
-public class AlojamientoClass implements Initializable {
+public class AlojamientoClass implements Initializable{
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtPrecioBase;
@@ -74,9 +74,9 @@ public class AlojamientoClass implements Initializable {
 	@FXML
 	public void eventActiongetPrecios (ActionEvent event) {
 		Object evt=event.getSource();
-		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida)&& checkCamposVacios()){
+		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida) && checkCamposVacios()){
 			//txtPrecio.setText("0");txtPrecioBase.setText("0");
-			setDatePickerSalida();
+			//setDatePickerSalida();
 			setTextPrecio(getNumNoches());
 			System.out.println(getNumNoches());
 		}
@@ -157,7 +157,6 @@ public class AlojamientoClass implements Initializable {
 			String ciudad=cbCiudad.getValue();
 			ArrayList<Alojamiento> listaAlojamientos=dbp.getAlojamientos(ciudad);
 			cbAlojamientos.setItems(FXCollections.observableList(listaAlojamientos));
-			//cbAlojamientos.getSelectionModel().selectFirst();
 			cbAlojamientos.setCellFactory(new Callback<ListView<Alojamiento>,ListCell<Alojamiento>>(){
 				public ListCell<Alojamiento> call(ListView<Alojamiento> l){
 					return new ListCell<Alojamiento>(){
@@ -219,7 +218,8 @@ public class AlojamientoClass implements Initializable {
 	}
 	//seteo del calendario salida
 	public void setDatePickerSalida () {
-	    final Callback<DatePicker, DateCell> dayCellFactory = 
+	   try {
+		final Callback<DatePicker, DateCell> dayCellFactory = 
 	        new Callback<DatePicker, DateCell>() {
 	            @Override
 	            public DateCell call(final DatePicker datePicker) {
@@ -240,8 +240,12 @@ public class AlojamientoClass implements Initializable {
 	    dpSalida.setShowWeekNumbers(false);
 	    dpSalida.setDayCellFactory(dayCellFactory);
 	    dpSalida.setValue(dpEntrada.getValue().plusDays(1));
+	   }catch(NullPointerException e) {
+		   
+	   }
 	}
 	
+    
 	//--------------  Limpieza  ------------------
 	
 	public void clear () {
@@ -249,8 +253,9 @@ public class AlojamientoClass implements Initializable {
 		txtPrecioBase.setText("0");
 		cbCiudad.setValue(null);
 		cbAlojamientos.setValue(null);
-		dpEntrada.setValue(null);
 		dpSalida.setValue(null);
+		dpEntrada.setValue(null);
+		
 	}
 
 	@Override

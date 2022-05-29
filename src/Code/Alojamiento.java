@@ -1,4 +1,4 @@
-package code;
+package Code;
 
 /**
  * Esta clase construye productos de tipo alojamiento.

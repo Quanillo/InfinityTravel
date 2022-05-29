@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import code.Alojamiento;
-import code.Billete;
-import code.Experiencia;
-import code.Producto;
-import code.Seguro;
+import Code.Alojamiento;
+import Code.Billete;
+import Code.Experiencia;
+import Code.Producto;
+import Code.Seguro;
 
 /**
  * Esta clase tiene como fin gestionar el acceso a la base de datos en lo referente a los productos, las compras y el carrito.

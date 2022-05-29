@@ -2,8 +2,8 @@ package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import code.Cliente;
-import code.Producto;
+import Code.Cliente;
+import Code.Producto;
 import db.Db;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -44,7 +44,6 @@ public class MainInfinityClass {
 	@FXML private Pane pNumProductos;
 	@FXML private Text txtNumProductos;
 	private long c=1; //contador para mostrar y esconder el carrito
-	private int numProdCarrito=0;
 	
 	//------Metodos de carga de páginas-------
 	
@@ -127,7 +126,8 @@ public class MainInfinityClass {
 
 	//metodo que muestra los productos que hay en el carrito en el campo de texto resrvado
 	public void setTextCarrito() {
-		
+
+		int numProdCarrito=0;
 		Cliente cliente=Db.getUserConnected();
 		ArrayList<Producto> listaProductos =cliente.getCarrito();
 		String carrito="";
@@ -147,6 +147,8 @@ public class MainInfinityClass {
 		}
 		txtCarrito.setText(carrito);
 		setTextPrecio();
+		if (numProdCarrito<1)
+			pNumProductos.setVisible(false);
 	}
 	//metodo que muestra el precio final de los productos que hay en el carrito
 	public void setTextPrecio() {
@@ -158,7 +160,6 @@ public class MainInfinityClass {
 	public void limpiaCarrito() {
 		txtPrecioFinal.setText(null);
 		txtCarrito.setText(null);
-		numProdCarrito=0;
 		txtNumProductos.setText(null);
 		pNumProductos.setVisible(false);
 	}

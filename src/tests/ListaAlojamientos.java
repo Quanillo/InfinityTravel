@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import code.Alojamiento;
+import Code.Alojamiento;
 import db.DbProducto;
 
 public class ListaAlojamientos {

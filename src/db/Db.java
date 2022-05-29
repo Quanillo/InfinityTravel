@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import code.Cliente;
+import Code.Cliente;
 
 /**
  * Esta clase tiene como fin gestionar el acceso a la base de datos en lo referente a usuarios y acceso.

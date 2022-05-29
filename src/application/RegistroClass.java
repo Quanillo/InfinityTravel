@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import code.Cliente;
+import Code.Cliente;
 import db.Db;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

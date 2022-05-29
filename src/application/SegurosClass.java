@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
-import code.Cliente;
-import code.Seguro;
+import Code.Cliente;
+import Code.Seguro;
 import db.Db;
 import db.DbProducto;
 import javafx.event.ActionEvent;
@@ -23,7 +23,7 @@ import javafx.util.Callback;
 /**
  * Clase controladora de la ventana de compra de seguros.
  */
-public class SegurosClass extends MainInfinityClass implements Initializable{
+public class SegurosClass implements Initializable{
 	@FXML private DatePicker dpInicio;
 	@FXML private DatePicker dpFin;
 	@FXML private Button btnEco;
@@ -79,7 +79,6 @@ public class SegurosClass extends MainInfinityClass implements Initializable{
 			precio=getPrecio();
 		}
 		else if(evt.equals(dpInicio) || evt.equals(dpFin)) {
-			setDatePickerFin();
 			precio=getPrecio();
 		}
 		txtPrecio.setText(""+precio);
@@ -140,35 +139,39 @@ public class SegurosClass extends MainInfinityClass implements Initializable{
 	}
 	//seteo del calendario salida
 	public void setDatePickerFin() {
-	    final Callback<DatePicker, DateCell> dayCellFactory = 
-	        new Callback<DatePicker, DateCell>() {
-	            @Override
-	            public DateCell call(final DatePicker datePicker) {
-	                return new DateCell() {
-	                    @Override
-	                    public void updateItem(LocalDate item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (item.isBefore(
-	                                dpInicio.getValue().plusDays(1))
-	                            ) {
-	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
-	                        }
-	                }
-	            };
-	        }
-	    };
-	    dpFin.setShowWeekNumbers(false);
-	    dpFin.setDayCellFactory(dayCellFactory);
-	    dpFin.setValue(dpInicio.getValue().plusDays(1));
+		try {
+		    final Callback<DatePicker, DateCell> dayCellFactory = 
+		        new Callback<DatePicker, DateCell>() {
+		            @Override
+		            public DateCell call(final DatePicker datePicker) {
+		                return new DateCell() {
+		                    @Override
+		                    public void updateItem(LocalDate item, boolean empty) {
+		                        super.updateItem(item, empty);
+		                        if (item.isBefore(
+		                                dpInicio.getValue().plusDays(1))
+		                            ) {
+		                                setDisable(true);
+		                                setStyle("-fx-background-color: #ffc0cb;");
+		                        }
+		                }
+		            };
+		        }
+		    };
+		    dpFin.setShowWeekNumbers(false);
+		    dpFin.setDayCellFactory(dayCellFactory);
+		    dpFin.setValue(dpInicio.getValue().plusDays(1));
+		}catch(NullPointerException e) {
+			
+		}
 	}
 	
 	public void clear() {
 		txtPrecio.setText("0");
 		txtSeguro.setText(null);
 		txtDescripcion.setText(null);
-		dpInicio.setValue(null);
 		dpFin.setValue(null);
+		dpInicio.setValue(null);
 	}
 	
 
