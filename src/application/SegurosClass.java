@@ -128,12 +128,6 @@ public class SegurosClass extends MainInfinityClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                hoy, item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }
@@ -158,12 +152,6 @@ public class SegurosClass extends MainInfinityClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                dpInicio.getValue(), item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }

@@ -3,7 +3,6 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -207,12 +206,7 @@ public class AlojamientoClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                hoy, item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
+	                    
 	                }
 	            };
 	        }
@@ -237,12 +231,6 @@ public class AlojamientoClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                dpEntrada.getValue(), item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }

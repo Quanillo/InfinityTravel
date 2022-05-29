@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserClass">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserClass">
    <children>
       <TextField fx:id="txtNombre" layoutX="354.0" layoutY="165.0" prefHeight="25.0" prefWidth="250.0">
          <font>
@@ -50,5 +51,15 @@
          <font>
             <Font name="Malgun Gothic" size="21.0" />
          </font></Button>
+      <TextFlow layoutX="354.0" layoutY="505.0" prefHeight="63.0" prefWidth="250.0">
+         <children>
+            <Text fx:id="txtValidado" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="248.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>

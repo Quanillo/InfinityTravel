@@ -12,8 +12,8 @@
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlojamientoClass">
    <children>
       <ComboBox fx:id="cbCiudad" layoutX="60.0" layoutY="72.0" onMouseClicked="#setComboBoxCiudad" prefHeight="50.0" prefWidth="400.0" />
-      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" />
-      <DatePicker fx:id="dpSalida" layoutX="260.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" />
+      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" stylesheets="@application.css" />
+      <DatePicker fx:id="dpSalida" layoutX="260.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" stylesheets="@application.css" />
       <Text fill="#1d334a" layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
          <font>
             <Font name="Malgun Gothic" size="20.0" />

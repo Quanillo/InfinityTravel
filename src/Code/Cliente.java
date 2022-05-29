@@ -3,6 +3,8 @@ package Code;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import BBDD.Db;
+
 public class Cliente {
 
 	private String username;
@@ -14,13 +16,14 @@ public class Cliente {
 	private LocalDate fNacimiento;
 	private int telefono;
 	private boolean clienteValidado;
-	
+	private Db db=new Db();
 	ArrayList<Producto> carrito = new ArrayList<Producto>();
 
 	public Cliente(String username, String pass, String correo) {
 		this.username = username;
 		this.pass = pass;
 		this.correo = correo;
+		this.clienteValidado=db.userValidado(username);
 	}
 
 	public Cliente(String username, String pass, String correo, String nombre, String apellidos, String dni,
@@ -34,7 +37,7 @@ public class Cliente {
 		this.fNacimiento = fNacimiento;
 		this.telefono = telefono;
 		this.carrito = new ArrayList<Producto>();
-		//this.clienteValidado=METODO QUE VALIDE SI EL CLIENTE HA INTRODUCIDO LOS DATOS O NO!!!!
+		this.clienteValidado=db.userValidado(username);
 	}
 	//metodo que calcula el precio final del array de productos carrito.
 	public double calculaPrecioCarrito () {

@@ -3,7 +3,6 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -22,7 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -116,7 +114,7 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
 			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
 			txtPrecio.setText("0.00");
-			setTextPrecio();
+			
 			try {
 				setDatePickerVuelta();
 			}catch(NullPointerException e) {
@@ -237,12 +235,6 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                hoy, item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }
@@ -267,12 +259,6 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                dpIda.getValue(), item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }
@@ -306,7 +292,7 @@ public class BilletesClass extends MainInfinityClass implements Initializable{
 	}
 	
 	private void clear () {
-		txtNumBilletes.setText("1");
+		txtNumBilletes.setText("0");
 		txtPrecio.setText("0.00");
 		cbOrigen.setValue(null);
 		cbDestino.setValue(null);

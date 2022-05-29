@@ -208,7 +208,7 @@ public class ExperienciasClass extends MainInfinityClass implements Initializabl
 	}
 	
 	//Setero del calendario entrada
-	public void setDatePickerEntrada () {
+	public void setDatePickerFecha() {
 		LocalDate hoy=LocalDate.now();
 	    final Callback<DatePicker, DateCell> dayCellFactory = 
 	        new Callback<DatePicker, DateCell>() {
@@ -224,12 +224,6 @@ public class ExperienciasClass extends MainInfinityClass implements Initializabl
 	                                setDisable(true);
 	                                setStyle("-fx-background-color: #ffc0cb;");
 	                        }
-	                        long p = ChronoUnit.DAYS.between(
-	                                hoy, item
-	                        );
-	                        setTooltip(new Tooltip(
-	                            "You're about to stay for " + p + " days")
-	                        );
 	                }
 	            };
 	        }
@@ -252,7 +246,7 @@ public class ExperienciasClass extends MainInfinityClass implements Initializabl
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setDatePickerEntrada();
+		setDatePickerFecha();
 		
 	}
 }

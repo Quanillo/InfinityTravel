@@ -1,11 +1,15 @@
 package BBDD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import Code.Cliente;
 
 public class Db {
@@ -84,6 +88,44 @@ public class Db {
 		}
 	}
 
+	public boolean userValidado(String username) {
+		try {
+			String s = "";
+			st = connection.createStatement();
+			rs = st.executeQuery("select username from cliente where dni is not null and username = '"+ username +"'");
+			while(rs.next())
+				s = rs.getString("username");
+
+			if(s == "")
+				return false;
+			else
+				return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean updateCliente (Cliente user) {
+
+		boolean insertado = false;
+		
+		try {
+			
+			st = connection.createStatement();
+			insertado = st.executeUpdate( "update cliente set dni = '"+user.getDni()+"', nom = '"+user.getNombre()+"', ape = '"
+			+user.getApellidos()+"', nac = '"/*+ Date.valueOf(user.getfNacimiento()) */+"', tel = "+user.getTelefono()+ "where "
+					+ "username='"+user.getUsername()+"'") > 1;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} 
+
+		return insertado;
+	}
+	
 	public boolean login_validUser(String username, String pass) {
 
 		try {

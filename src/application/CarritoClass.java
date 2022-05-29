@@ -111,6 +111,7 @@ public class CarritoClass extends  MainInfinityClass implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		setTextCarrito();
 	}
+	
 	public void finish() {
 		txtCarrito.setText("Compra realizada con éxito! \n :)");
 
