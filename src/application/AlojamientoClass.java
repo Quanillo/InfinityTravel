@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -55,15 +54,12 @@ public class AlojamientoClass implements Initializable{
 		if(checkCamposVacios()) { //chekeamos que los campos estan rellenos
 			LocalDate entrada=dpEntrada.getValue();   //guardamos los datos recogidos en los campos
 			LocalDate salida=dpSalida.getValue();
-			double precioFinal=getPrecio();
+			double precioFinal=alojamientoSeleccionado.calculaPrecio(getNumNoches());
 			Alojamiento alojAux=alojamientoSeleccionado;
 			alojAux.setIncio(entrada);
 			alojAux.setFin(salida);
 			alojAux.setImporteProducto(precioFinal);
 			cliente.addProducto(alojAux);
-			//añadir a la bbdd los billetes cuando la reserva se haya confirmado en el carrito
-
-
 		}
 		else {//este else creo que se puede eliminar
 			System.out.println("Algo salió mal...");
@@ -78,7 +74,6 @@ public class AlojamientoClass implements Initializable{
 			//txtPrecio.setText("0");txtPrecioBase.setText("0");
 			//setDatePickerSalida();
 			setTextPrecio(getNumNoches());
-			System.out.println(getNumNoches());
 		}
 	}
 
@@ -94,29 +89,22 @@ public class AlojamientoClass implements Initializable{
 	public int getNumNoches() { 
 		int noches = 0;
 		if(dpEntrada.getValue()!=null && dpSalida.getValue()!=null) {
-			LocalDate entrada=dpEntrada.getValue();
-			LocalDate salida=dpSalida.getValue();
-			noches = (int) ChronoUnit.DAYS.between(entrada, salida);
+			alojamientoSeleccionado.setIncio(dpEntrada.getValue());
+			alojamientoSeleccionado.setFin(dpSalida.getValue());
+			noches = alojamientoSeleccionado.getNumNoches();
 		}
 		return noches;
 	}
 
 	public void setTextPrecio (int numNoches) {
-		double dPrecio = 0;
-		if(checkCamposVacios()) {
-			dPrecio = alojamientoSeleccionado.getImporteProducto() * numNoches;
-			double precio = Math.round(dPrecio*100.0)/100.0;
+		if(checkCamposVacios()) {	
+			double precio = alojamientoSeleccionado.calculaPrecio(numNoches);  //, alojamientoSeleccionado.getImporteProducto()
 			txtPrecio.setText(""+precio);
 			txtPrecioBase.setText(""+alojamientoSeleccionado.getImporteProducto());
 		}
 		else {
 			txtPrecio.setText("0");
 		}
-	}
-
-	public double getPrecio () {
-		double nb=Double.parseDouble(txtPrecio.getText());
-		return nb;
 	}
 	
 	public void setImagen() {

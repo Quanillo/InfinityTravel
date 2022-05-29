@@ -1,5 +1,7 @@
 package Code;
 
+import java.time.temporal.ChronoUnit;
+
 /**
  * Esta clase construye productos de tipo alojamiento.
  */
@@ -19,6 +21,19 @@ public class Alojamiento extends Producto {
 		this.direccion = direccion;
 		this.id_ciudad = id_ciudad;
 		this.url = url;
+	}
+	
+	public double calculaPrecio (int numNoches) {
+		double importe = super.getImporteProducto();
+		double precio = Math.round((importe * numNoches)*100.0)/100.0;
+		return precio;
+		
+	}
+	
+	public int getNumNoches () {
+		int noches=0;
+		noches = (int) ChronoUnit.DAYS.between(super.getIncio(), super.getFin());
+		return noches;
 	}
 	
 	public String getNombre() {
