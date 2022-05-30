@@ -8,36 +8,36 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SegurosClass">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SegurosClass">
    <children>
-      <DatePicker fx:id="dpInicio" layoutX="440.0" layoutY="46.0" onAction="#eventActionInfoSeguro" onMouseClicked="#setDatePickerFin" prefHeight="51.0" prefWidth="200.0" />
-      <DatePicker fx:id="dpFin" layoutX="640.0" layoutY="46.0" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="200.0" />
-      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="665.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
+      <DatePicker fx:id="dpInicio" layoutX="390.0" layoutY="58.0" onAction="#eventActionInfoSeguro" onMouseClicked="#setDatePickerFin" prefHeight="51.0" prefWidth="250.0" />
+      <DatePicker fx:id="dpFin" layoutX="640.0" layoutY="58.0" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="250.0" />
+      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="712.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
          <font>
-            <Font name="Malgun Gothic" size="32.0" />
+            <Font name="Malgun Gothic" size="50.0" />
          </font>
       </Text>
-      <Text fill="#1d334a" layoutX="819.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="20.13671875">
+      <Text fill="#1d334a" layoutX="869.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="20.13671875">
          <font>
-            <Font name="Malgun Gothic" size="32.0" />
+            <Font name="Malgun Gothic" size="50.0" />
          </font>
       </Text>
-      <Text layoutX="389.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Economic">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="821.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pro">
+      <Text layoutX="389.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Economic">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="605.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luxury">
+      <Text layoutX="622.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pro">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btnEco" layoutX="389.0" layoutY="171.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #e55137;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Text layoutX="804.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luxury">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnEco" layoutX="389.0" layoutY="183.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #5dc1b9;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnPro" layoutX="788.0" layoutY="171.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #e55137;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnPro" layoutX="589.0" layoutY="183.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #5dc1b9;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnLux" layoutX="588.0" layoutY="171.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #e55137;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnLux" layoutX="787.0" layoutY="183.0" mnemonicParsing="false" onAction="#eventActionInfoSeguro" prefHeight="51.0" prefWidth="103.0" style="-fx-background-color: #5dc1b9;" text="Info" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>
@@ -61,7 +61,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnAddCarrito" layoutX="440.0" layoutY="474.0" mnemonicParsing="false" onMouseClicked="#reservaSeguro" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnAddCarrito" layoutX="389.0" layoutY="458.0" mnemonicParsing="false" onMouseClicked="#reservaSeguro" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>

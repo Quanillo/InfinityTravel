@@ -9,27 +9,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlojamientoClass">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlojamientoClass">
    <children>
-      <ComboBox fx:id="cbCiudad" layoutX="60.0" layoutY="72.0" onMouseClicked="#setComboBoxCiudad" prefHeight="50.0" prefWidth="400.0" />
-      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="343.0" onAction="#eventActiongetPrecios" onMouseClicked="#setDatePickerSalida" prefHeight="51.0" prefWidth="200.0" stylesheets="@application.css" />
-      <DatePicker fx:id="dpSalida" layoutX="260.0" layoutY="343.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="200.0" stylesheets="@application.css" />
+      <ComboBox fx:id="cbCiudad" layoutX="60.0" layoutY="72.0" onMouseClicked="#setComboBoxCiudad" prefHeight="50.0" prefWidth="350.0" />
+      <DatePicker fx:id="dpEntrada" layoutX="60.0" layoutY="266.0" onAction="#eventActiongetPrecios" onMouseClicked="#setDatePickerSalida" prefHeight="51.0" prefWidth="175.0" stylesheets="@application.css" />
+      <DatePicker fx:id="dpSalida" layoutX="235.0" layoutY="266.0" onAction="#eventActiongetPrecios" prefHeight="51.0" prefWidth="175.0" stylesheets="@application.css" />
       <Text fill="#1d334a" layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fill="#1d334a" layoutX="60.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alojamientos disponibles">
+      <Text fill="#1d334a" layoutX="573.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alojamientos disponibles">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fill="#1d334a" layoutX="60.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas">
+      <Text fill="#1d334a" layoutX="61.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fechas">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Button fx:id="btnAddCarrito" layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#reservaAlojamiento" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
+      <Button fx:id="btnAddCarrito" layoutX="60.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#reservaAlojamiento" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: #e55137;" text="añadir al carrito" textAlignment="CENTER" textFill="#f6f6f6" wrapText="true">
          <font>
             <Font name="Malgun Gothic Bold" size="18.0" />
          </font>
@@ -37,31 +37,31 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="287.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
+      <Text fx:id="txtPrecio" fill="#1d334a" layoutX="235.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="145.13671875">
          <font>
             <Font name="Malgun Gothic" size="32.0" />
          </font>
       </Text>
-      <Text fill="#1d334a" layoutX="441.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="20.13671875">
+      <Text fill="#1d334a" layoutX="389.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="RIGHT" wrappingWidth="20.13671875">
          <font>
             <Font name="Malgun Gothic" size="32.0" />
          </font>
       </Text>
-      <Text fill="#1c3145a3" layoutX="335.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€  por noche" textAlignment="RIGHT" wrappingWidth="125.13671875">
+      <Text fill="#1c3145a3" layoutX="283.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€  por noche" textAlignment="RIGHT" wrappingWidth="125.13671875">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="txtPrecioBase" fill="#1c3145a3" layoutX="287.0" layoutY="529.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="48.13671875">
+      <Text fx:id="txtPrecioBase" fill="#1c3145a3" layoutX="220.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="63.662109375">
          <font>
             <Font name="Malgun Gothic" size="20.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cbAlojamientos" layoutX="60.0" layoutY="216.0" onAction="#setAlojamientoSeleccionado" onMouseClicked="#setComboBoxAlojamiento" prefHeight="50.0" prefWidth="400.0" />
-      <AnchorPane layoutX="470.0" layoutY="99.0" prefHeight="435.0" prefWidth="560.0">
+      <ComboBox fx:id="cbAlojamientos" layoutX="573.0" layoutY="72.0" onAction="#setAlojamientoSeleccionado" onMouseClicked="#setComboBoxAlojamiento" prefHeight="50.0" prefWidth="350.0" />
+      <AnchorPane layoutX="508.0" layoutY="162.0" prefHeight="313.0" prefWidth="402.0">
          <children>
-            <ImageView fx:id="imageView" fitHeight="373.0" fitWidth="541.0" layoutX="6.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="txtNombre" layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="547.2734375">
+            <ImageView fx:id="imageView" fitHeight="299.0" fitWidth="480.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="txtNombre" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="480.0">
                <font>
                   <Font size="24.0" />
                </font>
