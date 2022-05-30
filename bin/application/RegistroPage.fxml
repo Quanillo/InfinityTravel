@@ -94,7 +94,7 @@
                   </Button>
                   <ImageView fitHeight="320.0" fitWidth="320.0" layoutX="70.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/logo_color.png" />
+                        <Image url="file:images/logo_color.png" />
                      </image>
                   </ImageView>
                   <Text fill="#1d334a" layoutX="41.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Ya tienes una cuenta?" wrappingWidth="237.13671875">
@@ -114,7 +114,7 @@
                   </Text>
                   <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="257.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/logo.png" />
+                        <Image url="file:images/logo.png" />
                      </image>
                   </ImageView>
                   <Pane layoutX="1250.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #e55137;">
@@ -126,7 +126,7 @@
                            <graphic>
                               <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/close.png" />
+                                    <Image url="file:images/close.png" />
                                  </image>
                               </ImageView>
                            </graphic>

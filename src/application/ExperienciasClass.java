@@ -269,7 +269,7 @@ public class ExperienciasClass implements Initializable{
 	                                hoy.plusDays(1))
 	                            ) {
 	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
+	                                setStyle("-fx-background-color: #5dc1b9;");
 	                        }
 	                }
 	            };

@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="641.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/fondo.jpg" />
+            <Image url="file:images/fondo.jpg" />
          </image>
       </ImageView>
       <Text fill="#1d334a" layoutX="281.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">

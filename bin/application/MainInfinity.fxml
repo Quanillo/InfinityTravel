@@ -58,7 +58,7 @@
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/carrito.png" />
+                        <Image url="file:images/carrito.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -71,7 +71,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/usu.png" />
+                        <Image url="file:images/usu.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -86,7 +86,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/home.png" />
+                        <Image url="file:images/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -107,7 +107,7 @@
                      <children>
                         <ImageView fitHeight="641.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../images/fondo.jpg" />
+                              <Image url="file:images/fondo.jpg" />
                            </image>
                         </ImageView>
                         <Text fill="#1d334a" layoutX="281.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las posibilidades son infinitas..." wrappingWidth="597.1367187499999">
@@ -177,7 +177,7 @@
             </Text>
             <ImageView fitHeight="27.0" fitWidth="30.0" layoutX="257.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/logo.png" />
+                  <Image url="file:images/logo.png" />
                </image>
             </ImageView>
             <Pane layoutX="1250.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #e55137;">
@@ -189,7 +189,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../images/close.png" />
+                              <Image url="file:images/close.png" />
                            </image>
                         </ImageView>
                      </graphic>

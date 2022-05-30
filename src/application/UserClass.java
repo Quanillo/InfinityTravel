@@ -1,7 +1,11 @@
 package application;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Code.Cliente;
 import db.Db;
@@ -32,8 +36,9 @@ public class UserClass implements Initializable {
 	 */
 	public void setDatos(MouseEvent event) {
 		Cliente user=Db.getUserConnected();
+		boolean camposValidos = this.checkCamposValidos(txtDni.getText(),dpNacimiento.getValue(),txtTelefono.getText());
 		if(!txtNombre.getText().trim().isEmpty() && !txtApellidos.getText().trim().isEmpty() && !txtDni.getText().trim().isEmpty() &&
-			!txtTelefono.getText().trim().isEmpty() && dpNacimiento.getValue()!=null) {
+			!txtTelefono.getText().trim().isEmpty() && dpNacimiento.getValue()!=null && camposValidos) {
 			user.setNombre(txtNombre.getText());
 			user.setApellidos(txtApellidos.getText());
 			user.setDni(txtDni.getText());
@@ -55,6 +60,38 @@ public class UserClass implements Initializable {
 		else
 			txtValidado.setText("Usuario no validado");
 	}
+	
+	public boolean validaDni (String dni) {
+		Pattern DNI_REGEX = Pattern.compile("[0-9]{8}[A-Z]");
+		Matcher m = DNI_REGEX.matcher(dni);
+		return m.find();
+	}
+	
+	public boolean validaTlf (String telefono) {
+		Pattern TLF_REGEX = Pattern.compile("[0-9]{9}");
+		Matcher m = TLF_REGEX.matcher(telefono);
+		return m.find(); 
+	}
+	
+	public boolean checkCamposValidos(String dni, LocalDate fechaNac, String telefono) {
+		boolean state=false;
+		int edad = Period.between(fechaNac, LocalDate.now()).getYears();
+		
+		if(validaDni(dni) && edad>=18  && validaTlf(telefono)){ 
+			state=true;
+		}
+		else {
+			state=false;
+			if(!validaDni(txtDni.getText()))
+				txtValidado.setText("Dni no válido.");
+			else if(edad<18)
+				txtValidado.setText("Necesitas ser mayor de edad.");
+			else if(!validaTlf(dni))
+				txtValidado.setText("Teléfono no válido.");
+			clear();
+		}
+		return state;
+	}
 	/**
 	 * Deja los campos de la interface con los valores de inicio.
 	 */
@@ -69,7 +106,6 @@ public class UserClass implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		usuarioValidado();
-		
 	}
 	
 	

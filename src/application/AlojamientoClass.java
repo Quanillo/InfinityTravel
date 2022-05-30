@@ -218,7 +218,7 @@ public class AlojamientoClass implements Initializable{
 	                                hoy.plusDays(1))
 	                            ) {
 	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
+	                                setStyle("-fx-background-color: #5dc1b9;");
 	                        }
 	                    
 	                }
@@ -244,7 +244,7 @@ public class AlojamientoClass implements Initializable{
 	                                dpEntrada.getValue().plusDays(1))
 	                            ) {
 	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
+	                                setStyle("-fx-background-color: #5dc1b9;");
 	                        }
 	                }
 	            };

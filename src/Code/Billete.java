@@ -13,7 +13,7 @@ public class Billete extends Producto {
 	private String origen;
 	private String destino;
 	
-	final static double precioCombustible = 0.25;
+	final static double precioCombustible = 0.06;
 
 	static Db db = new Db();
 	static DbCiudad dbc = new DbCiudad();

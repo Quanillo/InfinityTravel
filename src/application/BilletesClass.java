@@ -128,6 +128,7 @@ public class BilletesClass implements Initializable{
 			precio=Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue());
 			txtPrecio.setText("0.00");
 			precioBase=precio;
+			setTextPrecio();
 		}
 	}
 	
@@ -243,7 +244,7 @@ public class BilletesClass implements Initializable{
 	                                hoy.plusDays(1))
 	                            ) {
 	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
+	                                setStyle("-fx-background-color: #5dc1b9;");
 	                        }
 	                }
 	            };
@@ -268,7 +269,7 @@ public class BilletesClass implements Initializable{
 									dpIda.getValue().plusDays(1))
 									) {
 								setDisable(true);
-								setStyle("-fx-background-color: #ffc0cb;");
+								setStyle("-fx-background-color: #5dc1b9;");
 							}
 						}
 					};

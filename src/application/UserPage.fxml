@@ -50,7 +50,8 @@
       <Button fx:id="btnEnviar" layoutX="676.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#setDatos" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: #e55137;" text="Actualizar credenciales" textFill="#f6f6f6">
          <font>
             <Font name="Malgun Gothic" size="21.0" />
-         </font></Button>
+         </font>
+      </Button>
       <TextFlow layoutX="354.0" layoutY="505.0" prefHeight="63.0" prefWidth="250.0">
          <children>
             <Text fx:id="txtValidado" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="248.0">

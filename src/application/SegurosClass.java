@@ -142,7 +142,7 @@ public class SegurosClass implements Initializable{
 	                                hoy.plusDays(1))
 	                            ) {
 	                                setDisable(true);
-	                                setStyle("-fx-background-color: #ffc0cb;");
+	                                setStyle("-fx-background-color: #5dc1b9;");
 	                        }
 	                }
 	            };
@@ -167,7 +167,7 @@ public class SegurosClass implements Initializable{
 		                                dpInicio.getValue().plusDays(1))
 		                            ) {
 		                                setDisable(true);
-		                                setStyle("-fx-background-color: #ffc0cb;");
+		                                setStyle("-fx-background-color: #5dc1b9;");
 		                        }
 		                }
 		            };
