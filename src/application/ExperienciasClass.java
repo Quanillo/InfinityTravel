@@ -37,11 +37,14 @@ public class ExperienciasClass implements Initializable{
 	
 	@FXML private Text txtPrecio;
 	@FXML private Text txtNombre;
+	@FXML private Text txtNumExp;
 	@FXML private ComboBox<String> cbCiudad;
 	@FXML private ComboBox<Experiencia> cbExperiencias;
 	@FXML private DatePicker dpFecha;
 	@FXML private ImageView imageView; 
 	@FXML private Button btnAddCarrito;
+	@FXML private Button btnMasExp;
+	@FXML private Button btnMenosExp;
 	@FXML private Image img;
 	private static DbCiudad dbc = new DbCiudad();
 	private static DbProducto dbp = new DbProducto();
@@ -81,11 +84,44 @@ public class ExperienciasClass implements Initializable{
 			return false;
 	}
 
+	@FXML
+	private void precioSumaResta(ActionEvent event) {  
+		Object evt=event.getSource();
+		int nb=getNumExp();
+		if(evt.equals(btnMasExp)) {
+			nb++;
+			setNumExp(nb);
+			setTextPrecio();
+		}	
+		else if (evt.equals(btnMenosExp)) {
+			nb--;
+			if(nb>0) {
+				setNumExp(nb);
+				setTextPrecio();
+			}
+			else
+				setNumExp(0);
+		}
+	}
+	
+	
 	//--------------------- Getters and setters  ---------------------------
+	
+	public void setNumExp (int nb) {
+		if(nb<1) 
+			txtNumExp.setText("1");
+		else
+			txtNumExp.setText(""+ nb);
+	}
+	
+	public int getNumExp () {
+		int nb=Integer.parseInt(txtNumExp.getText());
+		return nb;
+	}
 	
 	public void setTextPrecio () {
 		if(checkCamposVacios()) {
-			double dPrecio = experienciaSeleccionada.getImporteProducto();
+			double dPrecio = experienciaSeleccionada.getImporteProducto()*getNumExp();
 			double precio = Math.round(dPrecio*100.0)/100.0;
 			txtPrecio.setText(""+precio);
 		}

@@ -106,24 +106,33 @@ public class Db {
 	
 	public boolean updateCliente (Cliente user) {
 
-		boolean insertado = false;
+		boolean updateado = false;
 		
 		try {
 			
-			st = connection.createStatement();
-			insertado = st.executeUpdate( "update cliente set dni = '"+user.getDni()+"', nom = '"+user.getNombre()+"', ape = '"
-			+user.getApellidos()+"', nac = sysdate , tel = "+user.getTelefono()+ " where "
-					+ "username='"+user.getUsername()+"'") > 1;
-			/*insertado = st.executeUpdate( "update cliente set dni = '"+user.getDni()+"', nom = '"+user.getNombre()+"', ape = '"
-			+user.getApellidos()+"', nac = '"+ Date.valueOf(user.getfNacimiento()) +"', tel = "+user.getTelefono()+ " where "
-					+ "username='"+user.getUsername()+"'") > 1;*/
+			String sql= "update cliente set dni = ?, nom = ?, ape = ?, nac = ?, tel = ? where username = ?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, user.getDni());
+			pst.setString(2, user.getNombre());
+			pst.setString(3, user.getApellidos());
+			pst.setDate(4, Date.valueOf(user.getfNacimiento()));
+			pst.setInt(5, user.getTelefono());
+			pst.setString(6, user.getUsername());
+		
+			updateado = pst.executeUpdate()>0;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} finally {
+			try {
+				pst.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
 		} 
 
-		return insertado;
+		return updateado;
 	}
 	
 	public boolean login_validUser(String username, String pass) {
