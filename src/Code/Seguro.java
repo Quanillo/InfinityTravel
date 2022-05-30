@@ -14,18 +14,16 @@ public class Seguro extends Producto {
 	}
 
 	public static String descripcionEco() {
-		return "Seguro básico para que la mama se quede tranquila en tu interrail, pero que realmente se lavará las manos"
-				+ " cuando vuelques a las 3am en un garito de Budapest.";
+		return "Nos aseguraremos de que tu equipaje llegue tal y como lo viste por ultima vez.";
 	}
 	
 	public static String descripcionLux() {
-		return "Seguro más robusto, que cuidará de ti y de los tuyos cuando tu hijo prepuber la líe en el Acuarium"
-				+ " de París liberando a Willy";
+		return "Seremos tu angel de la guarda durante todo el viaje. Tendrás a un equipo 24h a tu disposicion al que puedes contactar para cualquier imprevisto así como de un dispositivo movil de sustitución. "
+				+ "Ideal si buscas más una aventura que un viaje. Incluye lo mencionado en los seguros Economic y Pro.";
 	}
 	
 	public static String descripcionPro() {
-		return "Seguro a prueba de bombas. Cubre todos los imprevistos que puedan pasar, desde televisores tirados por la ventana del hotel"
-				+ " hasta repatriación del cuerpo en caso de fallecimiento. Perfecto para giras internacionales de grupos musicales en la cresta de la ola";
+		return "Disfruta de asistencia médica en centros asociados en tu ciudad de destino. Incluye el seguro Economic.";
 	}
 	
 	public String getNombre() {
