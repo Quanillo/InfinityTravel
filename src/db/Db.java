@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.sql.Date;
 import Code.Cliente;
 
 /**
@@ -112,8 +112,11 @@ public class Db {
 			
 			st = connection.createStatement();
 			insertado = st.executeUpdate( "update cliente set dni = '"+user.getDni()+"', nom = '"+user.getNombre()+"', ape = '"
-			+user.getApellidos()+"', nac = '"/*+ Date.valueOf(user.getfNacimiento()) */+"', tel = "+user.getTelefono()+ "where "
+			+user.getApellidos()+"', nac = sysdate , tel = "+user.getTelefono()+ " where "
 					+ "username='"+user.getUsername()+"'") > 1;
+			/*insertado = st.executeUpdate( "update cliente set dni = '"+user.getDni()+"', nom = '"+user.getNombre()+"', ape = '"
+			+user.getApellidos()+"', nac = '"+ Date.valueOf(user.getfNacimiento()) +"', tel = "+user.getTelefono()+ " where "
+					+ "username='"+user.getUsername()+"'") > 1;*/
 
 		} catch (SQLException e) {
 			e.printStackTrace();
