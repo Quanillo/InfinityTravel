@@ -64,7 +64,7 @@
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../images/interchange.png" />
+                              <Image url="@file:images/interchange.png" />
                            </image>
                         </ImageView>
                      </graphic>
