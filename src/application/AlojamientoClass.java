@@ -66,9 +66,6 @@ public class AlojamientoClass implements Initializable{
 			alojAux.setImporteProducto(precioFinal);
 			cliente.addProducto(alojAux);
 		}
-		else {//este else creo que se puede eliminar
-			System.out.println("Algo salió mal...");
-		}
 		clear();
 	}
 	
@@ -153,7 +150,6 @@ public class AlojamientoClass implements Initializable{
 			txtNombre.setText(alojamientoSeleccionado.getNombre());
 		}
 	}
-	
 	//--------------  SET COMBOBOXES  ------------------
 
 	public void setComboBoxCiudad() {

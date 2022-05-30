@@ -143,7 +143,7 @@ public class MainInfinityClass {
 		}
 		else {
 			for(int i=0; i<listaProductos.size(); i++) {
-				carrito+=listaProductos.get(i).toString();
+				carrito+=listaProductos.get(i).toString() + "\n";
 				numProdCarrito++;
 				System.out.println(listaProductos.get(i).toString());
 			}

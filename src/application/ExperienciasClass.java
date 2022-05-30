@@ -67,9 +67,6 @@ public class ExperienciasClass implements Initializable{
 
 
 		}
-		else {//este else creo que se puede eliminar
-			System.out.println("Algo salió mal...");
-		}
 		clear();
 	}
 	/**

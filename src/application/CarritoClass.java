@@ -46,7 +46,7 @@ public class CarritoClass implements Initializable{
 		}
 		else {
 			for(int i=0; i<listaProductos.size(); i++) {
-				carrito+=listaProductos.get(i).toString();
+				carrito+=listaProductos.get(i).toString() + "\n";
 
 			}
 		}
@@ -64,7 +64,7 @@ public class CarritoClass implements Initializable{
 					+ "Detalles de la reserva: \n\n";
 			double total = 0;
 			for(int i=0; i<listaProductos.size(); i++) {
-				carrito+=listaProductos.get(i).toString();
+				carrito+=listaProductos.get(i).toString() + "\n";
 				total+=listaProductos.get(i).getImporteProducto();
 			}
 			carrito+="\n\nImporte final: \n" + Math.round(total*100.0)/100.0 +"€";

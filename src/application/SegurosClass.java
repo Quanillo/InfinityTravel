@@ -53,9 +53,6 @@ public class SegurosClass implements Initializable{
 			segAux.setImporteProducto(precioFinal);
 			cliente.addProducto(segAux);
 		}
-		else {//este else creo que se puede eliminar
-			System.out.println("Algo salió mal...");
-		}
 		clear();
 	}
 	/**
