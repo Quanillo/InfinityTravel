@@ -96,7 +96,10 @@ public class MainInfinityClass {
 	private void close(MouseEvent event) {
 		Platform.exit();
 	}
-	
+	/**
+	 * Método genérico para cargar en la interface cada una ded las páginas.
+	 * @param page Nombre de la página que se quiere cargar.
+	 */
 	private void loadPage(String page) {
 		Parent root=null;
 	
@@ -109,7 +112,10 @@ public class MainInfinityClass {
 	}
 
 	//-----------------  CARRITO  --------------------
-	//metodo que muestra y actualiza el carrito en la parte derecha de la pantalla cada vez que alguien pulsa. Al volver a pulsarlo se esconde.
+	/**
+	 * metodo que muestra y actualiza el carrito en la parte derecha de la pantalla cada vez que alguien pulsa. Al volver a pulsarlo se esconde.
+	 * @param event
+	 */
 	@FXML 
 	private void muerstraCarrito(MouseEvent event) {
 		if(c % 2 == 0) {
@@ -123,8 +129,9 @@ public class MainInfinityClass {
 			c++;
 		}
 	}
-
-	//metodo que muestra los productos que hay en el carrito en el campo de texto resrvado
+	/**
+	 * Muestra los productos que hay en el carrito en el campo de texto resrvado
+	 */
 	public void setTextCarrito() {
 
 		int numProdCarrito=0;
@@ -150,13 +157,18 @@ public class MainInfinityClass {
 		if (numProdCarrito<1)
 			pNumProductos.setVisible(false);
 	}
-	//metodo que muestra el precio final de los productos que hay en el carrito
+	//
+	/**
+	 * Muestra el precio final de los productos que hay en el carrito
+	 */
 	public void setTextPrecio() {
 		Cliente cliente=Db.getUserConnected();
 		double pf=cliente.calculaPrecioCarrito();
 		txtPrecioFinal.setText(""+pf);
 	}
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void limpiaCarrito() {
 		txtPrecioFinal.setText(null);
 		txtCarrito.setText(null);

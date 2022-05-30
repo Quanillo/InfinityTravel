@@ -37,7 +37,10 @@ public class SegurosClass implements Initializable{
 	private static DbProducto dbp = new DbProducto();
 	private Seguro seguroSeleccionado;
 	
-	
+	/**
+	 * Reserva los seguros añadiendolo al array list de Producto llamada carrito del Cliente conectado.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void reservaSeguro (MouseEvent event) {
 		if(checkCamposVacios()) { //chekeamos que los campos estan rellenos
 			Cliente cliente=Db.getUserConnected();
@@ -55,7 +58,10 @@ public class SegurosClass implements Initializable{
 		}
 		clear();
 	}
-	
+	/**
+	 * Imprime el texto de la descripción del producto en la interface.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	private void eventActionInfoSeguro(ActionEvent event) {  
 		Object evt=event.getSource();
@@ -83,7 +89,10 @@ public class SegurosClass implements Initializable{
 		}
 		txtPrecio.setText(""+precio);
 	}
-	
+	/**
+	 * Obtiene el precio del producto
+	 * @return
+	 */
 	private double getPrecio() {
 		double precio=0;
 		if(checkCamposVacios())
@@ -94,7 +103,10 @@ public class SegurosClass implements Initializable{
 		}
 		return  Math.round(precio*100.0)/100.0;
 	}
-	
+	/**
+	 * Obtiene el número de días.
+	 * @return
+	 */
 	private int  getNumDias () {
 		int dias = 0;
 		if(dpInicio.getValue()!=null && dpFin.getValue()!=null) {
@@ -104,7 +116,10 @@ public class SegurosClass implements Initializable{
 		}
 		return dias;
 	}
-	
+	/**
+	 * Valida que los campos estan completos.
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposVacios() {
 		if(dpInicio.getValue()!=null && dpFin.getValue()!=null && getNumDias()>=1 && seguroSeleccionado!=null) 
 			return true;
@@ -165,7 +180,9 @@ public class SegurosClass implements Initializable{
 			
 		}
 	}
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void clear() {
 		txtPrecio.setText("0");
 		txtSeguro.setText(null);

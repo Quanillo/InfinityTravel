@@ -52,6 +52,10 @@ public class BilletesClass implements Initializable{
 	private static double precioBase;
 	////////////////////////METODOS////////////////////////
 	
+	/**
+	 * Reserva los billetes añadiendolo al array list de Producto llamada carrito del Cliente conectado.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void reservaBilletes(MouseEvent event) { 
 		//Cliente cliente=db.selectCliente(Db.getUsername()); 
 		Cliente cliente=Db.getUserConnected();
@@ -84,7 +88,10 @@ public class BilletesClass implements Initializable{
 		clear();
 	}
 	
-	//si los campos estan seleccionaddos y hay más de 0 billetes seleccionados returna true
+	/**
+	 * Valida que los campos estan completos.
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposVacios() {
 		if(idayvueltaboolean && cbOrigen.getValue()!=null && cbDestino.getValue()!=null && dpIda.getValue()!=null && dpVuelta.getValue()!=null && getNumBilletes()>=1)  
 			return true;
@@ -95,7 +102,9 @@ public class BilletesClass implements Initializable{
 			return false;
 	}
 
-	//para cambiar el orden de las ciudades. trolea todavía no cambia la segunda ciudad...revisar
+	/**
+	 * Cambia el orden de las ciudades.
+	 */
 	public void cambiaCiudad() {
 		String destino=cbDestino.getValue();
 		String origen=cbOrigen.getValue();
@@ -107,18 +116,25 @@ public class BilletesClass implements Initializable{
 		cbOrigen.setValue(destino);
 		
 	}
-	//metodo que calcula el precio del billete base cada vez que se cambian las cuidades de origen y destino estando ambas completas
+	/**
+	 * Setea el precio Base del billete en la variable estática precioBase
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	public void eventActiongetPrecioBilleteBase (ActionEvent event) {
 		Object evt=event.getSource();
 		double precio=0;
 		if(evt.equals(cbOrigen) || evt.equals(cbDestino) || evt.equals(dpIda) || evt.equals(dpVuelta) && checkCamposVacios()){
-			precio=(Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue())) ;
+			precio=Billete.billete_getPrecio(cbOrigen.getValue(), cbDestino.getValue());
 			txtPrecio.setText("0.00");
+			precioBase=precio;
 		}
-		precioBase=precio;
 	}
-	//metodo que suma el numero de billetes segun va dandole al boton de masBilletes o menosBilletes y actualiza el precio si los campos estan completos
+	
+	/**
+	 * Suma el numero de billetes segun se pulasn los botones de masBilletes o menosBilletes y actualiza el precio si los campos estan completos
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	private void precioSumaResta(ActionEvent event) {  
 		Object evt=event.getSource();
@@ -212,7 +228,6 @@ public class BilletesClass implements Initializable{
 		txtPrecio.setText(""+precio);
 	}
 	
-
 	//Setero del calendario entrada
 	public void setDatePickerIda () {
 		LocalDate hoy=LocalDate.now();
@@ -289,7 +304,9 @@ public class BilletesClass implements Initializable{
 		}
 		bp.setCenter(root);;
 	}
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	private void clear () {
 		txtNumBilletes.setText("0");
 		txtPrecio.setText("0.00");

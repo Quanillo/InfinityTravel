@@ -26,8 +26,10 @@ public class UserClass implements Initializable {
 	@FXML private DatePicker dpNacimiento;
 	@FXML private Button btnEnviar;
 	private Db db=new Db();
-	
-	
+	/**
+	 * Introduce los datos introducidos por el cliente introduciendolos en la bbdd
+	 * @param event  Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void setDatos(MouseEvent event) {
 		Cliente user=Db.getUserConnected();
 		if(!txtNombre.getText().trim().isEmpty() && !txtApellidos.getText().trim().isEmpty() && !txtDni.getText().trim().isEmpty() &&
@@ -43,7 +45,9 @@ public class UserClass implements Initializable {
 		}
 		clear();
 	}
-	
+	/**
+	 * Consulta en la bbdd si el usuario a introducido los datos solicitados necesarios para realizar la compra
+	 */
 	public void usuarioValidado () {
 		Cliente user=Db.getUserConnected();
 		if(user.isClienteValidado()) 
@@ -51,7 +55,9 @@ public class UserClass implements Initializable {
 		else
 			txtValidado.setText("Usuario no validado");
 	}
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void clear(){
 		txtNombre.clear();
 		txtApellidos.clear();

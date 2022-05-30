@@ -30,7 +30,10 @@ public class LoginClass {
 	@FXML private Button exit;
 	@FXML private Text txt;
 	private static Db db = new Db();
-	
+	/**
+	 * Impide que el usuario pueda introducir espacios en los campos de texto.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	private void eventKey(KeyEvent event) {
 		Object evt=event.getSource();
@@ -50,16 +53,21 @@ public class LoginClass {
 			 });
 		}
 	}
-	
+	/**
+	 * Lanza el método login cuando el botón es pulsado
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	private void eventAction(ActionEvent event) {
 		Object evt=event.getSource();
-		
 		if(evt.equals(btnLogin)) {
 			login();
 		}
 	}
-	
+	/**
+	 * Válida que el usuario y la contraseña son válidos comprobandolo en la bbdd y diríge a la pagina principal dentro de la aplicación.
+	 * Si los datos son incorrectos informa al usuario inmprimiendo en la interface los motivos.
+	 */
 	public void login () {
 		if(!txtUser.getText().isEmpty() && !txtPass.getText().isEmpty()) {
 			String user=txtUser.getText();
@@ -72,7 +80,7 @@ public class LoginClass {
 			else {
 				state=false;
 			}
-			
+
 			if(state==true) {
 				loadPage("MainInfinity");
 				Db.setUserConnected(user);
@@ -82,15 +90,20 @@ public class LoginClass {
 				txt.setText("Datos de acceso incorrectos.");
 				clear();
 			}
-			
-		}else {
+
+		}
+		else {
 			txt.setText("Introduzca Usuario y Contraseña por favor.");
 			clear();
 		}
 	}
-	
+	/**
+	 * Carga la pagina de registro si el usuario pincha el botón
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void registro(ActionEvent event) {
 		loadPage("RegistroPage");
+		
 	}
 	
 	private void loadPage(String page) {

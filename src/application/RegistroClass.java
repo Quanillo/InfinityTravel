@@ -33,9 +33,12 @@ public class RegistroClass {
 	@FXML private Button btnLog;
 	@FXML private Text txt;
 	private static Db db = new Db();
-	
+	/**
+	 * metodo que impide agregar espacios en los campos de texto
+	 * @param event
+	 */
 	@FXML
-	private void eventKey(KeyEvent event) {  //metodo que impide agregar espacios en los campos
+	private void eventKey(KeyEvent event) { 
 		Object evt=event.getSource();
 		if(evt.equals(txtUser) || evt.equals(txtPass) || evt.equals(txtPass2) || evt.equals(txtCorreo)) {
 			txtUser.addEventFilter(KeyEvent.ANY, evento -> {
@@ -56,7 +59,10 @@ public class RegistroClass {
 			});
 		}
 	}
-
+	/**
+	 * Con las debidas válidaciones este metodo da de alta en la bbdd al usuario, cargando la página de login para que pueda entrar en la aplicación
+	 * @param event
+	 */
 	@FXML
 	private void eventAction(ActionEvent event) {  
 		Object evt=event.getSource();
@@ -87,7 +93,10 @@ public class RegistroClass {
 			loadPage("LoginPage");
 		}
 	}
-
+	/**
+	 * Valida que los campos estan completos.
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposVacios () { //metodo que valida que todos los campos contienen informacion
 		if(!txtUser.getText().isEmpty() && !txtCorreo.getText().isEmpty() && !txtPass.getText().isEmpty() && !txtPass2.getText().isEmpty()) {
 			return true;
@@ -98,7 +107,10 @@ public class RegistroClass {
 			return false;
 		}
 	}
-	
+	/**
+	 * Comprueba que los campos cumplen con los requisitos establecidos. Si no los cumple, informa al usuario imprimiendo por pantalla el motivo
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposValidos (String user, String pass, String pass2, String correo) {  //metodo que valida los campos de registro y si son validos inserta un cliente en la bbdd. devuelve 1 si es insertado
 		boolean state=false;
 		//comprobamos que el usuario tiene minimo 4 caracteres, el correo en el formato correcto, las 2 contraseñas iguales y mas de 6 caracteres y que el usuario no existe.
@@ -122,12 +134,21 @@ public class RegistroClass {
 		}
 		return state;
 	}
-	 
+	/**
+	 * Valida que el correo introducido es un correo electrónico
+	 * @param correo Correo que introduce el usuario pasado por parámetro
+	 * @return
+	 */
 	public static boolean validaCorreo(String correo) { //metodo para validar el formato del correo
 		Pattern CORREO_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 		Matcher m = CORREO_REGEX.matcher(correo);
 		return m.find();
 	}
+	
+	/**
+	 * Método genérico para cargar en la interface cada una ded las páginas.
+	 * @param page Nombre de la página que se quiere cargar.
+	 */
 	
 	private void loadPage(String page) { //metodo para cargar pagina
 		Parent root=null;
@@ -139,13 +160,17 @@ public class RegistroClass {
 		}
 		bp.setCenter(root);;
 	}
-
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void clear () {  //metodo para limpiar los campos
 		txtUser.clear();
 		txtPass.clear();
 		txtPass2.clear();
 	}
-
+	/**
+	 * Cierra la aplicación
+	 */
 	@FXML
 	private void close(MouseEvent event) { //metodo para cerrar el programa
 		Platform.exit();

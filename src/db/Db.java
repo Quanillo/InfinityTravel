@@ -23,7 +23,9 @@ public class Db {
 	private static PreparedStatement pst;
 	private static ResultSet rs;
 	private static Cliente userConnected;
-
+	/**
+	 * Conecta la aplicación a la bbdd.
+	 */
 	public void connect() {
 
 		try {
@@ -37,7 +39,11 @@ public class Db {
 		}
 
 	}
-
+	/**
+	 * Inserta el cliente en la bbdd. 
+	 * @param c Cliente a insertar.
+	 * @return
+	 */
 	public boolean registrarCliente (Cliente c) {
 
 		boolean insertado = false;
@@ -65,7 +71,11 @@ public class Db {
 
 		return insertado;
 	}
-
+	/**
+	 * Comprueba si el nombre de usuario esta ya registrado en la bbdd.
+	 * @param username Nombre de usuario.
+	 * @return boolean que define si es encontrado o no.
+	 */
 	public boolean register_usernameAlreadyExists(String username) {
 		try {
 			String s = "";
@@ -84,7 +94,11 @@ public class Db {
 			return false;
 		}
 	}
-
+	/**
+	 * Comprueba si el usuario ha introducido el dni en la bbdd y esta validado.
+	 * @param username Nombre de usuario.
+	 * @return Boolean que define si esta validado o no.
+	 */
 	public boolean userValidado(String username) {
 		try {
 			String s = "";
@@ -103,7 +117,11 @@ public class Db {
 			return false;
 		}
 	}
-	
+	/**
+	 * Introduce los datos en la bbdd del cliente que se solicitan en la pagina de usuario.
+	 * @param user
+	 * @return
+	 */
 	public boolean updateCliente (Cliente user) {
 
 		boolean updateado = false;
@@ -134,7 +152,12 @@ public class Db {
 
 		return updateado;
 	}
-	
+	/**
+	 * Comprueba si la contraseña esta en la bbdd.
+	 * @param username Nombre de usuario.
+	 * @param pass Contraseña.
+	 * @return Boolean que define si es encontrada o no.
+	 */
 	public boolean login_validUser(String username, String pass) {
 
 		try {
@@ -155,7 +178,7 @@ public class Db {
 		}
 
 	}
-
+	
 	public Cliente selectCliente (String user) {
 		Cliente cliente=null;
 		String username, pass, mail;
@@ -186,13 +209,19 @@ public class Db {
 		return cliente;
 
 	}
-
+	/**
+	 * Devuelve el usuario conectado a la aplicación.
+	 * @return
+	 */
 	public static Cliente getUserConnected() {
 		return userConnected;
 	}
-
-	public static void setUserConnected(String user) { //este metodo esta copiado de select cliente, para utilizarlo me pedia hacerlo static, asi que he hecho este igual
-		Cliente cliente=null;							//por si acaso, ya lo miraremos en clase.
+	/**
+	 * Setea el usuario conectado a la aplicación.
+	 * @param user
+	 */
+	public static void setUserConnected(String user) { 
+		Cliente cliente=null;							
 		String username, pass, mail;
 
 		try {

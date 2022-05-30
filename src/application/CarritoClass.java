@@ -34,7 +34,9 @@ public class CarritoClass implements Initializable{
 	@FXML private Button btnComprar;
 	@FXML private ScrollPane scPane;
 	DbProducto dbp=new DbProducto();
-
+	/**
+	 * Imprime el listado del ArrayList carrito alojado en el objeto del cliente conectado.
+	 */
 	public void setTextCarrito() {
 		Cliente cliente=Db.getUserConnected();
 		ArrayList<Producto> listaProductos =cliente.getCarrito();
@@ -50,7 +52,10 @@ public class CarritoClass implements Initializable{
 		}
 		txtCarrito.setText(carrito);
 	}
-
+	/**
+	 * Realiza la compra de los productos alojados en el carrito, y envía la factura al correo del cliente utilizando su método correspondiente
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void comprar(MouseEvent event) {
 		Cliente cliente=Db.getUserConnected();
 		if(cliente.isClienteValidado()) {
@@ -72,8 +77,13 @@ public class CarritoClass implements Initializable{
 			txtCarrito.setText("Cliente no válidado. Dirijase a la zona de Usuario para completar la información necesaria para realizar la factura.");
 		}
 	}
-
 	
+	/**
+	 * Envía un mail al correo electronico componiendo el mensaje con su correo, el asunto y el cuerpo.
+	 * @param destinatario
+	 * @param asunto
+	 * @param cuerpo
+	 */
 	private static void enviarMail(String destinatario, String asunto, String cuerpo) {
 	    String remitente = "infinitytravelnoreply"; 
 	    String clave = "Ullman10";

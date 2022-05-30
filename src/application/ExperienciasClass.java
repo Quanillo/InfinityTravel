@@ -49,7 +49,11 @@ public class ExperienciasClass implements Initializable{
 	private static DbCiudad dbc = new DbCiudad();
 	private static DbProducto dbp = new DbProducto();
 	private Experiencia experienciaSeleccionada;
-
+	
+	/**
+	 * Reserva las experiencias añadiendolo al array list de Producto llamada carrito del Cliente conectado.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void reservaExperiencia(MouseEvent event) { 
 		Cliente cliente=Db.getUserConnected();
 		if(checkCamposVacios()) { //chekeamos que los campos estan rellenos
@@ -68,7 +72,10 @@ public class ExperienciasClass implements Initializable{
 		}
 		clear();
 	}
-	
+	/**
+	 * Imprime en la interface el precio cuando uno de los elementos de la interface es pulsado
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	public void eventActiongetPrecios (ActionEvent event) {
 		Object evt=event.getSource();
@@ -76,14 +83,20 @@ public class ExperienciasClass implements Initializable{
 			setTextPrecio();
 		}
 	}
-	
+	/**
+	 * Valida que los campos estan completos.
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposVacios() {
 		if(cbCiudad.getValue()!=null && cbExperiencias.getValue()!=null && dpFecha.getValue()!=null)
 			return true;
 		else 
 			return false;
 	}
-
+	/**
+	 * Suma el numero tickets para la experiencia segun se pulasn los botones de masBilletes o menosBilletes y actualiza el precio si los campos estan completos
+	 * @param event
+	 */
 	@FXML
 	private void precioSumaResta(ActionEvent event) {  
 		Object evt=event.getSource();
@@ -202,10 +215,7 @@ public class ExperienciasClass implements Initializable{
 			});	
 		}
 	}
-	
-	
-	
-	
+
 	public void setComboBoxExperienciaP() {
 		if(cbCiudad.getValue()!=null) {
 			String ciudad=cbCiudad.getValue();
@@ -271,7 +281,9 @@ public class ExperienciasClass implements Initializable{
 	}
 	
 	//--------------  Limiar campos  ------------------
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void clear () {
 		txtPrecio.setText("0");
 		cbCiudad.setValue(null);

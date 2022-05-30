@@ -49,10 +49,15 @@ public class AlojamientoClass implements Initializable{
 	private static DbProducto dbp = new DbProducto();
 	private Alojamiento alojamientoSeleccionado;
 	
+
+	/**
+	 * Reserva el alojamiento añadiendolo al array list de Producto llamada carrito del Cliente conectado.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	public void reservaAlojamiento(MouseEvent event) { 
 		Cliente cliente=Db.getUserConnected();
-		if(checkCamposVacios()) { //chekeamos que los campos estan rellenos
-			LocalDate entrada=dpEntrada.getValue();   //guardamos los datos recogidos en los campos
+		if(checkCamposVacios()) { 
+			LocalDate entrada=dpEntrada.getValue();   
 			LocalDate salida=dpSalida.getValue();
 			double precioFinal=alojamientoSeleccionado.calculaPrecio(getNumNoches());
 			Alojamiento alojAux=alojamientoSeleccionado;
@@ -66,17 +71,23 @@ public class AlojamientoClass implements Initializable{
 		}
 		clear();
 	}
-
+	
+	/**
+	 * Setea el precio en la interface cada vez que el usuario cambia algun parámetro en la interface.
+	 * @param event Evento de ratón (el usuario pulsa el botón).
+	 */
 	@FXML
 	public void eventActiongetPrecios (ActionEvent event) {
 		Object evt=event.getSource();
 		if(evt.equals(cbCiudad) || evt.equals(cbAlojamientos) || evt.equals(dpEntrada) || evt.equals(dpSalida) && checkCamposVacios()){
-			//txtPrecio.setText("0");txtPrecioBase.setText("0");
-			//setDatePickerSalida();
 			setTextPrecio(getNumNoches());
 		}
 	}
-
+	
+	/**
+	 * Valida que los campos estan completos.
+	 * @return Devuelve true si los campos estan completos.
+	 */
 	public boolean checkCamposVacios() {
 		if(cbCiudad.getValue()!=null && cbAlojamientos.getValue()!=null && dpEntrada.getValue()!=null && dpSalida.getValue()!=null && getNumNoches()>=1 ) 
 			return true;
@@ -85,7 +96,12 @@ public class AlojamientoClass implements Initializable{
 	}
 
 	//--------------------- Getters and setters  ---------------------------
-	
+
+	/**
+	 * Lee y los parametros de fecha introducidos por el usuario y los guarda en el objeto Alojamiento
+	 * utilizando el método getNumNoches para calcular el número de noches seleccionadas por el usuario.
+	 * @return
+	 */
 	public int getNumNoches() { 
 		int noches = 0;
 		if(dpEntrada.getValue()!=null && dpSalida.getValue()!=null) {
@@ -95,7 +111,10 @@ public class AlojamientoClass implements Initializable{
 		}
 		return noches;
 	}
-
+	/**
+	 * Imprime el precio en la interface con los parámetros introducidos por el cliente
+	 * @param numNoches Numero de noches.
+	 */
 	public void setTextPrecio (int numNoches) {
 		if(checkCamposVacios()) {	
 			double precio = alojamientoSeleccionado.calculaPrecio(numNoches);  //, alojamientoSeleccionado.getImporteProducto()
@@ -107,6 +126,9 @@ public class AlojamientoClass implements Initializable{
 		}
 	}
 	
+	/**
+	 * Imprime la imagen en la interface del alojamiento seleccionado. Esta es una url almacenada en la bbdd.
+	 */
 	public void setImagen() {
 		if(cbAlojamientos.getValue()!=null) {
 			URLConnection connection;
@@ -120,7 +142,10 @@ public class AlojamientoClass implements Initializable{
 			}
 		}
 	}
-	
+	/**
+	 * Selecciona el alojamiento seleccionado en el combobox cbAlojamientos y lo guarda en la variable alojamientoSeleccionado.
+	 * @param event
+	 */
 	public void setAlojamientoSeleccionado (ActionEvent event) {
 		if(cbAlojamientos.getValue()!=null) {
 			this.alojamientoSeleccionado=cbAlojamientos.getValue();
@@ -178,7 +203,7 @@ public class AlojamientoClass implements Initializable{
 	}
 	
 
-	//Setero del calendario entrada
+	//Setero del calendario entrada.
 	public void setDatePickerEntrada () {
 		LocalDate hoy=LocalDate.now();
 	    final Callback<DatePicker, DateCell> dayCellFactory = 
@@ -204,7 +229,7 @@ public class AlojamientoClass implements Initializable{
 	    dpEntrada.setDayCellFactory(dayCellFactory);
 	    dpEntrada.setValue(hoy.plusDays(1));
 	}
-	//seteo del calendario salida
+	//seteo del calendario salida.
 	public void setDatePickerSalida () {
 	   try {
 		final Callback<DatePicker, DateCell> dayCellFactory = 
@@ -235,7 +260,9 @@ public class AlojamientoClass implements Initializable{
 	
     
 	//--------------  Limpieza  ------------------
-	
+	/**
+	 * Deja los campos de la interface con los valores de inicio.
+	 */
 	public void clear () {
 		txtPrecio.setText("0");
 		txtPrecioBase.setText("0");

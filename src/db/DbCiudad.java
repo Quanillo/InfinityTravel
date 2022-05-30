@@ -18,7 +18,9 @@ public class DbCiudad {
 	private static Connection connection = null;
 	private static Statement st = null;
 	private static ResultSet rs = null;
-
+	/**
+	 * Conecta la aplicación a la bbdd.
+	 */
 	public void connect() {
 
 		try {
@@ -33,7 +35,11 @@ public class DbCiudad {
 
 	}
 
-	
+	/**
+	 * Devuelve la latitud de una ciudad de la bbdd
+	 * @param ciudad
+	 * @return Valor de la latitud
+	 */
 	public double ciudad_getLatitud (String ciudad) {
 
 		double lat = 0;
@@ -53,7 +59,11 @@ public class DbCiudad {
 		return lat;
 	}
 
-	
+	/**
+	 * Devuelve la longitud de una ciudad de la bbdd
+	 * @param ciudad
+	 * @return Valor de la longitud
+	 */
 	public double ciudad_getLongitud (String ciudad) {
 
 		double lon = 0;
@@ -73,7 +83,10 @@ public class DbCiudad {
 		return lon;
 	}
 
-	
+	/**
+	 * Lista las ciudades almacenadas en la bbdd
+	 * @return
+	 */
 	public ArrayList<String> listarCiudades () {
 
 		ArrayList<String> lista = new ArrayList<String>();
@@ -92,7 +105,10 @@ public class DbCiudad {
 		return lista;
 	}
 
-	
+	/**
+	 * Lista las ciudades de la bbdd que cuentan con alojamiento
+	 * @return
+	 */
 	public ArrayList<String> listarCiudadesConAlojamiento () {
 
 		ArrayList<String> lista = new ArrayList<String>();
@@ -111,7 +127,10 @@ public class DbCiudad {
 		return lista;
 	}
 	
-	
+	/**
+	 * Lista las ciudades de la bbdd que cuentan con alojamiento
+	 * @return
+	 */
 	public ArrayList<String> listarCiudadesConExperiencia () {
 
 		ArrayList<String> lista = new ArrayList<String>();
